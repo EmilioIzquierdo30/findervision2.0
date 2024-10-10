@@ -1,0 +1,73 @@
+/* Estilos de la barra de navegación */
+.navbar {
+  background-color: #1A1A1A; /* Color oscuro para el fondo */
+  padding: 1rem 2rem; /* Aumenta el padding para dar más espacio */
+  display: flex;
+  justify-content: space-between; /* Distribución del logo y enlaces */
+  align-items: center;
+  width: 100%;
+  position: fixed; /* Fija la navbar en la parte superior */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Para que esté sobre otros elementos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar un poco de profundidad */
+}
+
+/* Estilos del logo */
+.logo {
+  color: #F7FFF7; /* Color blanco roto para el texto */
+  font-size: 1.8rem; /* Aumenta el tamaño del logo */
+  font-weight: bold;
+  text-transform: uppercase; /* Hace el logo en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras para darle más elegancia */
+  cursor: pointer; /* Cursor de mano para indicar que el logo es clickeable */
+  transition: color 0.3s ease; /* Transición suave al cambiar el color */
+}
+
+.logo:hover {
+  color: #FF4081; /* Color brillante en hover */
+}
+
+/* Estilos de los enlaces */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem; /* Espacio entre los botones */
+  margin-left: auto; /* Empuja los enlaces a la derecha */
+}
+
+.nav-button {
+  background-color: transparent;
+  border: 2px solid transparent; /* Bordes transparentes para mayor limpieza */
+  color: #F7FFF7; /* Blanco roto para los enlaces */
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem; /* Padding para hacer los enlaces más accesibles */
+  border-radius: 5px; /* Bordes redondeados para suavidad */
+  transition: color 0.3s, border 0.3s; /* Transición suave para el color y borde */
+}
+
+.nav-button:hover {
+  color: #FF4081; /* Color brillante al pasar el mouse */
+  border-color: #FF4081; /* Añade un borde de color al pasar el mouse */
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Coloca el logo y los enlaces en una columna */
+    align-items: flex-start; /* Alinea a la izquierda los elementos */
+    padding: 1rem; /* Reduce el padding en dispositivos pequeños */
+  }
+
+  .nav-links {
+    flex-direction: column; /* Cambia los enlaces a una columna */
+    gap: 1rem; /* Espacio más pequeño entre los enlaces */
+    width: 100%; /* Ocupa el ancho completo */
+  }
+
+  .nav-button {
+    width: 100%; /* Los botones ocupan todo el ancho en dispositivos móviles */
+    text-align: left; /* Alinea el texto de los botones a la izquierda */
+  }
+}
