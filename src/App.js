@@ -13,3 +13,30 @@ function App() {
 }
 
 export default App;
+
+function App() {
+  return (
+    <div className="container">
+      <Navbar />
+      <Main />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="container">
+      <Navbar />
+      <Main />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="container">
+      <Navbar />
+      <Main />
+    </div>
+  );
+}
