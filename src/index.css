@@ -1,13 +1,110 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f4f9;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Contenedor del catálogo */
+.catalogo {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Título principal */
+h1 {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-bottom: 40px;
+  font-family: 'Georgia', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center; /* Centra el título */
+}
+
+/* Estilo de las flechas */
+.flechas {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.flecha {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 0 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flecha:hover {
+  background-color: #45a049;
+}
+
+/* Lista de plantas */
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilos para cada elemento de la lista */
+li {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+/* Animación hover para los elementos */
+li:hover {
+  transform: translateY(-10px);
+}
+
+/* Imagen de la planta */
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Título de la planta */
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+/* Descripción de la planta */
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify; /* Justifica el texto de la descripción */
+}
+
+/* Lista de beneficios, ingredientes, etc. */
+ul li {
+  margin: 5px 0;
+  color: #666;
+}
+
+/* Precauciones en rojo */
+.precauciones {
+  color: #e53935;
+  font-weight: bold;
 }
