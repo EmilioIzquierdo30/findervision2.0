@@ -1,0 +1,44 @@
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.slideContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.image {
+  width: 300px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.textSection {
+  max-width: 400px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.active {
+  opacity: 1;
+}
+
+
