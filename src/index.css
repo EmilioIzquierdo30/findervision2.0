@@ -13,6 +13,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
 }
 
 /* Título principal */
@@ -29,8 +30,12 @@ h1 {
 /* Estilo de las flechas */
 .flechas {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
 }
 
 .flecha {
@@ -39,7 +44,6 @@ h1 {
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
-  margin: 0 10px;
   font-size: 1.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -49,13 +53,23 @@ h1 {
   background-color: #45a049;
 }
 
+.flecha.izquierda {
+  left: 0;
+}
+
+.flecha.derecha {
+  right: 0;
+}
+
 /* Lista de plantas */
 ul {
   list-style: none;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
 
 /* Estilos para cada elemento de la lista */
