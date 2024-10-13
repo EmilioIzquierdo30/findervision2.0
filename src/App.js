@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './componentes/navbar.js'; 
 import Main from './Main'; 
 import Slider from './componentes/slider.js';
+import AboutUs from './componentes/aboutus.js';
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
       <Navbar />
       <Main />
       <Slider imagenes={mockImagenes}/>
+      <AboutUs/>
     </div>
   );
 }

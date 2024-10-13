@@ -8,7 +8,7 @@
 
 /* Estilos para el cuerpo */
 body {
-  background: linear-gradient(to top, #aafdca, #F7FFF7); /* Degradado de verde claro a blanco */
+  background-color: white;
   color: #333;
   min-height: 100vh; /* Asegura que el degradado cubra toda la altura */
   padding-top: 100px; /* Ajusta el padding para que el contenido no choque con la navbar */

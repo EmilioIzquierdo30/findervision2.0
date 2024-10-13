@@ -1,12 +1,12 @@
 import React from 'react';
-import estilos from './slider.module.css'; // Asegúrate de tener los estilos correctos
+import estilos from './slider.module.css'; // tener los estilos correctos
 
 function Slider({ imagenes }) {
   // Variables y Estados
   const [imagenActual, setImagenActual] = React.useState(0);
   const cantidad = imagenes?.length;
 
-  // Return prematuro para evitar errores
+  // Return para evitar errores 
   if (!Array.isArray(imagenes) || cantidad === 0) return;
 
   const siguienteImagen = () => {

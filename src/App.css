@@ -1,20 +1,23 @@
-
-.App {
+.cta-section {
   text-align: center;
+  margin-top: 20px; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.cta-button {
+  padding: 10px 20px;
+  margin-top: 20px; 
+  background-color: #4CAF50; 
   color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.cta-button:hover {
+  background-color: #45a049; /* Color cuando el ratón pasa por encima */
 }
+.main-title{
+    font-size: 45px;
+    color: black;
 
+}
