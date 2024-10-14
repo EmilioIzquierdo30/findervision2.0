@@ -1,17 +1,18 @@
-// App.jsx
-import React from 'react';
-import Categorias from './Categorias';
+// Importar las dependencias necesarias de React
+import React from 'react'; // Importa React para usar sus funcionalidades
+import Categorias from './Categorias'; // Importa el componente Categorias
 
+// Definición de un array de plantas, cada una con sus propiedades
 const plantas = [
   {
-    nombre: 'Flores',
-    descripcion: 'Una hermosa rosa roja.',
-    imagen: 'ruta/a/la/imagen.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar diariamente.',
-    beneficios: 'Mejora la estética del jardín.',
-    precauciones: 'Evitar exceso de riego.',
-    categoria: 'Antiinflamatorias'
+    nombre: 'Flores', // Nombre de la planta
+    descripcion: 'Una hermosa rosa roja.', // Descripción de la planta
+    imagen: 'ruta/a/la/imagen.jpg', // Ruta a la imagen de la planta
+    ingredientes: ['Agua', 'Sol'], // Ingredientes necesarios para el cuidado
+    instrucciones: 'Regar diariamente.', // Instrucciones de riego
+    beneficios: 'Mejora la estética del jardín.', // Beneficios de la planta
+    precauciones: 'Evitar exceso de riego.', // Precauciones a tener en cuenta
+    categoria: 'Antiinflamatorias' // Categoría a la que pertenece
   },
   {
     nombre: 'Lavanda',
@@ -195,12 +196,14 @@ const plantas = [
   },
 ];
 
+// Componente funcional App que renderiza el catálogo de plantas
 const App = () => {
   return (
     <div>
-      <Categorias plantas={plantas} />
+      <Categorias plantas={plantas} /> {/* Pasa el array de plantas al componente Categorias */}
     </div>
   );
 };
 
+// Exportar el componente App para usarlo en otros archivos
 export default App;

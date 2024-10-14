@@ -1,26 +1,29 @@
 /* Estilos para el componente Catalogo */
 
+/* Estilo para el encabezado de primer nivel (h1) */
 h1 {
-    text-align: center;
-    color: #2f8f20;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    background-color: #f4f4f4;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  li:hover {
-    background-color: #e0e0e0;
-  }
-  
+  text-align: center; /* Centra el texto horizontalmente */
+  color: #2f8f20; /* Color verde para el texto */
+  font-size: 2rem; /* Tamaño de fuente de 2 rem para un encabezado destacado */
+  margin-bottom: 20px; /* Margen inferior de 20px para separación de otros elementos */
+}
+
+/* Estilo para listas desordenadas (ul) */
+ul {
+  list-style-type: none; /* Elimina los puntos de viñetas de la lista */
+  padding: 0; /* Elimina el padding por defecto del ul */
+}
+
+/* Estilo para los elementos de la lista (li) */
+li {
+  background-color: #f4f4f4; /* Color de fondo gris claro para los elementos de lista */
+  margin: 10px 0; /* Margen superior e inferior de 10px para separación entre elementos */
+  padding: 15px; /* Padding de 15px dentro del elemento de lista */
+  border-radius: 5px; /* Bordes redondeados con un radio de 5px */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad al elemento */
+}
+
+/* Estilo para el efecto hover en elementos de la lista (li:hover) */
+li:hover {
+  background-color: #e0e0e0; /* Cambia el color de fondo a un gris más oscuro al pasar el cursor */
+}
