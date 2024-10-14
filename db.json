@@ -1,0 +1,28 @@
+{
+"Usuarios":[
+    {
+        "id": 1,
+        "apellido_paterno": "Sanchez",
+        "apellido_materno": "Obregon",
+        "Nombre": "Angel",
+        "username": "sxchzz",
+        "password": "12345"
+    },
+    {
+        "id": 2,
+        "apellido_paterno": "Sias",
+        "apellido_materno": "Garcia",
+        "Nombre": "Brian",
+        "username": "padrino",
+        "password": "12345"
+    },
+    {
+        "id": 1,
+        "apellido_paterno": "Izquierdo",
+        "apellido_materno": "Montero",
+        "Nombre": "Emilio",
+        "username": "emilio",
+        "password": "12345"
+    }
+]
+}
