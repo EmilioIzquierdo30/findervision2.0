@@ -1,99 +1,33 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; 
-  height: 100vh;
-  background: linear-gradient(180deg, #d4f0c1, #b3e7a5);
-  text-align: center; 
-}
-
-.top-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px; 
-}
-
-.top-button {
-  background-color: transparent;
+/* Estilo base para los botones */
+.custom-button {
+  background-color: #4CAF50; /* Color verde */
   border: none;
   color: white;
-  font-size: 18px;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 8px 0;
   cursor: pointer;
-  transition: color 0.3s;
+  border-radius: 8px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
 
-.top-button:hover {
-  color: #d4f0c1;
+/* Efectos hover */
+.custom-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Efecto de crecimiento */
 }
 
-.logo-section {
-  margin: 20px 0;
+/* Efectos al hacer clic */
+.custom-button:active {
+  background-color: #3e8e41;
+  transform: scale(0.98); /* Efecto de reducción al hacer clic */
 }
 
-.logo {
-  width: 100px;
-  height: 100px;
-}
-
-.main-title {
-  font-size: 24px; 
-  margin: 20px 0;
-}
-
-.try-it-section {
-  margin: 20px 0;
-}
-
-.bottom-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.upload-button, .camera-button {
-  background-color: #6aad35;
-  border: none;
-  color: white;
-  font-size: 18px;
-  padding: 10px 20px;
-  margin: 0 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.upload-button:hover, .camera-button:hover {
-  background-color: #5a9f30;
-}
-
-.login-section {
-  margin-top: 20px; 
-}
-
-.login-button {
-  background-color: #4285F4; 
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.login-button:hover {
-  background-color: #357ae8; 
+/* Estilo adicional para mejor accesibilidad */
+.custom-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px #45a049;
 }

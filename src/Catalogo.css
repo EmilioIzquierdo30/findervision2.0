@@ -1,29 +1,67 @@
-/* Estilos para el componente Catalogo */
-
-/* Estilo para el encabezado de primer nivel (h1) */
-h1 {
-  text-align: center; /* Centra el texto horizontalmente */
-  color: #2f8f20; /* Color verde para el texto */
-  font-size: 2rem; /* Tamaño de fuente de 2 rem para un encabezado destacado */
-  margin-bottom: 20px; /* Margen inferior de 20px para separación de otros elementos */
+.catalogo {
+  padding: 20px; /* Añade un relleno de 20px alrededor del catálogo para espaciar el contenido. */
 }
 
-/* Estilo para listas desordenadas (ul) */
-ul {
-  list-style-type: none; /* Elimina los puntos de viñetas de la lista */
-  padding: 0; /* Elimina el padding por defecto del ul */
+.catalogo h1 {
+  text-align: center; /* Centra el título del catálogo horizontalmente. */
+  font-size: 2.5em; /* Define un tamaño de fuente grande para el título (2.5 veces el tamaño normal). */
+  color: #4CAF50; /* Asigna un color verde al texto del título utilizando el color hexadecimal. */
 }
 
-/* Estilo para los elementos de la lista (li) */
-li {
-  background-color: #f4f4f4; /* Color de fondo gris claro para los elementos de lista */
-  margin: 10px 0; /* Margen superior e inferior de 10px para separación entre elementos */
-  padding: 15px; /* Padding de 15px dentro del elemento de lista */
-  border-radius: 5px; /* Bordes redondeados con un radio de 5px */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad al elemento */
+.catalogo ul {
+  list-style-type: none; /* Elimina las viñetas (puntos o números) de la lista no ordenada. */
+  padding: 0; /* Elimina el relleno por defecto de la lista. */
 }
 
-/* Estilo para el efecto hover en elementos de la lista (li:hover) */
-li:hover {
-  background-color: #e0e0e0; /* Cambia el color de fondo a un gris más oscuro al pasar el cursor */
+.catalogo li {
+  margin-bottom: 20px; /* Añade un margen inferior de 20px entre cada elemento de la lista. */
+  display: flex; /* Utiliza flexbox para alinear los elementos dentro de cada lista. */
+  justify-content: center; /* Centra horizontalmente cada ítem de la lista. */
+}
+
+.planta {
+  border: 2px solid #4CAF50; /* Añade un borde de 2px de grosor de color verde alrededor de cada planta. */
+  border-radius: 10px; /* Redondea las esquinas del borde con un radio de 10px. */
+  padding: 20px; /* Añade un relleno interno de 20px dentro de cada tarjeta de planta. */
+  width: 100%; /* Establece el ancho de la tarjeta al 100% de su contenedor. */
+  max-width: 500px; /* Limita el ancho máximo de la tarjeta a 500px, para mantener un tamaño adecuado. */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra sutil debajo de la tarjeta para darle profundidad. */
+}
+
+.planta h2 {
+  text-align: center; /* Centra el texto del título de la planta. */
+  color: #333; /* Asigna un color gris oscuro (#333) al título de la planta. */
+}
+
+.planta img {
+  display: block; /* Hace que la imagen sea un bloque (ocupa toda la línea). */
+  margin: 0 auto 15px auto; /* Centra la imagen horizontalmente con margen automático a la izquierda y derecha, y añade un margen inferior de 15px. */
+  max-width: 100%; /* Limita el ancho máximo de la imagen al 100% del contenedor, haciéndola responsiva. */
+  height: auto; /* Ajusta automáticamente la altura para mantener la proporción de la imagen. */
+}
+
+.planta ul {
+  padding-left: 20px; /* Añade un relleno a la izquierda dentro de la lista de ingredientes o características de la planta. */
+}
+
+.planta p {
+  font-size: 1.1em; /* Ajusta el tamaño del texto ligeramente más grande de lo normal (1.1 veces el tamaño normal). */
+  color: #666; /* Define un color gris claro (#666) para el texto de descripción. */
+}
+
+/* Botones más grandes y alineados en vertical */
+button {
+  background-color: #4CAF50; /* Define un color de fondo verde para los botones. */
+  color: white; /* Establece el color del texto del botón en blanco. */
+  padding: 15px 20px; /* Añade un relleno interno de 15px vertical y 20px horizontal para agrandar los botones. */
+  font-size: 1.2em; /* Ajusta el tamaño del texto dentro de los botones a 1.2 veces el tamaño normal. */
+  border: none; /* Elimina cualquier borde alrededor de los botones. */
+  border-radius: 8px; /* Redondea las esquinas de los botones con un radio de 8px. */
+  cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre el botón, indicando que es interactivo. */
+  width: 100%; /* Establece el ancho del botón al 100% de su contenedor. */
+  margin-top: 10px; /* Añade un margen superior de 10px para separar los botones de otros elementos. */
+}
+
+button:hover {
+  background-color: #45a049; /* Cambia el color de fondo del botón a un tono verde más oscuro al pasar el cursor por encima (hover). */
 }

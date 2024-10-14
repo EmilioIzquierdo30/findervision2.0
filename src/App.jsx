@@ -199,7 +199,7 @@ const plantas = [
 // Componente funcional App que renderiza el catálogo de plantas
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
       <Categorias plantas={plantas} /> {/* Pasa el array de plantas al componente Categorias */}
     </div>
   );
