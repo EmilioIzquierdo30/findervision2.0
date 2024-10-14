@@ -1,11 +1,12 @@
 // Catalogo.jsx
 import React from 'react';
 import Planta from './Planta';
+import './Catalogo.css'; 
 
 const Catalogo = ({ plantas }) => {
   return (
-    <div>
-      <h1>Catálogo de plantas</h1>
+    <div className="catalogo">
+      <h1>Catálogo De Plantas</h1>
       <ul>
         {plantas.map((planta, index) => (
           <li key={index}>
