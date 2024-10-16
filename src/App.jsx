@@ -1,209 +1,76 @@
-// Importar las dependencias necesarias de React
-import React from 'react'; // Importa React para usar sus funcionalidades
-import Categorias from './Categorias'; // Importa el componente Categorias
+// App.jsx
+import React from 'react';
+import ListaPlantas from './ListaPlantas';
+import './App.css'; // Importa los estilos generales de la aplicación
 
-// Definición de un array de plantas, cada una con sus propiedades
-const plantas = [
-  {
-    nombre: 'Flores', // Nombre de la planta
-    descripcion: 'Una hermosa rosa roja.', // Descripción de la planta
-    imagen: 'ruta/a/la/imagen.jpg', // Ruta a la imagen de la planta
-    ingredientes: ['Agua', 'Sol'], // Ingredientes necesarios para el cuidado
-    instrucciones: 'Regar diariamente.', // Instrucciones de riego
-    beneficios: 'Mejora la estética del jardín.', // Beneficios de la planta
-    precauciones: 'Evitar exceso de riego.', // Precauciones a tener en cuenta
-    categoria: 'Antiinflamatorias' // Categoría a la que pertenece
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Digestivas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Antimicrobianas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Relajantes'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Diuréticas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Analgésicas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Antioxidantes'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Adaptogénicas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Hepatoprotectoras'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Cardiotónicas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Inmunoestimulantes'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Cicatrizantes'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Antidiabéticas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Tónicas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Expectorantes'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Analgésticas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Antiespasmódicas'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Neuroprotectoras'
-  },
-  {
-    nombre: 'Lavanda',
-    descripcion: 'Lavanda aromática.',
-    imagen: 'ruta/a/la/imagen2.jpg',
-    ingredientes: ['Agua', 'Sol'],
-    instrucciones: 'Regar moderadamente.',
-    beneficios: 'Aroma relajante.',
-    precauciones: 'No sobreexponer al sol.',
-    categoria: 'Anticancerígenas'
-  },
-];
-
-// Componente funcional App que renderiza el catálogo de plantas
 const App = () => {
+  const plantas = [
+    {
+      nombre: 'Monstera Deliciosa',
+      categoria: 'Planta de Interior',
+      color: 'Verde',
+      imagen: 'https://via.placeholder.com/200x200', // Reemplaza con la URL de la imagen real
+    },
+    {
+      nombre: 'Ficus Lyrata',
+      categoria: 'Planta de Interior',
+      color: 'Verde Oscuro',
+      imagen: 'https://via.placeholder.com/200x200',
+    },
+    {
+      nombre: 'Sansevieria Trifasciata',
+      categoria: 'Planta de Interior',
+      color: 'Verde y Amarillo',
+      imagen: 'https://via.placeholder.com/200x200',
+    },
+    // Agrega más plantas según sea necesario
+  ];
+
   return (
-    <div className="app-container">
-      <Categorias plantas={plantas} /> {/* Pasa el array de plantas al componente Categorias */}
+    <div className="app">
+      <header className="header">
+        {/* Repite el contenido del encabezado adaptado al HTML proporcionado */}
+        <img alt="Logo de Plantas" src="https://via.placeholder.com/40" width="40" height="40" />
+        <img alt="Catálogo de Plantas" src="https://via.placeholder.com/160x40" width="160" height="40" />
+        <nav className="nav-links">
+          <a href="#">Inicio</a>
+          <a href="#">Suculentas</a>
+          <a href="#">Plantas de Interior</a>
+          <a href="#">Plantas de Exterior</a>
+          <a href="#">Ofertas</a>
+          <a href="#">Contacto</a>
+        </nav>
+        <div className="search">
+          <input placeholder="Buscar plantas..." type="text" />
+          <i className="fas fa-search"></i>
+        </div>
+        <div className="icons">
+          <i className="far fa-heart"></i>
+          <i className="fas fa-shopping-bag"></i>
+          <a href="#">Mi Cuenta</a>
+          <a href="#">Carrito</a>
+        </div>
+      </header>
+      <main className="main">
+        <aside className="sidebar">
+          <a href="#">Todas las Plantas</a>
+          <a href="#">Suculentas</a>
+          <a href="#">Plantas de Interior</a>
+          <a href="#">Plantas de Exterior</a>
+          <a href="#">Herramientas</a>
+          <a href="#">Macetas</a>
+          <a href="#">Fertilizantes</a>
+          <a href="#">Iluminación</a>
+          <a href="#">Decoración</a>
+          <a href="#">Accesorios</a>
+        </aside>
+        <section className="content">
+          <h1>Plantas de Interior (150)</h1>
+          <ListaPlantas plantas={plantas} />
+        </section>
+      </main>
     </div>
   );
 };
 
-// Exportar el componente App para usarlo en otros archivos
 export default App;

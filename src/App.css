@@ -1,33 +1,86 @@
-/* Estilo base para los botones */
-.custom-button {
-  background-color: #4CAF50; /* Color verde */
-  border: none;
-  color: white;
-  padding: 12px 24px;
-  text-align: center;
+/* App.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #e8f5e9;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 8px 0;
-  cursor: pointer;
-  border-radius: 8px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  color: #2e7d32;
+  font-size: 14px;
 }
 
-/* Efectos hover */
-.custom-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05); /* Efecto de crecimiento */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-/* Efectos al hacer clic */
-.custom-button:active {
-  background-color: #3e8e41;
-  transform: scale(0.98); /* Efecto de reducción al hacer clic */
+.search input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
-/* Estilo adicional para mejor accesibilidad */
-.custom-button:focus {
-  outline: none;
-  box-shadow: 0 0 5px #45a049;
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icons i {
+  font-size: 18px;
+  color: #2e7d32;
+}
+
+.icons a {
+  text-decoration: none;
+  color: #2e7d32;
+  font-size: 14px;
+}
+
+.main {
+  display: flex;
+  padding: 20px;
+}
+
+.sidebar {
+  width: 200px;
+  padding-right: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #2e7d32;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.content h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2e7d32;
 }

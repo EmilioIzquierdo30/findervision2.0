@@ -1,3 +1,4 @@
+//Catalogo
 // Importar las dependencias necesarias de React
 import React from 'react'; // Importa React para utilizar componentes y funcionalidades
 import Planta from './Planta'; // Importa el componente Planta para mostrar la información de cada planta

@@ -1,3 +1,4 @@
+//Categorias
 // Importar las dependencias necesarias de React
 import React, { useState } from 'react'; // Importa React y el hook useState para manejar el estado
 import Catalogo from './Catalogo'; // Importa el componente Catalogo
