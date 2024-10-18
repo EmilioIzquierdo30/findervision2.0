@@ -5,6 +5,7 @@ import './App.css'; // Importa los estilos generales de la aplicación
 const App = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const [plantaSeleccionada, setPlantaSeleccionada] = useState(null);
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de búsqueda
 
   const plantas = [
     {
@@ -34,8 +35,10 @@ const App = () => {
     // Agrega más plantas según sea necesario
   ];
 
+  // Filtra por categoría y término de búsqueda
   const plantasFiltradas = plantas.filter(planta => 
-    categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true
+    (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) &&
+    (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true)
   );
 
   const seleccionarPlanta = (planta) => {
@@ -44,6 +47,10 @@ const App = () => {
 
   const cerrarModal = () => {
     setPlantaSeleccionada(null);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value); // Actualiza el estado con el valor del input
   };
 
   return (
@@ -55,7 +62,12 @@ const App = () => {
           <a href="#">Inicio</a>
         </nav>
         <div className="search">
-          <input placeholder="Buscar plantas..." type="text" />
+          <input
+            placeholder="Buscar plantas..."
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange} // Controlador para la búsqueda
+          />
           <i className="fas fa-search"></i>
         </div>
         <div className="icons">
@@ -67,10 +79,24 @@ const App = () => {
 
       <main className="main">
         <aside className="sidebar">
+          <a href="#" onClick={() => setCategoriaSeleccionada('Adaptogénicas')}>Adaptogénicas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Analgésicas')}>Analgésicas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Anticancerígenas')}>Anticancerígenas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antidiabéticas')}>Antidiabéticas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antiespasmódicas')}>Antiespasmódicas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antiinflamatorias')}>Antiinflamatorias</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antimicrobianas')}>Antimicrobianas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antioxidantes')}>Antioxidantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Cardiotónicas')}>Cardiotónicas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Cicatrizante')}>Cicatrizante</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Diuréticas')}>Diuréticas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Digestivas')}>Digestivas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Expectorantes')}>Expectorantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Hepatoprotectoras')}>Hepatoprotectoras</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Inmunoestimulantes')}>Inmunoestimulantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Neuroprotectoras')}>Neuroprotectoras</a>
           <a href="#" onClick={() => setCategoriaSeleccionada('Sedante O Relajante')}>Sedantes O Relajantes</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Cicatrizante')}>Cicatrizantes</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Planta de Interior')}>Plantas de Interior</a>
-          {/* Agrega más categorías según sea necesario */}
+          <a href="#" onClick={() => setCategoriaSeleccionada('Tónicas')}>Tónicas</a>
         </aside>
 
         <section className="content">

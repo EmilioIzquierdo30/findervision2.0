@@ -235,3 +235,19 @@ a {
 .close:hover {
   color: #2e7d32;
 }
+
+.sidebar {
+  max-height: 400px; /* Establece una altura máxima que necesite scrollbar */
+  overflow-y: auto;  /* Habilita el scroll vertical */
+}
+
+.sidebar a {
+  display: block;
+  padding: 10px;
+  color: green;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #f0f0f0;
+}
