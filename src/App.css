@@ -1,86 +1,237 @@
-/* App.css */
+/* Estilos globales */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fff;
+  background-color: #f5f5f5; /* Cambia el color de fondo para mayor contraste */
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Encabezado */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 15px 25px;
   background-color: #e8f5e9;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega sombra para resaltar el encabezado */
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 25px; /* Aumenta la separación entre enlaces */
 }
 
 .nav-links a {
-  text-decoration: none;
+  font-weight: bold;
   color: #2e7d32;
-  font-size: 14px;
+  font-size: 16px; /* Aumenta ligeramente el tamaño del texto */
+  transition: color 0.3s ease;
 }
 
+.nav-links a:hover {
+  color: #1b5e20; /* Efecto hover para los enlaces */
+}
+
+/* Barra de búsqueda */
 .search {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .search input {
-  padding: 5px;
+  padding: 7px 10px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 20px; /* Mejora la estética con bordes más redondeados */
+  width: 200px;
+  transition: width 0.3s ease;
 }
 
+.search input:focus {
+  outline: none;
+  width: 250px; /* Ancho dinámico cuando se enfoca */
+}
+
+.search i {
+  color: #2e7d32;
+  cursor: pointer;
+}
+
+/* Iconos */
 .icons {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 }
 
 .icons i {
-  font-size: 18px;
+  font-size: 20px; /* Aumenta el tamaño de los iconos */
   color: #2e7d32;
+  transition: color 0.3s ease;
+}
+
+.icons i:hover {
+  color: #1b5e20; /* Efecto hover para iconos */
 }
 
 .icons a {
-  text-decoration: none;
+  font-weight: bold;
   color: #2e7d32;
-  font-size: 14px;
+  font-size: 15px;
+  transition: color 0.3s ease;
 }
 
+.icons a:hover {
+  color: #1b5e20; /* Efecto hover para enlaces */
+}
+
+/* Sección principal */
 .main {
   display: flex;
-  padding: 20px;
+  padding: 25px;
+  background-color: #fff;
+  min-height: 80vh; /* Garantiza que la sección ocupe toda la ventana visible */
 }
 
 .sidebar {
-  width: 200px;
+  width: 220px;
   padding-right: 20px;
   border-right: 1px solid #ddd;
 }
 
 .sidebar a {
   display: block;
-  text-decoration: none;
+  padding: 12px 0;
+  font-size: 15px;
   color: #2e7d32;
-  padding: 10px 0;
-  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.sidebar a:hover {
+  background-color: #e8f5e9; /* Agrega un fondo suave al hover */
+  color: #1b5e20;
+}
+
+/* Sección de contenido */
 .content {
   flex: 1;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .content h1 {
-  font-size: 24px;
+  font-size: 28px; /* Agranda el título */
+  margin-bottom: 25px;
+  color: #2e7d32;
+  font-weight: bold;
+}
+
+/* Lista de Plantas */
+.lista-plantas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Diseño de cuadrícula adaptable */
+  gap: 20px;
+}
+
+.planta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.planta:hover {
+  transform: translateY(-5px); /* Efecto de elevación */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.planta-imagen {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; /* Hacer la imagen circular */
+  margin-bottom: 10px;
+}
+
+.planta-info {
+  text-align: center;
+}
+
+.planta-nombre {
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 5px;
+}
+
+.planta-categoria {
+  font-size: 14px;
+  color: #757575;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 600px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modal img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%; /* Imagen redondeada */
   margin-bottom: 20px;
+}
+
+.modal h2 {
+  font-size: 22px;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  font-size: 16px;
+  color: #333;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+}
+
+.close:hover {
   color: #2e7d32;
 }
