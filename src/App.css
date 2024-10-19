@@ -1,23 +1,87 @@
 .cta-section {
-    text-align: center;
-    margin-top: 20px; 
-  }
-  
-  .cta-button {
-    padding: 10px 20px;
-    margin-top: 20px; 
-    background-color: #4CAF50; 
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .cta-button:hover {
-    background-color: #45a049; /* Color cuando el ratón pasa por encima */
-  }
-  .main-title{
-      font-size: 45px;
-      color: black;
-  
-  }
+  text-align: center;
+  margin-top: 40px; 
+}
+
+.cta-button {
+  padding: 15px 30px; 
+  margin-top: 30px; 
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px; 
+  font-size: 18px; 
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.cta-button:hover {
+  background-color: #45a049; 
+  transform: scale(1.05); 
+}
+
+.main-title {
+  font-size: 48px; 
+  color: #333; 
+  line-height: 1.4; 
+  margin-bottom: 20px; 
+}
+
+.header-nav {
+  background-color: rgba(0, 0, 0, 0.9); 
+  color: #fff; 
+  padding: 10px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.header-nav a {
+  color: #f2f2f2; 
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.header-nav a:hover {
+  color: #ffffff; 
+}
+
+.carousel {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9; 
+  border-radius: 10px; 
+}
+
+.carousel img {
+  border-radius: 10px;
+  max-width: 100%; 
+}
+
+.carousel-text {
+  font-size: 18px;
+  color: #666; 
+  margin-top: 10px;
+  line-height: 1.6; 
+  text-align: center;
+}
+
+.carousel-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.carousel-navigation button {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 50%; /* Botones de navegación circulares */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-navigation button:hover {
+  background-color: #555; /* Cambiar a un tono más claro al pasar el ratón */
+}

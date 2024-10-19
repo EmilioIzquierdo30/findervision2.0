@@ -1,12 +1,12 @@
 /* Estilos de la barra de navegación */
 .navbar {
   background-color: #1A1A1A; /* color del fondo */
-  padding: 1rem 2rem; 
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -15,20 +15,20 @@
 
 /* Estilos del logo */
 .logo {
-  color: #F7FFF7; 
+  color: #F7FFF7;
   font-size: 1.8rem; /* Aumenta el tamaño del logo */
   font-weight: bold;
-  text-transform: uppercase; 
-  letter-spacing: 1px; 
+  text-transform: uppercase;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
 
 .logo:hover {
   color: #FF4081; /* Color brillante en hover */
 }
 
-/* Estilos de los enlaces */
+/* Estilos del menú de enlaces */
 .nav-links {
   list-style: none;
   display: flex;
@@ -42,8 +42,8 @@
   color: #F7FFF7;
   font-size: 1rem;
   cursor: pointer;
-  padding: 0.5rem 1rem; 
-  border-radius: 5px; 
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
   transition: color 0.3s, border 0.3s; /* Transición suave para el color y borde */
 }
 
@@ -52,22 +52,59 @@
   border-color: #FF4081; /* Añade un borde de color al pasar el mouse */
 }
 
+/* Estilos del menú hamburguesa (para móviles) */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon div {
+  width: 25px;
+  height: 3px;
+  background-color: #F7FFF7;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 768px) {
   .navbar {
-    flex-direction: column; 
-    align-items: flex-start; 
-    padding: 1rem; 
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
   }
 
   .nav-links {
     flex-direction: column; /* Cambia los enlaces a una columna */
-    gap: 1rem; 
-    width: 100%; 
+    gap: 1rem;
+    width: 100%;
+    display: none; /* Oculta el menú por defecto */
+  }
+
+  .nav-links.active {
+    display: flex; /* Muestra el menú cuando esté activo */
   }
 
   .nav-button {
-    width: 100%; 
-    text-align: left; 
+    width: 100%; /* Botones ocupan todo el ancho en móviles */
+    text-align: left;
+  }
+
+  /* Mostrar el menú hamburguesa solo en pantallas pequeñas */
+  .menu-icon {
+    display: block;
+  }
+
+  /* Cambia el icono de menú hamburguesa cuando se abre */
+  .menu-icon.active div:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .menu-icon.active div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-icon.active div:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
 }
