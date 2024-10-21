@@ -85,3 +85,77 @@
 .carousel-navigation button:hover {
   background-color: #555; /* Cambiar a un tono más claro al pasar el ratón */
 }
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-section {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cta-section {
+  margin-top: 20px;
+}
+
+.cta-button {
+  text-decoration: none;
+  background-color: #00b300;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  background-color: #009900;
+}
+
+/* Estilos del nuevo contenedor */
+.plant-identify-container {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  margin: 0 auto;
+}
+
+.plant-identify-container h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.plant-identify-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.plant-identify-container img {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.alert {
+  background-color: #fff6e5;
+  border: 1px solid #ffc107;
+  color: #ff6f00;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert img {
+  margin-right: 10px;
+}
+

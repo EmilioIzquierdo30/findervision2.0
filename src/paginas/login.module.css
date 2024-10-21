@@ -2,10 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-image: url('https://media.istockphoto.com/id/1397899377/es/foto/medicina-herbal-cura-alternativa-farmacia-de-la-naturaleza-y-homeopat%C3%ADa-hierba-fresca-en-un.jpg?s=612x612&w=0&k=20&c=FMtAlJ8aEvHJ4AwXU1kAj8cHf-88cbUzKEnMZRumzC8='); /* Add a gradient background or an image */
+  background-image: url('https://media.istockphoto.com/id/1397899377/es/foto/medicina-herbal-cura-alternativa-farmacia-de-la-naturaleza-y-homeopat%C3%ADa-hierba-fresca-en-un.jpg?s=612x612&w=0&k=20&c=FMtAlJ8aEvHJ4AwXU1kAj8cHf-88cbUzKEnMZRumzC8='); 
   background-size: cover;
   background-position: center;
+  width: 75vw;  /* Toma todo el ancho de la ventana */
+  height: 100vh; /* Toma todo el alto de la ventana */
 }
 
 .login-box {
@@ -14,8 +15,8 @@
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 400px; /* Smaller width for compact design */
-  margin-right: 20px; /* Spacing from the image on the right */
+  width: 500px; /* Aumenta el ancho del login box */
+  margin-right: 20px;
 }
 
 .login-title {
@@ -25,17 +26,16 @@
 }
 
 .login-google {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #6a11cb; /* Make it purple like the "Continue with Google" button */
+  display: block;
+  background-color: #6a11cb;
   color: white;
   padding: 12px;
+  width: 90%; /* Ajusta el ancho según sea necesario */
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
-  margin-bottom: 20px;
+  margin: 20px ; /* Centra horizontalmente */
+  text-align: center;
 }
 
 .or-text {
@@ -68,14 +68,16 @@ input {
 }
 
 .login-button {
+  display: block;
   background-color: #6a11cb;
   color: white;
   padding: 12px;
-  width: 100%;
+  width: 90%; /* Ajusta el ancho según sea necesario */
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 20px;
+  margin: 20px ; /* Centra horizontalmente */
+  text-align: center;
 }
 
 .signup-text {

@@ -42,10 +42,10 @@ const Login = () => {
             />
           </div>
           <a href="/" className={styles['forgot-password']}>Olvistaste tu contraseña?</a>
-          <button type="submit" className={styles['login-button']}>Registrate!</button>
+          <button type="submit" className={styles['login-button']}>Iniciar Sesion</button>
         </form>
         <p className={styles['signup-text']}>
-          Don’t have an account? <a href="/signup">Registrate!</a>
+          No tienes cuenta? <a href="/signup">Registrate!</a>
         </p>
       </div>
     </div>
