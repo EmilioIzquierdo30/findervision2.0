@@ -193,6 +193,7 @@ a {
   z-index: 1000;
 }
 
+/* Modal */
 .modal-content {
   background-color: white;
   padding: 25px;
@@ -200,28 +201,54 @@ a {
   width: 60%;
   max-width: 600px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  text-align: left; /* Alinear el texto a la izquierda para mejor legibilidad */
+  max-height: 80vh; /* Limitar la altura del modal */
+  overflow-y: auto; /* Añadir scroll si el contenido es largo */
 }
 
+/* Imagen de la planta en el modal */
 .modal img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 50%; /* Imagen redondeada */
+  border-radius: 50%;
   margin-bottom: 20px;
+  cursor: pointer; /* Mostrar que la imagen es clickeable */
 }
 
+/* Imagen ampliada */
+.modal img.ampliada {
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+/* Encabezado de la planta */
 .modal h2 {
-  font-size: 22px;
+  font-size: 24px;
   color: #2e7d32;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center; /* Centrar el título */
 }
 
+/* Texto general del modal */
 .modal p {
   font-size: 16px;
   color: #333;
+  margin-bottom: 15px; /* Añadir espacio entre párrafos */
 }
 
+/* Títulos de las secciones en el modal */
+.modal-content .section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Botón de cierre del modal */
 .close {
   position: absolute;
   top: 15px;
