@@ -13,23 +13,22 @@ const App = () => {
   // Array de objetos que contiene información de las plantas
   const plantas = [
     {
-      nombre: 'Manzanilla', // Nombre de la planta
-      categoria: 'Sedante O Relajante', // Categoría de la planta
-      imagen: '', // URL de la imagen de la planta
-      descripcion: 'La manzanilla es conocida por sus propiedades sedantes...', // Descripción de la planta
-      beneficios: 'Calma la ansiedad, alivia trastornos digestivos y mejora el sueño.', // Beneficios
-      recetario: 'Infusión: Añadir 1 cucharada de flores secas de manzanilla a una taza de agua hirviendo...', // Receta
-      precauciones: 'No debe consumirse en exceso durante el embarazo...' // Precauciones
+      nombre: 'Manzanilla',
+      categoria: 'Sedante O Relajante',
+      imagen: '',
+      descripcion: 'La manzanilla es conocida por sus propiedades sedantes...',
+      beneficios: 'Calma la ansiedad, alivia trastornos digestivos y mejora el sueño.',
+      recetario: 'Infusión: Añadir 1 cucharada de flores secas de manzanilla a una taza de agua hirviendo. Dejar reposar durante 5-10 minutos.',
+      precauciones: 'No debe consumirse en exceso durante el embarazo. Puede causar reacciones alérgicas en personas sensibles a las plantas de la familia Asteraceae.'
     },
-    // Otras plantas con estructura similar
     {
       nombre: 'Arnica',
       categoria: 'Cicatrizante',
       imagen: '',
       descripcion: 'El árnica es una planta cicatrizante...',
       beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
-      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada...',
-      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación...'
+      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
+      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
     },
     {
       nombre: 'Sabila',
@@ -37,19 +36,19 @@ const App = () => {
       imagen: '',
       descripcion: 'El árnica es una planta cicatrizante...',
       beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
-      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada...',
-      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación...'
+      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
+      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
     },
     {
       nombre: 'Jengibre',
       categoria: 'Cicatrizante',
       imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxam72Ho4tUYnEo7QdoSF0LAQwGVemTFt2xg&s',
-      descripcion: 'El jengibre es conocido por sus propiedades antiinflamatorias...',
+      descripcion: 'El árnica es una planta cicatrizante...',
       beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
-      recetario: 'Infusión de jengibre: Hervir rodajas de jengibre en agua...',
-      precauciones: 'No aplicar sobre heridas abiertas...'
-    }
-    // Se pueden agregar más plantas si es necesario
+      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
+      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
+    },
+    // Agrega más plantas según sea necesario
   ];
 
   // Filtra las plantas según la categoría seleccionada y el término de búsqueda
@@ -57,22 +56,18 @@ const App = () => {
     (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) && // Filtra por categoría si se selecciona una
     (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true) // Filtra por búsqueda si hay un término
   );
-
   // Función que establece la planta seleccionada para mostrar en el modal
   const seleccionarPlanta = (planta) => {
     setPlantaSeleccionada(planta);
   };
-
   // Función para cerrar el modal
   const cerrarModal = () => {
     setPlantaSeleccionada(null); // Resetea la planta seleccionada a 'null'
   };
-
   // Actualiza el estado del término de búsqueda cuando el usuario escribe en el input
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value); // Actualiza el estado del término de búsqueda
   };
-
   // Retorna el JSX del componente App
   return (
     <div className="app">
@@ -98,15 +93,27 @@ const App = () => {
         </div>
       </header>
 
-      <main className="main"> {/* Contenido principal */}
-        <aside className="sidebar"> {/* Barra lateral con filtros de categorías */}
-          <a href="#" onClick={() => setCategoriaSeleccionada('')}>Mostrar Todas</a> {/* Resetea la categoría */}
-          {/* Enlaces para cada categoría */}
+      <main className="main">{/* Contenido principal */}
+        <aside className="sidebar">{/* Barra lateral con filtros de categorías */}
+          <a href="#" onClick={() => setCategoriaSeleccionada('')}>Mostrar Todas</a>{/* Resetea la categoría */}
           <a href="#" onClick={() => setCategoriaSeleccionada('Adaptogénicas')}>Adaptogénicas</a>
           <a href="#" onClick={() => setCategoriaSeleccionada('Analgésicas')}>Analgésicas</a>
-          {/* Más categorías aquí... */}
+          <a href="#" onClick={() => setCategoriaSeleccionada('Anticancerígenas')}>Anticancerígenas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antidiabéticas')}>Antidiabéticas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antiespasmódicas')}>Antiespasmódicas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antiinflamatorias')}>Antiinflamatorias</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antimicrobianas')}>Antimicrobianas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Antioxidantes')}>Antioxidantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Cardiotónicas')}>Cardiotónicas</a>
           <a href="#" onClick={() => setCategoriaSeleccionada('Cicatrizante')}>Cicatrizante</a>
-          {/* Otras categorías adicionales */}
+          <a href="#" onClick={() => setCategoriaSeleccionada('Diuréticas')}>Diuréticas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Digestivas')}>Digestivas</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Expectorantes')}>Expectorantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Hepatoprotectoras')}>Hepatoprotectoras</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Inmunoestimulantes')}>Inmunoestimulantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Neuroprotectoras')}>Neuroprotectoras</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Sedante O Relajante')}>Sedantes O Relajantes</a>
+          <a href="#" onClick={() => setCategoriaSeleccionada('Tónicas')}>Tónicas</a>
         </aside>
 
         <section className="content"> {/* Sección principal del contenido */}
