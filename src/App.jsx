@@ -51,11 +51,6 @@ const App = () => {
     // Agrega más plantas según sea necesario
   ];
 
-  // Filtra las plantas según la categoría seleccionada y el término de búsqueda
-  const plantasFiltradas = plantas.filter(planta => 
-    (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) && // Filtra por categoría si se selecciona una
-    (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true) // Filtra por búsqueda si hay un término
-  );
   // Función que establece la planta seleccionada para mostrar en el modal
   const seleccionarPlanta = (planta) => {
     setPlantaSeleccionada(planta);
@@ -68,12 +63,18 @@ const App = () => {
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value); // Actualiza el estado del término de búsqueda
   };
+
+  // Filtra las plantas según la categoría seleccionada y el término de búsqueda
+  const plantasFiltradas = plantas.filter(planta => 
+    (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) && // Filtra por categoría si se selecciona una
+    (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true) // Filtra por búsqueda si hay un término
+  );
+
   // Retorna el JSX del componente App
   return (
     <div className="app">
       <header className="header"> {/* Encabezado de la página */}
-        <img alt="Logo de Plantas" src="URL_de_la_imagen_del_logo" width="10" height="10" /> {/* Logo de la app */}
-        <img alt="Catálogo de Plantas" src="URL_de_la_imagen_del_catalogo" width="40" height="40" /> {/* Imagen del catálogo */}
+        <img alt="Logo de Findervision" src="https://imgur.com/a/nwIWchf" width="80" height="40" /> {/* Logo de la app */}
         <nav className="nav-links"> {/* Enlaces de navegación */}
           <a href="#">Inicio</a> {/* Enlace a Inicio */}
         </nav>

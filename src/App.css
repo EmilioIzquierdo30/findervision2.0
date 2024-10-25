@@ -14,23 +14,28 @@ a {
 /* Encabezado */
 .header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 25px;
-  background-color: #e8f5e9;
-  border-bottom: 2px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega sombra para resaltar el encabezado */
+  align-items: center; /* Alinear verticalmente los elementos en el centro */
+  justify-content: space-between; /* Distribuir el espacio entre los elementos del encabezado */
+  padding: 5px 15px; /* Reducir el padding para compactar la barra */
+  background-color: #e8f5e9; /* Mantener el color verde claro de fondo */
+  min-height: 40px; /* Reducir la altura mínima para ocupar menos espacio */
 }
+
+.header img {
+  max-height: 30px; /* Limitar la altura de las imágenes (logo) para que no ocupen demasiado espacio */
+  margin-right: 10px; /* Añadir un pequeño margen derecho para separación entre logos */
+}
+
 
 .nav-links {
   display: flex;
-  gap: 25px; /* Aumenta la separación entre enlaces */
+  gap: 15px; /* Ajustar la separación entre enlaces */
+  font-size: 14px; /* Reducir ligeramente el tamaño de fuente para optimizar espacio */
 }
 
 .nav-links a {
   font-weight: bold;
   color: #2e7d32;
-  font-size: 16px; /* Aumenta ligeramente el tamaño del texto */
   transition: color 0.3s ease;
 }
 
@@ -39,10 +44,9 @@ a {
 }
 
 /* Barra de búsqueda */
+
 .search {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  margin: 0 10px; /* Reducir el margen alrededor de la barra de búsqueda */
 }
 
 .search input {
@@ -140,15 +144,22 @@ a {
 }
 
 .planta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #f9fbe7; /* Fondo verde claro */
+  border: 1px solid #dcedc8; /* Borde suave */
   padding: 15px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.planta h2 {
+  font-size: 1.2em;
+  color: #388e3c;
+}
+
+.planta p {
+  color: #757575;
+  font-size: 0.9em;
 }
 
 .planta:hover {
@@ -277,4 +288,9 @@ a {
 
 .sidebar a:hover {
   background-color: #f0f0f0;
+}
+
+.logo {
+  max-height: 50px; /* Ajusta la altura máxima del logo */
+  margin-right: 15px; /* Espacio a la derecha del logo si hay otros elementos */
 }
