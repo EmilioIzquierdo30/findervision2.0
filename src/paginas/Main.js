@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import styles from '../App.module.css'; 
 import Slider from '../componentes/slider';
 
 function Main() {
@@ -22,27 +22,27 @@ function Main() {
   ];
 
   return (
-    <div className="main-container">
-      <div className="content-section">
-        <h1 className="main-title">Identifica plantas medicinales y sus beneficios!</h1>
+    <div className={styles.mainContainer}>
+      <div className={styles.contentSection}>
+        <h1 className={styles.mainTitle}>Identifica plantas medicinales y sus beneficios!</h1>
         
         {/* Sección de Call-to-Action (CTA) */}
-        <div className="cta-section">
+        <div className={styles.ctaSection}>
           <h2>¡Prueba nuestra herramienta ahora!</h2>
-          <button className="cta-button">Comienza Gratis</button>
+          <button className={styles.ctaButton}>Comienza Gratis</button>
         </div>
       </div>
 
-      <div className="plant-identify-container">
-        <h1>Identifica plantas al instante con una foto</h1>
+      {/* Componente de Identificación de Plantas */}
+      <div className={styles.plantIdentifyContainer}>
+        <h1 className={styles.mainTitle}>Identifica plantas al instante con una foto</h1>
         <p>Haz una foto para identificar la planta al instante, obteniendo información rápida sobre los remedios caseros de ella, tratamientos, cuidados, usos, etc.</p>
-          <img src="./logo.jpeg" alt="Imagen planta en teléfono" />
-          <br />
-          <button className="cta-button">Descarga la aplicación gratis</button>
-          <div className="alert">
-            <img src="https://img.icons8.com/color/16/000000/warning-shield.png" alt="Icono advertencia" />
-            ¿Es esta planta buena para un remedio para la toz?
-          </div>
+        <img src="/logo.jpeg" alt="Imagen planta en teléfono" className={styles.plantImage} />
+        <button className={styles.ctaButton}>Descarga la aplicación gratis</button>
+        <div className={styles.alert}>
+          <img src="https://img.icons8.com/color/16/000000/warning-shield.png" alt="Icono advertencia" />
+          ¿Es esta planta <strong>tóxica para mascotas</strong> o no?
+        </div>
       </div>
 
       <Slider imagenes={mockImagenes} />

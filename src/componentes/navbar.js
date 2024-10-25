@@ -1,13 +1,10 @@
-
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
-import './navbar.css'; 
+import { Link } from 'react-router-dom';
+import './navbar.css';
 
 function Navbar() {
-  // useState para manejar el estado del menú (abierto o cerrado)
   const [isOpen, setIsOpen] = useState(false);
 
-  // Función para alternar el estado del menú
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -16,14 +13,12 @@ function Navbar() {
     <nav className="navbar">
       <div className="logo">FinderVision</div>
 
-      {/* Icono de menú hamburguesa */}
       <div className={`menu-icon ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
         <div></div>
         <div></div>
         <div></div>
       </div>
 
-      {/* Enlaces de navegación */}
       <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
         <li><Link to="/" className="nav-button">Inicio</Link></li>
         <li><Link to="/login" className="nav-button">Iniciar Sesión</Link></li>
@@ -35,4 +30,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
