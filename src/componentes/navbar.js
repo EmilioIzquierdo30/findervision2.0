@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+import styles from './Navbar.module.css'; // Importa el CSS Module
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,20 +10,23 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="logo">FinderVision</div>
+    <nav className={styles.navbar}>
+      <div className={styles.logo}>FinderVision</div>
 
-      <div className={`menu-icon ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
+      <div 
+        className={`${styles.menuIcon} ${isOpen ? styles.menuIconActive : ''}`} 
+        onClick={toggleMenu}
+      >
         <div></div>
         <div></div>
         <div></div>
       </div>
 
-      <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
-        <li><Link to="/" className="nav-button">Inicio</Link></li>
-        <li><Link to="/login" className="nav-button">Iniciar Sesión</Link></li>
-        <li><Link to="/plants" className="nav-button">Plantas</Link></li>
-        <li><Link to="/about" className="nav-button">Sobre Nosotros</Link></li>
+      <ul className={`${styles.navLinks} ${isOpen ? styles.navLinksActive : ''}`}>
+        <li><Link to="/" className={styles.navButton}>Inicio</Link></li>
+        <li><Link to="/login" className={styles.navButton}>Iniciar Sesión</Link></li>
+        <li><Link to="/plants" className={styles.navButton}>Plantas</Link></li>
+        <li><Link to="/about" className={styles.navButton}>Sobre Nosotros</Link></li>
       </ul>
     </nav>
   );
