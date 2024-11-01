@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import HomeScreen from '../pantallas/home';
-import DiagnoseScreen from '../pantallas/diagnostico';
-import MyPlantsScreen from '../pantalas/misplantas';
-import MoreScreen from '../pantallas/more';
+import HomeScreen from '../pantallas/home.jsx';
+import DiagnoseScreen from '../pantallas/diagnostico.jsx';
+import MyPlantsScreen from '../pantallas/misplantas.jsx';
+import MoreScreen from '../pantallas/more.jsx';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +14,7 @@ const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
-
+            //Definicion de rutas
           switch (route.name) {
             case 'Inicio':
               iconName = 'home-outline';
@@ -33,6 +33,7 @@ const BottomTabNavigator = () => {
           return <Icon name={iconName} size={size} color={color} />;
         },
       })}
+      //Barra de abajo
       tabBarOptions={{
         activeTintColor: '#6bbd72',
         inactiveTintColor: 'gray',
@@ -42,9 +43,9 @@ const BottomTabNavigator = () => {
           paddingTop: 5,
         },
       }}
-    >
+    >   
       <Tab.Screen name="Inicio" component={HomeScreen} />
-      <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />
+      <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />  
       <Tab.Screen name="Mis plantas" component={MyPlantsScreen} />
       <Tab.Screen name="Ver más" component={MoreScreen} />
     </Tab.Navigator>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './src/navegacion/barradeabajo.jsx';
+import BottomTabNavigator from './scr/navegacion/barradeabajo.jsx';
 
 
 const App = () => {

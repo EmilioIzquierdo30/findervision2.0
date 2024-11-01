@@ -26,10 +26,15 @@ const MyPlantsScreen = () => {
     //  agregar más datos aquí
   ];
 
+  const handleAddPlant = () => {
+    // Función que maneja la acción del botón, como abrir un formulario
+    console.log("Botón Agregar Planta presionado");
+  };
+
   return (
     <ScrollView style={styles.container}>
       {plantsData.map((plant) => (
-        <Card key={plant.id} containerStyle={styles.card} wrapperStyle={{}}>
+        <Card key={plant.id} containerStyle={styles.card}>
           <Card.Title>{plant.name}</Card.Title>
           <Card.Divider />
           <View style={styles.cardContent}>
@@ -44,6 +49,11 @@ const MyPlantsScreen = () => {
           </View>
         </Card>
       ))}
+      
+      {/* Botón "Agregar Planta" al final del ScrollView */}
+      <View style={styles.buttonContainer}>
+        <Button title="Agregar Planta" onPress={handleAddPlant} />
+      </View>
     </ScrollView>
   );
 };
@@ -60,6 +70,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
     elevation: 5, // Sombra para Android
+    marginBottom: 15,
   },
   cardContent: {
     position: "relative",
@@ -75,6 +86,10 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#555",
     textAlign: "center",
+  },
+  buttonContainer: {
+    marginVertical: 20,
+    alignItems: "center",
   },
 });
 
