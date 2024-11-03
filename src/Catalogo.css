@@ -65,3 +65,12 @@ button {
 button:hover {
   background-color: #45a049; /* Cambia el color de fondo del botón a un tono verde más oscuro al pasar el cursor por encima (hover). */
 }
+
+.catalogo-peligroso {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.peligrosa {
+  border: 2px solid #d32f2f;
+}
