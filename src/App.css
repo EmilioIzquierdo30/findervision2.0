@@ -143,13 +143,14 @@ a {
   gap: 20px;
 }
 
+/* Contenedor de cada planta */
 .planta {
-  background-color: #f9fbe7; /* Fondo verde claro */
-  border: 1px solid #dcedc8; /* Borde suave */
+  background-color: #fff9c4; /* Color amarillo claro */
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   text-align: center;
+  margin: 10px;
 }
 
 .planta h2 {
@@ -163,17 +164,19 @@ a {
 }
 
 .planta:hover {
-  transform: translateY(-5px); /* Efecto de elevación */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Estilo para la imagen dentro del contenedor de la planta */
 .planta-imagen {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%; /* Hacer la imagen circular */
-  margin-bottom: 10px;
+  width: 100px; /* Ajusta el ancho de la imagen */
+  height: 100px; /* Ajusta la altura de la imagen */
+  object-fit: cover; /* Asegura que la imagen se recorte para encajar */
+  border-radius: 50%; /* Hace la imagen circular */
+  margin-bottom: 10px; /* Espacio debajo de la imagen */
 }
+
 
 .planta-info {
   text-align: center;
@@ -197,24 +200,31 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  animation: fadeIn 0.5s;
 }
 
 /* Modal */
 .modal-content {
-  background-color: white;
-  padding: 25px;
+  background: white;
+  padding: 20px;
   border-radius: 10px;
-  width: 60%;
-  max-width: 600px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  text-align: left; /* Alinear el texto a la izquierda para mejor legibilidad */
-  max-height: 80vh; /* Limitar la altura del modal */
-  overflow-y: auto; /* Añadir scroll si el contenido es largo */
+  width: 80%;
+  max-width: 500px;
+  animation: slideIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); }
+  to { transform: translateY(0); }
 }
 
 /* Imagen de la planta en el modal */
@@ -227,12 +237,12 @@ a {
   cursor: pointer; /* Mostrar que la imagen es clickeable */
 }
 
-/* Imagen ampliada */
-.modal img.ampliada {
+/* Animación de imagen ampliada */
+.modal-image.ampliada {
   width: 100%;
   height: auto;
   border-radius: 0;
-  object-fit: contain;
+  transition: width 0.3s ease;
 }
 
 /* Encabezado de la planta */
@@ -293,4 +303,50 @@ a {
 .logo {
   max-height: 50px; /* Ajusta la altura máxima del logo */
   margin-right: 15px; /* Espacio a la derecha del logo si hay otros elementos */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Plantas Peligrosas */
+.planta.peligrosa {
+  border: 2px solid #d32f2f; /* Borde rojo intenso */
+  background-color: #ffebee; /* Fondo rojo claro */
+  color: #c62828; /* Texto rojo oscuro */
+}
+
+.planta.peligrosa h2 {
+  color: #b71c1c; /* Título en un rojo más oscuro */
+}
+
+/* Botón de advertencia */
+.button-advertencia {
+  background-color: #ff1744; /* Rojo fuerte */
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-advertencia:hover {
+  background-color: #d50000; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Estilo de advertencia en el modal */
+.modal.peligrosa .modal-content {
+  background-color: #ffebee; /* Fondo del modal en rojo claro */
+  color: #c62828; /* Texto en rojo de advertencia */
+}
+
+.modal.peligrosa .modal-content h2 {
+  color: #b71c1c; /* Título en rojo oscuro */
+}
+
+.modal.peligrosa .section-title {
+  color: #d32f2f; /* Color de los subtítulos en rojo */
 }

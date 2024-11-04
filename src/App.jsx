@@ -1,157 +1,170 @@
-import React, { useState } from 'react'; // Importa React y el hook useState para gestionar el estado
-import ListaPlantas from './ListaPlantas'; // Importa el componente ListaPlantas
-import './App.css'; // Importa los estilos generales de la aplicación
+import React, { useState } from 'react';
+import ListaPlantas from './ListaPlantas';
+import './App.css';
 
-// Define el componente principal 'App'
+// Componente principal 'App'
 const App = () => {
-  // Estados del componente usando el hook useState
-  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(''); // Guarda la categoría seleccionada
-  const [plantaSeleccionada, setPlantaSeleccionada] = useState(null); // Guarda la planta seleccionada para mostrar en el modal
-  const [searchTerm, setSearchTerm] = useState(''); // Guarda el término de búsqueda del input
-  const [imagenAmpliada, setImagenAmpliada] = useState(false); // Controla si la imagen del modal está ampliada
+    // Estados del componente
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
+    const [plantaSeleccionada, setPlantaSeleccionada] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [imagenAmpliada, setImagenAmpliada] = useState(false);
 
-  // Array de objetos que contiene información de las plantas
-  const plantas = [
-    {
-      nombre: 'Manzanilla',
-      categoria: 'Sedante O Relajante',
-      imagen: '',
-      descripcion: 'La manzanilla es conocida por sus propiedades sedantes...',
-      beneficios: 'Calma la ansiedad, alivia trastornos digestivos y mejora el sueño.',
-      recetario: 'Infusión: Añadir 1 cucharada de flores secas de manzanilla a una taza de agua hirviendo. Dejar reposar durante 5-10 minutos.',
-      precauciones: 'No debe consumirse en exceso durante el embarazo. Puede causar reacciones alérgicas en personas sensibles a las plantas de la familia Asteraceae.'
-    },
-    {
-      nombre: 'Arnica',
-      categoria: 'Cicatrizante',
-      imagen: '',
-      descripcion: 'El árnica es una planta cicatrizante...',
-      beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
-      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
-      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
-    },
-    {
-      nombre: 'Sabila',
-      categoria: 'Cicatrizante',
-      imagen: '',
-      descripcion: 'El árnica es una planta cicatrizante...',
-      beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
-      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
-      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
-    },
-    {
-      nombre: 'Jengibre',
-      categoria: 'Cicatrizante',
-      imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxam72Ho4tUYnEo7QdoSF0LAQwGVemTFt2xg&s',
-      descripcion: 'El árnica es una planta cicatrizante...',
-      beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
-      recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
-      precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
-    },
-    // Agrega más plantas según sea necesario
-  ];
+    // Datos de ejemplo para las plantas
+    const plantas = [
+        {
+            nombre: 'Manzanilla',
+            categoria: 'Sedante O Relajante',
+            imagen: 'https://media.admagazine.com/photos/6486ce9afa2d32627ec10acf/master/pass/manzanilla-para-plantas.jpg',
+            descripcion: 'La manzanilla es conocida por sus propiedades sedantes...',
+            beneficios: 'Calma la ansiedad, alivia trastornos digestivos y mejora el sueño.',
+            recetario: 'Infusión: Añadir 1 cucharada de flores secas de manzanilla a una taza de agua hirviendo. Dejar reposar durante 5-10 minutos.',
+            precauciones: 'No debe consumirse en exceso durante el embarazo. Puede causar reacciones alérgicas en personas sensibles a las plantas de la familia Asteraceae.'
+        },
+        {
+            nombre: 'Arnica',
+            categoria: 'Cicatrizante',
+            imagen: 'https://jardin.inecol.mx/images/PLANTA_MES/arnica1.jpg',
+            descripcion: 'El árnica es una planta cicatrizante...',
+            beneficios: 'Promueve la cicatrización de heridas y reduce la inflamación.',
+            recetario: 'Ungüento: Aplicar crema de árnica sobre la zona afectada 2-3 veces al día.',
+            precauciones: 'No aplicar sobre heridas abiertas. Puede causar irritación en pieles sensibles.'
+        },
+        {
+          nombre: 'Belladona',
+          categoria: 'Altamente Tóxica',
+          imagen: 'https://content.cuerpomente.com/medio/2023/12/04/belladona-atropa-belladona_e524fd32_231204222338_1280x720.jpg', // Puedes añadir una URL de imagen aquí si tienes una disponible
+          descripcion: 'La belladona es una planta altamente tóxica y peligrosa para los seres humanos. Ha sido utilizada en la medicina tradicional, pero su consumo puede ser letal en dosis elevadas.',
+          beneficios: 'En dosis muy controladas y bajo supervisión médica, puede utilizarse como antiespasmódico y analgésico.',
+          recetario: 'No se recomienda su uso sin la supervisión de un profesional médico debido a su toxicidad.',
+          precauciones: 'Extremadamente venenosa. Su consumo o manipulación sin cuidado puede causar alucinaciones, parálisis, y envenenamiento severo. Mantener fuera del alcance de niños y mascotas.',
+          esPeligrosa: true
+      }
+        // Agrega más plantas según sea necesario
+    ];
 
-  // Función que establece la planta seleccionada para mostrar en el modal
-  const seleccionarPlanta = (planta) => {
-    setPlantaSeleccionada(planta);
-  };
-  // Función para cerrar el modal
-  const cerrarModal = () => {
-    setPlantaSeleccionada(null); // Resetea la planta seleccionada a 'null'
-  };
-  // Actualiza el estado del término de búsqueda cuando el usuario escribe en el input
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value); // Actualiza el estado del término de búsqueda
-  };
+    // Filtrar plantas por categoría seleccionada y término de búsqueda
+    const plantasFiltradas = plantas.filter(planta =>
+        (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) &&
+        (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true)
+    );
 
-  // Filtra las plantas según la categoría seleccionada y el término de búsqueda
-  const plantasFiltradas = plantas.filter(planta => 
-    (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) && // Filtra por categoría si se selecciona una
-    (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true) // Filtra por búsqueda si hay un término
-  );
+    // Funciones para manejar el modal y los cambios de estado
+    const seleccionarPlanta = (planta) => setPlantaSeleccionada(planta);
+    const cerrarModal = () => setPlantaSeleccionada(null);
+    const handleSearchChange = (e) => setSearchTerm(e.target.value);
 
-  // Retorna el JSX del componente App
-  return (
-    <div className="app">
-      <header className="header"> {/* Encabezado de la página */}
-        <img alt="Logo de Findervision" src="https://imgur.com/a/nwIWchf" width="80" height="40" /> {/* Logo de la app */}
-        <nav className="nav-links"> {/* Enlaces de navegación */}
-          <a href="#">Inicio</a> {/* Enlace a Inicio */}
-        </nav>
-        <div className="search"> {/* Input de búsqueda */}
-          <input
-            placeholder="Buscar plantas..." // Placeholder del input
-            type="text" // Tipo de input
-            value={searchTerm} // Valor del input controlado por el estado
-            onChange={handleSearchChange} // Evento de cambio para capturar la búsqueda
-          />
-          <i className="fas fa-search"></i> {/* Icono de búsqueda */}
+    return (
+        <div className="app">
+            <header className="header">
+                <img alt="Logo de Findervision" src="https://imgur.com/a/nwIWchf" width="80" height="40" />
+                <nav className="nav-links">
+                    <a href="#">Inicio</a>
+                </nav>
+                <div className="search">
+                    <input
+                        type="text"
+                        placeholder="Buscar plantas..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
+                    <i className="fas fa-search"></i>
+                </div>
+                <div className="icons">
+                    <i className="far fa-heart"></i>
+                    <i className="fas fa-shopping-bag"></i>
+                    <a href="#">Mi Cuenta</a>
+                </div>
+            </header>
+
+            <main className="main">{/* Contenido principal */}
+              <aside className="sidebar">{/* Barra lateral con filtros de categorías */}
+                <a href="#" onClick={() => setCategoriaSeleccionada('')}>Mostrar Todas</a>{/* Resetea la categoría */}
+                <a href="#" onClick={() => setCategoriaSeleccionada('Adaptogénicas')}>Adaptogénicas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Analgésicas')}>Analgésicas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Anticancerígenas')}>Anticancerígenas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Antidiabéticas')}>Antidiabéticas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Antiespasmódicas')}>Antiespasmódicas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Antiinflamatorias')}>Antiinflamatorias</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Antimicrobianas')}>Antimicrobianas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Antioxidantes')}>Antioxidantes</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Cardiotónicas')}>Cardiotónicas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Cicatrizante')}>Cicatrizante</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Diuréticas')}>Diuréticas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Digestivas')}>Digestivas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Expectorantes')}>Expectorantes</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Hepatoprotectoras')}>Hepatoprotectoras</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Inmunoestimulantes')}>Inmunoestimulantes</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Neuroprotectoras')}>Neuroprotectoras</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Sedante O Relajante')}>Sedantes O Relajantes</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Tónicas')}>Tónicas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Abortiva')}>Abortiva</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Altamente Tóxica')}>Altamente Tóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Alucinógena')}>Alucinógena</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Antinutriente')}>Antinutriente</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Cardiotóxica')}>Cardiotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Carcinogénica')}>Carcinogénica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Citotóxica')}>Citotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Convulsiva')}>Convulsiva</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Depresora Del Sistema Nervioso')}>Depresora Del Sistema Nervioso</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Diurética Tóxica')}>Diurética Tóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Emética')}>Emética</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Endocrinotóxica')}>Endocrinotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Fotosensibilizante')}>Fotosensibilizante</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Gastrointestinal')}>Gastrointestinal</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Hemotóxica')}>Hemotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Hepatotóxica')}>Hepatotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Inflamatoria')}>Inflamatoria</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Inmunotóxico')}>Inmunotóxico</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Irritante Dermatológo')}>Irritante Dermatológo</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Irritante Respiratoria')}>Irritante Respiratoria</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Laxante')}>Laxante</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Levemente Tóxica')}>Levemente Tóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Miotóxica')}>Miotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Miorrelajante')}>Miorrelajante</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Moderadamente Tóxica')}>Moderadamente Tóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Mutagénica')}>Mutagénica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Nefrotóxica')}>Nefrotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Necrótica')}>Necrótica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Neurotóxica')}>Neurotóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Oxalatóxica')}>Oxalatóxica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Peligrosa para Humanos')}>Peligrosa para Humanos</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Peligrosa para Mascotas')}>Peligrosa para Mascotas</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Teratogénica')}>Teratogénica</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Tóxica por Contacto')}>Tóxica por Contacto</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Tóxica por Ingestión')}>Tóxica por Ingestión</a>
+                <a href="#" onClick={() => setCategoriaSeleccionada('Tóxica por Inhalación')}>Tóxica por Inhalación</a>
+              </aside>
+
+              <section className="content">
+                    <h1>Plantas Medicinales y Peligrosas</h1>
+                    <ListaPlantas plantas={plantasFiltradas} seleccionarPlanta={seleccionarPlanta} />
+                </section>
+            </main>
+
+            {plantaSeleccionada && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={cerrarModal}>&times;</span>
+                        <h2>{plantaSeleccionada.nombre}</h2>
+                        <img
+                            src={plantaSeleccionada.imagen}
+                            alt={plantaSeleccionada.nombre}
+                            className={`modal-image ${imagenAmpliada ? 'ampliada' : ''}`}
+                            onClick={() => setImagenAmpliada(!imagenAmpliada)}
+                        />
+                        <p><strong>Descripción: </strong>{plantaSeleccionada.descripcion}</p>
+                        <h3 className="section-title">Beneficios</h3>
+                        <p>{plantaSeleccionada.beneficios}</p>
+                        <h3 className="section-title">Recetario</h3>
+                        <p>{plantaSeleccionada.recetario}</p>
+                        <h3 className="section-title">Precauciones</h3>
+                        <p>{plantaSeleccionada.precauciones}</p>
+                    </div>
+                </div>
+            )}
         </div>
-        <div className="icons"> {/* Íconos adicionales */}
-          <i className="far fa-heart"></i> {/* Ícono de favorito */}
-          <i className="fas fa-shopping-bag"></i> {/* Ícono de carrito de compras */}
-          <a href="#">Mi Cuenta</a> {/* Enlace a la cuenta del usuario */}
-        </div>
-      </header>
-
-      <main className="main">{/* Contenido principal */}
-        <aside className="sidebar">{/* Barra lateral con filtros de categorías */}
-          <a href="#" onClick={() => setCategoriaSeleccionada('')}>Mostrar Todas</a>{/* Resetea la categoría */}
-          <a href="#" onClick={() => setCategoriaSeleccionada('Adaptogénicas')}>Adaptogénicas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Analgésicas')}>Analgésicas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Anticancerígenas')}>Anticancerígenas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Antidiabéticas')}>Antidiabéticas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Antiespasmódicas')}>Antiespasmódicas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Antiinflamatorias')}>Antiinflamatorias</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Antimicrobianas')}>Antimicrobianas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Antioxidantes')}>Antioxidantes</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Cardiotónicas')}>Cardiotónicas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Cicatrizante')}>Cicatrizante</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Diuréticas')}>Diuréticas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Digestivas')}>Digestivas</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Expectorantes')}>Expectorantes</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Hepatoprotectoras')}>Hepatoprotectoras</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Inmunoestimulantes')}>Inmunoestimulantes</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Neuroprotectoras')}>Neuroprotectoras</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Sedante O Relajante')}>Sedantes O Relajantes</a>
-          <a href="#" onClick={() => setCategoriaSeleccionada('Tónicas')}>Tónicas</a>
-        </aside>
-
-        <section className="content"> {/* Sección principal del contenido */}
-          <h1>Catálogo De Plantas Medicinales</h1> {/* Título */}
-          {/* Renderiza la lista de plantas filtradas */}
-          <ListaPlantas plantas={plantasFiltradas} seleccionarPlanta={seleccionarPlanta} />
-        </section>
-
-        {plantaSeleccionada && ( // Si hay una planta seleccionada, muestra el modal
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={cerrarModal}>&times;</span> {/* Botón para cerrar el modal */}
-            <h2>{plantaSeleccionada.nombre}</h2> {/* Nombre de la planta */}
-            <img
-              src={plantaSeleccionada.imagen} // Muestra la imagen de la planta
-              alt={plantaSeleccionada.nombre}
-              className={`modal-image ${imagenAmpliada ? 'ampliada' : ''}`} // Aplica una clase extra si la imagen está ampliada
-              onClick={() => setImagenAmpliada(!imagenAmpliada)} // Alterna el estado de ampliación de la imagen
-            />
-            
-            <p><strong>Descripción: </strong>{plantaSeleccionada.descripcion}</p> {/* Muestra la descripción */}
-            
-            <h3 className="section-title">Beneficios</h3> {/* Sección de beneficios */}
-            <p>{plantaSeleccionada.beneficios}</p>
-            
-            <h3 className="section-title">Recetario</h3> {/* Sección de recetario */}
-            <p>{plantaSeleccionada.recetario}</p>
-            
-            <h3 className="section-title">Precauciones</h3> {/* Sección de precauciones */}
-            <p>{plantaSeleccionada.precauciones}</p>
-          </div>
-        </div>
-      )}
-
-      </main>
-    </div>
-  );
+    );
 };
 
-export default App; // Exporta el componente App
+export default App;
