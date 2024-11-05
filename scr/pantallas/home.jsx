@@ -53,6 +53,20 @@ const HomeScreen = () => {
         </TouchableOpacity>
         {/* Agrega más tarjetas de libros según sea necesario */}
       </ScrollView>
+
+      {/* Plantas populares */}
+      <Text style={styles.sectionTitle}>Plantas populares</Text>
+      <ScrollView horizontal style={styles.plantsContainer}>
+        <TouchableOpacity style={styles.plantCard}>
+          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.plantImage} />
+          <Text style={styles.plantTitle}>Aloe Vera</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.plantCard}>
+          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.plantImage} />
+          <Text style={styles.plantTitle}>Lavanda</Text>
+        </TouchableOpacity>
+        {/* Agrega más tarjetas de plantas según sea necesario */}
+      </ScrollView>
     </ScrollView>
   );
 };
@@ -124,6 +138,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   bookTitle: {
+    marginTop: 5,
+    textAlign: 'center',
+  },
+  plantContainer: {
+    paddingHorizontal: 15,
+  },
+  plantCard: {
+    width: 120,
+    marginRight: 10,
+  },
+  plantImage: {
+    width: '100%',
+    height: 100,
+    borderRadius: 8,
+  },
+  plantTitle: {
     marginTop: 5,
     textAlign: 'center',
   },
