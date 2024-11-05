@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import PlantPopup from './componentes/popupplanta.jsx'; // Importamos el componente de popup
 
 const HomeScreen = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [selectedPlant, setSelectedPlant] = useState(null);
+
+  // Información de las plantas
+  const plants = [
+    {
+      id: 1,
+      name: "Aloe Vera",
+      imageUrl: "https://via.placeholder.com/150",
+      medicinalUses: "Usada para el tratamiento de quemaduras, heridas y problemas de la piel.",
+      link: "https://example.com/aloe-vera",
+    },
+    {
+      id: 2,
+      name: "Lavanda",
+      imageUrl: "https://via.placeholder.com/150",
+      medicinalUses: "Utilizada para reducir el estrés, la ansiedad y mejorar el sueño.",
+      link: "https://example.com/lavanda",
+    },
+    // Agrega más plantas aquí según sea necesario
+  ];
+
+  // Función para abrir el popup con la información de la planta seleccionada
+  const openPlantPopup = (plant) => {
+    setSelectedPlant(plant);
+    setModalVisible(true);
+  };
+
   return (
     <ScrollView style={styles.container}>
       {/* Buscador */}
@@ -57,16 +86,22 @@ const HomeScreen = () => {
       {/* Plantas populares */}
       <Text style={styles.sectionTitle}>Plantas populares</Text>
       <ScrollView horizontal style={styles.plantsContainer}>
-        <TouchableOpacity style={styles.plantCard}>
-          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.plantImage} />
-          <Text style={styles.plantTitle}>Aloe Vera</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.plantCard}>
-          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.plantImage} />
-          <Text style={styles.plantTitle}>Lavanda</Text>
-        </TouchableOpacity>
-        {/* Agrega más tarjetas de plantas según sea necesario */}
+        {plants.map((plant) => (
+          <TouchableOpacity key={plant.id} style={styles.plantCard} onPress={() => openPlantPopup(plant)}>
+            <Image source={{ uri: plant.imageUrl }} style={styles.plantImage} />
+            <Text style={styles.plantTitle}>{plant.name}</Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
+
+      {/* Popup de la planta seleccionada */}
+      {selectedPlant && (
+        <PlantPopup
+          isVisible={isModalVisible}
+          onClose={() => setModalVisible(false)}
+          plant={selectedPlant}
+        />
+      )}
     </ScrollView>
   );
 };
