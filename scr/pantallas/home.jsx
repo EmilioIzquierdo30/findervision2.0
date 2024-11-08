@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import PlantPopup from './componentes/popupplanta.jsx'; // Importamos el componente de popup
+import PlantPopup from '../componentes/popupplanta.jsx'; // Importamos el componente de popup
 
 const HomeScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);

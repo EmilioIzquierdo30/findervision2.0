@@ -33,8 +33,8 @@ const DiagnoseScreen = () => {
 
   // Función simulada para diagnosticar la planta
   const diagnosePlant = (imageUri) => {
-    // Aquí iría la lógica para reconocer la planta.
-    // Puedes integrar una API de reconocimiento de imágenes en esta función.
+    // Relleno en lo que llega la logica del api.
+    // integrar una API de reconocimiento de imágenes en esta función.
     setDiagnosis('Esta es una planta suculenta. ¡Perfecta para interiores!');
   };
 
