@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, View, Image, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Image, Text, StyleSheet, Buttona } from "react-native";
 import { Card } from "react-native-elements";
 
 const MyPlantsScreen = () => {

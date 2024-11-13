@@ -1,7 +1,7 @@
+import HomeStackNavigator from './stacknavegation.jsx';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'; 
-import HomeScreen from '../pantallas/home.jsx';
 import DiagnoseScreen from '../pantallas/diagnostico.jsx';
 import MyPlantsScreen from '../pantallas/misplantas.jsx';
 import MoreScreen from '../pantallas/more.jsx';
@@ -14,7 +14,6 @@ const BottomTabNavigator = () => {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
-            //Definicion de rutas
           switch (route.name) {
             case 'Inicio':
               iconName = 'home-outline';
@@ -29,23 +28,21 @@ const BottomTabNavigator = () => {
               iconName = 'ellipsis-horizontal-outline';
               break;
           }
-
           return <Icon name={iconName} size={size} color={color} />;
         },
-      })}
-      //Barra de abajo
-      tabBarOptions={{
-        activeTintColor: '#6bbd72',
-        inactiveTintColor: 'gray',
-        style: {
+        // Configuraciones de tab bar (antes en tabBarOptions)
+        tabBarActiveTintColor: '#6bbd72',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
           height: 60,
           paddingBottom: 5,
           paddingTop: 5,
+          display: 'flex',
         },
-      }}
-    >   
-      <Tab.Screen name="Inicio" component={HomeScreen} />
-      <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />  
+      })}
+    >
+      <Tab.Screen name="Inicio" component={HomeStackNavigator} options={{ headerShown: false }} />      
+      <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />
       <Tab.Screen name="Mis plantas" component={MyPlantsScreen} />
       <Tab.Screen name="Ver más" component={MoreScreen} />
     </Tab.Navigator>

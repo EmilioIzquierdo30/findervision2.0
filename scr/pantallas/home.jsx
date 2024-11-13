@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import PlantPopup from '../componentes/popupplanta.jsx'; // Importamos el componente de popup
-
+import PlantPopup from '../componentes/popupplanta.jsx';
+import HomeStackNavigator from './HomeStackNavigator';
 const HomeScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState(null);
@@ -44,7 +44,7 @@ const HomeScreen = () => {
       </View>
 
       {/* Notificación */}
-      <TouchableOpacity style={styles.notification}>
+      <TouchableOpacity style={styles.notification} onPress={() => navigation.navigate('Premium')}>
         <Icon name="mail-outline" size={18} color="#fff" />
         <Text style={styles.notificationText}>Aún no has reclamado tu prueba de 7 días. Pulsa para reclamar.</Text>
       </TouchableOpacity>
@@ -63,7 +63,7 @@ const HomeScreen = () => {
           <Icon name="chatbubbles-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Asesor de Plantas</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Premium')}>
           <Icon name="star-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Premium</Text>
         </TouchableOpacity>
@@ -175,9 +175,6 @@ const styles = StyleSheet.create({
   bookTitle: {
     marginTop: 5,
     textAlign: 'center',
-  },
-  plantContainer: {
-    paddingHorizontal: 15,
   },
   plantCard: {
     width: 120,
