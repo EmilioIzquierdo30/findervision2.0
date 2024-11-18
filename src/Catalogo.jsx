@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Filtros from './Filtros';
+import Filtros from './Archivos jsx/Filtros';
 
 // Componente Modal para mostrar detalles de la planta
 const Modal = ({ planta, onClose }) => (

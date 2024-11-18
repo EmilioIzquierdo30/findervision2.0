@@ -137,7 +137,7 @@ const App = () => {
               </aside>
 
               <section className="content">
-                    <h1>Plantas Medicinales y Peligrosas</h1>
+                    <h1>Plantas Medicinales</h1>
                     <ListaPlantas plantas={plantasFiltradas} seleccionarPlanta={seleccionarPlanta} />
                 </section>
             </main>
