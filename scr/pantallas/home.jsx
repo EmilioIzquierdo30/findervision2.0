@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import PlantPopup from '../componentes/popupplanta.jsx';
-import HomeStackNavigator from './HomeStackNavigator';
+import HomeStackNavigator from '../navegacion/stacknavegation.jsx';
+
 const HomeScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState(null);
