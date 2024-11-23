@@ -1,53 +1,63 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import PlantPopup from '../componentes/popupplanta.jsx';
-import HomeStackNavigator from '../navegacion/stacknavegation.jsx';
+import PlantPopup from '../componentes/popupplanta.jsx'; // Popup de planta
+import PremiumPopup from './premuim.jsx'; // Importa el modal Premium
 
-const HomeScreen = () => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [selectedPlant, setSelectedPlant] = useState(null);
+const HomeScreen = ({ navigation }) => {
+  const [isPremiumVisible, setPremiumVisible] = useState(false); // Control del modal Premium
+  const [isPlantPopupVisible, setPlantPopupVisible] = useState(false); // Control del popup de planta
+  const [selectedPlant, setSelectedPlant] = useState(null); // Planta seleccionada para mostrar en el popup
 
   // Información de las plantas
   const plants = [
     {
       id: 1,
-      name: "Aloe Vera",
-      imageUrl: "https://via.placeholder.com/150",
-      medicinalUses: "Usada para el tratamiento de quemaduras, heridas y problemas de la piel.",
-      link: "https://example.com/aloe-vera",
+      name: 'Aloe Vera',
+      imageUrl: 'https://via.placeholder.com/150',
+      medicinalUses: 'Usada para el tratamiento de quemaduras, heridas y problemas de la piel.',
+      link: 'https://example.com/aloe-vera',
     },
     {
       id: 2,
-      name: "Lavanda",
-      imageUrl: "https://via.placeholder.com/150",
-      medicinalUses: "Utilizada para reducir el estrés, la ansiedad y mejorar el sueño.",
-      link: "https://example.com/lavanda",
+      name: 'Lavanda',
+      imageUrl: 'https://via.placeholder.com/150',
+      medicinalUses: 'Utilizada para reducir el estrés, la ansiedad y mejorar el sueño.',
+      link: 'https://example.com/lavanda',
     },
-    // Agrega más plantas aquí según sea necesario
   ];
 
-  // Función para abrir el popup con la información de la planta seleccionada
+  // Función para abrir el popup de planta
   const openPlantPopup = (plant) => {
     setSelectedPlant(plant);
-    setModalVisible(true);
+    setPlantPopupVisible(true);
   };
 
   return (
     <ScrollView style={styles.container}>
       {/* Buscador */}
       <View style={styles.searchContainer}>
-        <TextInput
-          placeholder="Buscar plantas"
-          style={styles.searchInput}
-        />
+        <TextInput placeholder="Buscar plantas" style={styles.searchInput} />
         <Icon name="search-outline" size={24} color="#aaa" style={styles.searchIcon} />
       </View>
 
       {/* Notificación */}
-      <TouchableOpacity style={styles.notification} onPress={() => navigation.navigate('Premium')}>
+      <TouchableOpacity
+        style={styles.notification}
+        onPress={() => setPremiumVisible(true)} // Abrir modal Premium
+      >
         <Icon name="mail-outline" size={18} color="#fff" />
-        <Text style={styles.notificationText}>Aún no has reclamado tu prueba de 7 días. Pulsa para reclamar.</Text>
+        <Text style={styles.notificationText}>
+          Aún no has reclamado tu prueba de 7 días. Pulsa para reclamar.
+        </Text>
       </TouchableOpacity>
 
       {/* Botones principales */}
@@ -64,7 +74,10 @@ const HomeScreen = () => {
           <Icon name="chatbubbles-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Asesor de Plantas</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Premium')}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setPremiumVisible(true)} // Abrir modal Premium
+        >
           <Icon name="star-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Premium</Text>
         </TouchableOpacity>
@@ -81,25 +94,31 @@ const HomeScreen = () => {
           <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.bookImage} />
           <Text style={styles.bookTitle}>Plantas Suculentas y Cactus</Text>
         </TouchableOpacity>
-        {/* Agrega más tarjetas de libros según sea necesario */}
       </ScrollView>
 
       {/* Plantas populares */}
       <Text style={styles.sectionTitle}>Plantas populares</Text>
       <ScrollView horizontal style={styles.plantsContainer}>
         {plants.map((plant) => (
-          <TouchableOpacity key={plant.id} style={styles.plantCard} onPress={() => openPlantPopup(plant)}>
+          <TouchableOpacity
+            key={plant.id}
+            style={styles.plantCard}
+            onPress={() => openPlantPopup(plant)}
+          >
             <Image source={{ uri: plant.imageUrl }} style={styles.plantImage} />
             <Text style={styles.plantTitle}>{plant.name}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
 
-      {/* Popup de la planta seleccionada */}
+      {/* Modal Premium */}
+      <PremiumPopup isVisible={isPremiumVisible} onClose={() => setPremiumVisible(false)} />
+
+      {/* Popup para Planta */}
       {selectedPlant && (
         <PlantPopup
-          isVisible={isModalVisible}
-          onClose={() => setModalVisible(false)}
+          isVisible={isPlantPopupVisible}
+          onClose={() => setPlantPopupVisible(false)}
           plant={selectedPlant}
         />
       )}
@@ -108,10 +127,7 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f0f4f7',
-  },
+  container: { flex: 1, backgroundColor: '#f0f4f7' },
   searchContainer: {
     flexDirection: 'row',
     backgroundColor: '#fff',
@@ -120,13 +136,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
   },
-  searchInput: {
-    flex: 1,
-    fontSize: 16,
-  },
-  searchIcon: {
-    marginLeft: 10,
-  },
+  searchInput: { flex: 1, fontSize: 16 },
+  searchIcon: { marginLeft: 10 },
   notification: {
     backgroundColor: '#333',
     marginHorizontal: 15,
@@ -136,60 +147,30 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  notificationText: {
-    color: '#fff',
-    marginLeft: 10,
-    flex: 1,
-  },
+  notificationText: { color: '#fff', marginLeft: 10, flex: 1 },
   mainButtons: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     margin: 15,
   },
-  button: {
-    alignItems: 'center',
-    marginBottom: 15,
-  },
-  buttonText: {
-    marginTop: 5,
-    textAlign: 'center',
-  },
+  button: { alignItems: 'center', marginBottom: 15 },
+  buttonText: { marginTop: 5, textAlign: 'center' },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginHorizontal: 15,
     marginVertical: 10,
   },
-  booksContainer: {
-    paddingHorizontal: 15,
-  },
-  bookCard: {
-    width: 120,
-    marginRight: 10,
-  },
-  bookImage: {
-    width: '100%',
-    height: 100,
-    borderRadius: 8,
-  },
-  bookTitle: {
-    marginTop: 5,
-    textAlign: 'center',
-  },
-  plantCard: {
-    width: 120,
-    marginRight: 10,
-  },
-  plantImage: {
-    width: '100%',
-    height: 100,
-    borderRadius: 8,
-  },
-  plantTitle: {
-    marginTop: 5,
-    textAlign: 'center',
-  },
+  booksContainer: { paddingHorizontal: 15 },
+  bookCard: { width: 120, marginRight: 10 },
+  bookImage: { width: '100%', height: 100, borderRadius: 8 },
+  bookTitle: { marginTop: 5, textAlign: 'center' },
+  plantsContainer: { paddingHorizontal: 15 },
+  plantCard: { width: 120, marginRight: 10 },
+  plantImage: { width: '100%', height: 100, borderRadius: 8 },
+  plantTitle: { marginTop: 5, textAlign: 'center' },
 });
 
 export default HomeScreen;
+
