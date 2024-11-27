@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import * as WebBrowser from 'expo-web-browser';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox, ScrollView, Modal, Button, Image } from 'react-native';
 import * as Google from 'expo-auth-session/providers/google';
-import { AntDesign } from '@expo/vector-icons'; // Para el ícono de Google
-
-WebBrowser.maybeCompleteAuthSession();
+import { AntDesign } from '@expo/vector-icons';
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('Login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userInfo, setUserInfo] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
+  const [termsVisible, setTermsVisible] = useState(false);
 
-  // Google Auth
   const [request, response, promptAsync] = Google.useAuthRequest({
     androidClientId: '198114410227-glr0q69n847lfjtcu3a288raj42lnuak.apps.googleusercontent.com',
     iosClientId: '198114410227-k1u5vssjlbukfia8r9o1c1ib0hrau1nl.apps.googleusercontent.com',
@@ -40,22 +38,23 @@ export default function App() {
     }
   }
 
-  const handleLogin = () => {
-    if (email && password) {
-      setUserInfo({ name: 'Usuario', email });
-      setCurrentScreen('Home');
-    } else {
-      alert('Por favor, ingresa correo y contraseña.');
+  const handleRegister = () => {
+    if (!email || !password) {
+      alert('Por favor, completa todos los campos.');
+      return;
     }
+    if (!isChecked) {
+      alert('Debes aceptar los términos y condiciones para registrarte.');
+      return;
+    }
+    setUserInfo({ email });
+    setCurrentScreen('Home');
   };
 
   if (currentScreen === 'Login') {
     return (
       <View style={styles.container}>
-        <Image
-          source={require('./assets/Logo.png')} // Ruta local del logo
-          style={styles.logo}
-        />
+        <Image source={require('./assets/Logo.png')} style={styles.logo} />
         <Text style={styles.title}>Inicio de Sesión</Text>
         <TextInput
           style={styles.input}
@@ -70,13 +69,75 @@ export default function App() {
           value={password}
           onChangeText={setPassword}
         />
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-          <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={() => setCurrentScreen('Register')}>
+          <Text style={styles.loginButtonText}>Regístrate</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.googleButton} onPress={() => promptAsync()}>
           <AntDesign name="google" size={24} color="white" />
           <Text style={styles.googleButtonText}>Iniciar sesión con Google</Text>
         </TouchableOpacity>
+        <Text style={styles.termsText}>
+          Al continuar, aceptas nuestros{' '}
+          <Text style={styles.link} onPress={() => setTermsVisible(true)}>
+            Términos y Condiciones
+          </Text>.
+        </Text>
+        <Modal visible={termsVisible} animationType="slide">
+          <View style={styles.modalContainer}>
+            <ScrollView>
+              <Text style={styles.modalTitle}>Términos y Condiciones</Text>
+              <Text style={styles.modalText}>
+                Aquí van los términos y condiciones detallados de tu aplicación...
+              </Text>
+            </ScrollView>
+            <Button title="Cerrar" onPress={() => setTermsVisible(false)} />
+          </View>
+        </Modal>
+      </View>
+    );
+  }
+
+  if (currentScreen === 'Register') {
+    return (
+      <View style={styles.container}>
+        <Image source={require('./assets/Logo.png')} style={styles.logo} />
+        <Text style={styles.title}>Registro</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Correo electrónico"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+        <View style={styles.checkboxContainer}>
+          <CheckBox value={isChecked} onValueChange={setIsChecked} />
+          <Text style={styles.checkboxText}>
+            Acepto los{' '}
+            <Text style={styles.link} onPress={() => setTermsVisible(true)}>
+              Términos y Condiciones
+            </Text>.
+          </Text>
+        </View>
+        <TouchableOpacity style={styles.loginButton} onPress={handleRegister}>
+          <Text style={styles.loginButtonText}>Registrarse</Text>
+        </TouchableOpacity>
+        <Modal visible={termsVisible} animationType="slide">
+          <View style={styles.modalContainer}>
+            <ScrollView>
+              <Text style={styles.modalTitle}>Términos y Condiciones</Text>
+              <Text style={styles.modalText}>
+                Aquí van los términos y condiciones detallados de tu aplicación...
+              </Text>
+            </ScrollView>
+            <Button title="Cerrar" onPress={() => setTermsVisible(false)} />
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -84,8 +145,7 @@ export default function App() {
   if (currentScreen === 'Home') {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Bienvenido, {userInfo?.name || 'Usuario'}</Text>
-        <Text>Email: {userInfo?.email || 'No disponible'}</Text>
+        <Text style={styles.title}>Bienvenido, {userInfo?.email || 'Usuario'}</Text>
         <TouchableOpacity
           style={styles.logoutButton}
           onPress={() => setCurrentScreen('Login')}>
@@ -107,9 +167,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   logo: {
-    width: 120, // Ancho del logo
-    height: 120, // Altura del logo
-    marginBottom: 20, // Espacio debajo del logo
+    width: 120,
+    height: 120,
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
@@ -150,6 +210,36 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     marginLeft: 10,
+  },
+  termsText: {
+    fontSize: 12,
+    color: 'gray',
+    marginTop: 10,
+  },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  checkboxText: {
+    fontSize: 14,
+  },
+  modalContainer: {
+    flex: 1,
+    padding: 20,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  modalText: {
+    fontSize: 14,
+    marginBottom: 20,
   },
   logoutButton: {
     marginTop: 20,
