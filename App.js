@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, CheckBox, ScrollView, Modal, Button, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Modal, Button, Image } from 'react-native';
 import * as Google from 'expo-auth-session/providers/google';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -69,12 +69,15 @@ export default function App() {
           value={password}
           onChangeText={setPassword}
         />
-        <TouchableOpacity style={styles.loginButton} onPress={() => setCurrentScreen('Register')}>
-          <Text style={styles.loginButtonText}>Regístrate</Text>
+        <TouchableOpacity style={styles.loginButton} onPress={() => handleRegister()}>
+          <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.googleButton} onPress={() => promptAsync()}>
           <AntDesign name="google" size={24} color="white" />
           <Text style={styles.googleButtonText}>Iniciar sesión con Google</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setCurrentScreen('Register')}>
+          <Text style={styles.registerText}>¿No tienes cuenta? Regístrate aquí</Text>
         </TouchableOpacity>
         <Text style={styles.termsText}>
           Al continuar, aceptas nuestros{' '}
@@ -100,6 +103,9 @@ export default function App() {
   if (currentScreen === 'Register') {
     return (
       <View style={styles.container}>
+        <TouchableOpacity style={styles.backButton} onPress={() => setCurrentScreen('Login')}>
+          <AntDesign name="arrowleft" size={24} color="black" />
+        </TouchableOpacity>
         <Image source={require('./assets/Logo.png')} style={styles.logo} />
         <Text style={styles.title}>Registro</Text>
         <TextInput
@@ -116,7 +122,13 @@ export default function App() {
           onChangeText={setPassword}
         />
         <View style={styles.checkboxContainer}>
-          <CheckBox value={isChecked} onValueChange={setIsChecked} />
+          <TouchableOpacity
+            style={[
+              styles.checkbox,
+              isChecked && styles.checkboxChecked,
+            ]}
+            onPress={() => setIsChecked(!isChecked)}
+          />
           <Text style={styles.checkboxText}>
             Acepto los{' '}
             <Text style={styles.link} onPress={() => setTermsVisible(true)}>
@@ -124,7 +136,7 @@ export default function App() {
             </Text>.
           </Text>
         </View>
-        <TouchableOpacity style={styles.loginButton} onPress={handleRegister}>
+        <TouchableOpacity style={styles.loginButton} onPress={() => handleRegister()}>
           <Text style={styles.loginButtonText}>Registrarse</Text>
         </TouchableOpacity>
         <Modal visible={termsVisible} animationType="slide">
@@ -166,6 +178,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 20,
   },
+  backButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+  },
   logo: {
     width: 120,
     height: 120,
@@ -187,17 +204,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   loginButton: {
-    backgroundColor: 'white',
-    borderColor: 'black',
-    borderWidth: 1,
+    backgroundColor: '#4285F4',
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginBottom: 10,
   },
   loginButtonText: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
+    textAlign: 'center',
   },
   googleButton: {
     flexDirection: 'row',
@@ -205,16 +221,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#DB4437',
     padding: 10,
     borderRadius: 5,
+    marginBottom: 10,
   },
   googleButtonText: {
     color: 'white',
     fontWeight: 'bold',
     marginLeft: 10,
   },
+  registerText: {
+    color: 'blue',
+    marginTop: 10,
+    textDecorationLine: 'underline',
+  },
   termsText: {
     fontSize: 12,
     color: 'gray',
     marginTop: 10,
+    textAlign: 'center',
   },
   link: {
     color: 'blue',
@@ -224,6 +247,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+  },
+  checkbox: {
+    width: 20,
+    height: 20,
+    borderWidth: 1,
+    borderColor: 'black',
+    marginRight: 10,
+  },
+  checkboxChecked: {
+    backgroundColor: 'green',
   },
   checkboxText: {
     fontSize: 14,
