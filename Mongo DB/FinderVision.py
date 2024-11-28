@@ -68,8 +68,7 @@ def conectar_mongodb():
             "titulo": "Título de la receta",
             "descripcion": "Descripción de la receta",
             "ingredientes": "Ingredientes necesarios",
-            "instrucciones": "Instrucciones de preparación",
-            "imagen": "ruta_imagen_receta.jpg"
+            "instrucciones": "Instrucciones de preparación"
         })
 
         db.imagenes_plantas.insert_one({

@@ -3,7 +3,6 @@ from pymongo import MongoClient, errors
 from bson.objectid import ObjectId
 from datetime import datetime
 
-
 def conectar_mongodb():
     """Conecta a MongoDB y retorna la base de datos."""
     try:
@@ -13,7 +12,6 @@ def conectar_mongodb():
     except errors.ConnectionFailure as e:
         print(f"Error de conexión a MongoDB: {e}")
         return None
-
 
 def insertar_planta(db):
     """Función para insertar una planta en la colección 'plantas'."""
@@ -47,7 +45,6 @@ def insertar_planta(db):
 
     except Exception as e:
         print(f"Ocurrió un error al insertar la planta: {e}")
-
 
 # Conectar a la base de datos y llamar a la función
 if __name__ == "__main__":
