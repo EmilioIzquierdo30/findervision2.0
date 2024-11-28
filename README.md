@@ -16,9 +16,15 @@ Interfaz Intuitiva: Diseño limpio y fácil de usar para una experiencia óptima
 Frameworks y Herramientas:
 
 Expo para el desarrollo de la aplicación móvil.
+
 React Native para la interfaz de usuario.
+
 TensorFlow.js para el reconocimiento de imágenes.
+
 React Navigation para la gestión de navegación.
+
 Node.js para la creación del back-end.
+
 Express como framework para la API REST.
+
 MongoDB Atlas como base de datos en la nube.
