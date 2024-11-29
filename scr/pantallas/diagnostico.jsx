@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import axios from 'axios'; // Para hacer las solicitudes HTTP
 
 const DiagnoseScreen = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -26,16 +27,44 @@ const DiagnoseScreen = () => {
 
     if (!result.cancelled) {
       setSelectedImage(result.uri);
-      // Simular un diagnóstico después de subir la imagen
+      // Enviar la imagen seleccionada al servidor
       diagnosePlant(result.uri);
     }
   };
 
-  // Función simulada para diagnosticar la planta
-  const diagnosePlant = (imageUri) => {
-    // Relleno en lo que llega la logica del api.
-    // integrar una API de reconocimiento de imágenes en esta función.
-    setDiagnosis('Esta es una planta suculenta. ¡Perfecta para interiores!');
+  // Función para diagnosticar la planta
+  const diagnosePlant = async (imageUri) => {
+    try {
+      // Convertir la URI de la imagen a un formato compatible con FormData
+      const formData = new FormData();
+      const image = {
+        uri: imageUri,
+        type: 'image/jpeg',  // Cambiar dependiendo del tipo de imagen
+        name: 'plant.jpg',   // Puedes cambiar el nombre de la imagen
+      };
+      formData.append('imageUri', image); // La imagen será enviada como un archivo
+
+      // Realizar la solicitud POST al servidor local
+      const response = await axios.post('http://localhost:3000/identificarplanta', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Procesar la respuesta del servidor
+      const plantInfo = response.data;
+      
+      if (plantInfo.suggestions && plantInfo.suggestions.length > 0) {
+        const plantName = plantInfo.suggestions[0].plant_name; // Nombre de la planta
+        const plantConfidence = plantInfo.suggestions[0].probability * 100; // Confianza en el diagnóstico
+        setDiagnosis(`Esta es una planta: ${plantName}. Confianza: ${plantConfidence.toFixed(2)}%`);
+      } else {
+        setDiagnosis('No se pudo identificar la planta.');
+      }
+    } catch (error) {
+      console.error('Error al hacer la solicitud:', error);
+      setDiagnosis('Hubo un error al procesar la imagen');
+    }
   };
 
   return (
