@@ -6,7 +6,7 @@ from datetime import datetime
 def conectar_mongodb():
     """Conecta a MongoDB y retorna la base de datos."""
     try:
-        cliente = MongoClient("mongodb://localhost:27017/")
+        cliente = MongoClient("mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
         db = cliente["FinderVision"]  # Conectar o crear la base de datos
         return db
     except errors.ConnectionFailure as e:

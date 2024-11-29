@@ -8,7 +8,7 @@ import bcrypt  # Para encriptar las contraseñas
 def conectar_mongodb():
     try:
         # Intentar establecer una conexión al servidor de MongoDB
-        cliente = MongoClient("mongodb://localhost:27017/")  # Dirección local y puerto predeterminado de MongoDB
+        cliente = MongoClient("mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")  # Dirección local y puerto predeterminado de MongoDB
         
         # Proporcionar la contraseña como entrada del usuario
         password_porpocionada = input("Por favor, ingrese su contraseña: ")
