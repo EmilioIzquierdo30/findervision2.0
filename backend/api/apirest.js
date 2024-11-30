@@ -1,11 +1,5 @@
 //require("dotenv").config({ path: "../node_modules/.env" }); // Ruta personalizada al archivo .env
-const express = require("express");
-const mongoose = require("mongoose");
 
-const app = express();
-
-// Configuración de mongoose para evitar warnings
-mongoose.set("strictQuery", true);
 
 // Usar el puerto configurado en las variables de entorno o el predeterminado
 require("dotenv").config(); // Esto no es necesario si no usas .env, pero no afecta si lo dejas
@@ -65,8 +59,4 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
-<<<<<<< HEAD
-=======
-console.log("MONGO_URI:", process.env.MONGO_URI); // Depuración
->>>>>>> c508da902e21e7211acba04ce27e2f970150ae5d
 module.exports = app;
