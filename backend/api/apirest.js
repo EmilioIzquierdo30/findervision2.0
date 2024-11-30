@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 
 const app = express();
 
+// Configuración de mongoose para evitar warnings
 mongoose.set("strictQuery", true);
+
 // Usar el puerto configurado en las variables de entorno o el predeterminado
 const PORT = process.env.PORT || 3000;
 
@@ -28,16 +30,8 @@ app.get("/", (req, res) => {
   res.send("¡Servidor backend funcionando correctamente!");
 });
 
-// Esquema y Modelo de Mongoose (si aún no lo tienes, defínelo)
-const plantaSchema = new mongoose.Schema({
-  nombre_cientifico: String,
-  imagen: String,
-  descripcion: String,
-});
-const Planta = mongoose.model("Planta", plantaSchema);
-
-// Ruta para /plantasagregar
-app.get("/plantasagregar", async (req, res) => {
+// Ruta para /api/plantasagregar
+app.get("/api/plantasagregar", async (req, res) => {
   try {
     const plantas = await Planta.find({}, { nombre_cientifico: 1, imagen: 1, descripcion: 1 }).limit(10);
     res.status(200).json(plantas);
@@ -47,8 +41,8 @@ app.get("/plantasagregar", async (req, res) => {
   }
 });
 
-// Ruta para /plantashome
-app.get("/plantashome", async (req, res) => {
+// Ruta para /api/plantashome
+app.get("/api/plantashome", async (req, res) => {
   try {
     const plantasHome = await Planta.find({}, { nombre_cientifico: 1, imagen: 1 }).limit(5);
     res.status(200).json(plantasHome);
@@ -58,9 +52,13 @@ app.get("/plantashome", async (req, res) => {
   }
 });
 
-// Escuchar en el puerto configurado
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
+// Exportar el app para que sea manejado como módulo (necesario para Vercel)
+module.exports = app;
 
-console.log("MONGO_URI:", process.env.MONGO_URI); // Depuración
+// Depuración local
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
+  });
+  console.log("MONGO_URI:", process.env.MONGO_URI);
+}
