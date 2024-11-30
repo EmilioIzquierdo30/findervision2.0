@@ -1,5 +1,5 @@
 require("dotenv").config(); // Cargar variables de entorno desde el archivo .env en la raíz
-
+const Planta = require("./planta");
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -49,7 +49,6 @@ app.get("/api/plantashome", async (req, res) => {
     res.status(500).json({ error: "Error al obtener las plantas para el home" });
   }
 });
-
 // Escuchar en el puerto configurado
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
