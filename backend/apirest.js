@@ -15,7 +15,13 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Middleware CORS para permitir solicitudes desde cualquier origen
-app.use(cors());
+
+
+// Configuración para permitir acceso desde cualquier lugar
+app.use(cors({
+  origin: "*", // Permitir cualquier origen
+}));
+
 
 // Conexión a MongoDB utilizando la variable de entorno proporcionada por Vercel
 const MONGO_URI = process.env.MONGO_URI; // Obtiene la URL desde las variables de entorno en Vercel
