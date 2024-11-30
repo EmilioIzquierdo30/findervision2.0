@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../node_modules/.env" }); // Ruta personalizada al archivo .env
+//require("dotenv").config({ path: "../node_modules/.env" }); // Ruta personalizada al archivo .env
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -8,15 +8,25 @@ const app = express();
 mongoose.set("strictQuery", true);
 
 // Usar el puerto configurado en las variables de entorno o el predeterminado
+require("dotenv").config(); // Esto no es necesario si no usas .env, pero no afecta si lo dejas
+
+const express = require("express");
+const mongoose = require("mongoose");
+
+const app = express();
+
+mongoose.set("strictQuery", true);
+
+// Usar el puerto configurado en las variables de entorno o el predeterminado
 const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
 
-// Conexión a MongoDB utilizando la variable de entorno
-const MONGO_URI = process.env.MONGO_URI; // Obtiene la URL desde .env
+// Conexión a MongoDB utilizando la variable de entorno proporcionada por Vercel
+const MONGO_URI = process.env.MONGO_URI; // Obtiene la URL desde las variables de entorno en Vercel
 if (!MONGO_URI) {
-  console.error("MONGO_URI no está definido en el archivo .env");
+  console.error("MONGO_URI no está definido en las variables de entorno");
   process.exit(1);
 }
 
@@ -25,12 +35,11 @@ mongoose
   .then(() => console.log("Conectado a MongoDB Atlas"))
   .catch((err) => console.error("Error al conectar a MongoDB:", err));
 
-// Ruta principal para probar el backend
+// Rutas
 app.get("/", (req, res) => {
   res.send("¡Servidor backend funcionando correctamente!");
 });
 
-// Ruta para /api/plantasagregar
 app.get("/api/plantasagregar", async (req, res) => {
   try {
     const plantas = await Planta.find({}, { nombre_cientifico: 1, imagen: 1, descripcion: 1 }).limit(10);
@@ -41,7 +50,6 @@ app.get("/api/plantasagregar", async (req, res) => {
   }
 });
 
-// Ruta para /api/plantashome
 app.get("/api/plantashome", async (req, res) => {
   try {
     const plantasHome = await Planta.find({}, { nombre_cientifico: 1, imagen: 1 }).limit(5);
@@ -52,13 +60,9 @@ app.get("/api/plantashome", async (req, res) => {
   }
 });
 
-// Exportar el app para que sea manejado como módulo (necesario para Vercel)
-module.exports = app;
+// Escuchar en el puerto configurado
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
 
-// Depuración local
-if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-  });
-  console.log("MONGO_URI:", process.env.MONGO_URI);
-}
+module.exports = app;
