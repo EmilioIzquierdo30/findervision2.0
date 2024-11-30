@@ -1,9 +1,9 @@
 {
     "name": "backend",
     "version": "1.0.0",
-    "main": "server.js",
+    "main": "api/apirest.js",
     "scripts": {
-        "start": "node apirest.js"
+        "start": "node api/apirest.js"
     },
     "dependencies": {
         "dotenv": "^16.4.5",

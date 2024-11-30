@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./node_modules/.env" }); // Ruta personalizada al archivo .env
+require("dotenv").config({ path: "../node_modules/.env" }); // Ruta personalizada al archivo .env
 const express = require("express");
 const mongoose = require("mongoose");
 
