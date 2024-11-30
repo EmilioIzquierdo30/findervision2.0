@@ -11,7 +11,8 @@ import {
 } from "react-native";
 import { Card, Icon } from "react-native-elements";
 
-const API_URL = "https://findervision2-0-git-be102b-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantasagregar"; 
+
+const API_URL = "https://findervision2-0-2nxckh2g2-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantasagregar"; 
 
 const MyPlantsScreen = () => {
   const [plantsData, setPlantsData] = useState([
