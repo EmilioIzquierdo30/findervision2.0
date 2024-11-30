@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,33 +7,39 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import PlantPopup from '../componentes/popupplanta.jsx'; // Popup de planta
-import PremiumPopup from './premuim.jsx'; // Importa el modal Premium
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import PlantPopup from "../componentes/popupplanta.jsx"; // Popup de planta
+import PremiumPopup from "./premuim.jsx"; // Importa el modal Premium
+
+const API_URL = "http://localhost:3000/plantashome"; // Cambia esta URL con la de tu API
 
 const HomeScreen = ({ navigation }) => {
   const [isPremiumVisible, setPremiumVisible] = useState(false); // Control del modal Premium
   const [isPlantPopupVisible, setPlantPopupVisible] = useState(false); // Control del popup de planta
   const [selectedPlant, setSelectedPlant] = useState(null); // Planta seleccionada para mostrar en el popup
+  const [plants, setPlants] = useState([]); // Lista de plantas cargadas desde la API
+  const [searchQuery, setSearchQuery] = useState(""); // Consulta de búsqueda
 
-  // Información de las plantas
-  const plants = [
-    {
-      id: 1,
-      name: 'Aloe Vera',
-      imageUrl: 'https://via.placeholder.com/150',
-      medicinalUses: 'Usada para el tratamiento de quemaduras, heridas y problemas de la piel.',
-      link: 'https://example.com/aloe-vera',
-    },
-    {
-      id: 2,
-      name: 'Lavanda',
-      imageUrl: 'https://via.placeholder.com/150',
-      medicinalUses: 'Utilizada para reducir el estrés, la ansiedad y mejorar el sueño.',
-      link: 'https://example.com/lavanda',
-    },
-  ];
+  // Fetch dinámico de las plantas desde la API
+  useEffect(() => {
+    const fetchPlants = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        setPlants(data); // Actualizar el estado con las plantas obtenidas
+      } catch (error) {
+        console.error("Error al cargar las plantas:", error);
+      }
+    };
+
+    fetchPlants();
+  }, []);
+
+  // Filtrar plantas basadas en la consulta de búsqueda
+  const filteredPlants = plants.filter((plant) =>
+    plant.nombre_comun.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // Función para abrir el popup de planta
   const openPlantPopup = (plant) => {
@@ -45,8 +51,18 @@ const HomeScreen = ({ navigation }) => {
     <ScrollView style={styles.container}>
       {/* Buscador */}
       <View style={styles.searchContainer}>
-        <TextInput placeholder="Buscar plantas" style={styles.searchInput} />
-        <Icon name="search-outline" size={24} color="#aaa" style={styles.searchIcon} />
+        <TextInput
+          placeholder="Buscar plantas"
+          style={styles.searchInput}
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
+        <Icon
+          name="search-outline"
+          size={24}
+          color="#aaa"
+          style={styles.searchIcon}
+        />
       </View>
 
       {/* Notificación */}
@@ -83,30 +99,20 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Libros populares */}
-      <Text style={styles.sectionTitle}>Libros populares</Text>
-      <ScrollView horizontal style={styles.booksContainer}>
-        <TouchableOpacity style={styles.bookCard}>
-          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.bookImage} />
-          <Text style={styles.bookTitle}>La Flor de la Semana</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bookCard}>
-          <Image source={{ uri: 'https://via.placeholder.com/150' }} style={styles.bookImage} />
-          <Text style={styles.bookTitle}>Plantas Suculentas y Cactus</Text>
-        </TouchableOpacity>
-      </ScrollView>
-
       {/* Plantas populares */}
       <Text style={styles.sectionTitle}>Plantas populares</Text>
       <ScrollView horizontal style={styles.plantsContainer}>
-        {plants.map((plant) => (
+        {filteredPlants.map((plant) => (
           <TouchableOpacity
-            key={plant.id}
+            key={plant._id} // Usa _id como clave única
             style={styles.plantCard}
             onPress={() => openPlantPopup(plant)}
           >
-            <Image source={{ uri: plant.imageUrl }} style={styles.plantImage} />
-            <Text style={styles.plantTitle}>{plant.name}</Text>
+            <Image
+              source={{ uri: plant.imagen || "https://via.placeholder.com/150" }} // Imagen de la planta
+              style={styles.plantImage}
+            />
+            <Text style={styles.plantTitle}>{plant.nombre_comun}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -127,50 +133,45 @@ const HomeScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f0f4f7' },
+  container: { flex: 1, backgroundColor: "#f0f4f7" },
   searchContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    backgroundColor: "#fff",
     margin: 15,
     borderRadius: 25,
-    alignItems: 'center',
+    alignItems: "center",
     paddingHorizontal: 15,
   },
   searchInput: { flex: 1, fontSize: 16 },
   searchIcon: { marginLeft: 10 },
   notification: {
-    backgroundColor: '#333',
+    backgroundColor: "#333",
     marginHorizontal: 15,
     marginTop: 10,
     borderRadius: 8,
     padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
-  notificationText: { color: '#fff', marginLeft: 10, flex: 1 },
+  notificationText: { color: "#fff", marginLeft: 10, flex: 1 },
   mainButtons: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
     margin: 15,
   },
-  button: { alignItems: 'center', marginBottom: 15 },
-  buttonText: { marginTop: 5, textAlign: 'center' },
+  button: { alignItems: "center", marginBottom: 15 },
+  buttonText: { marginTop: 5, textAlign: "center" },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginHorizontal: 15,
     marginVertical: 10,
   },
-  booksContainer: { paddingHorizontal: 15 },
-  bookCard: { width: 120, marginRight: 10 },
-  bookImage: { width: '100%', height: 100, borderRadius: 8 },
-  bookTitle: { marginTop: 5, textAlign: 'center' },
   plantsContainer: { paddingHorizontal: 15 },
   plantCard: { width: 120, marginRight: 10 },
-  plantImage: { width: '100%', height: 100, borderRadius: 8 },
-  plantTitle: { marginTop: 5, textAlign: 'center' },
+  plantImage: { width: "100%", height: 100, borderRadius: 8 },
+  plantTitle: { marginTop: 5, textAlign: "center" },
 });
 
 export default HomeScreen;
-

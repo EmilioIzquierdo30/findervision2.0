@@ -1,6 +1,17 @@
-import React, { useState } from "react";
-import { ScrollView, View, Image, Text, StyleSheet, Modal, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  ScrollView,
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  Modal,
+  TouchableOpacity,
+  FlatList,
+} from "react-native";
 import { Card, Icon } from "react-native-elements";
+
+const API_URL = "http://localhost:3000/plantasagregar"; 
 
 const MyPlantsScreen = () => {
   const [plantsData, setPlantsData] = useState([
@@ -23,9 +34,38 @@ const MyPlantsScreen = () => {
       description: "Una orquídea tropical que florece con frecuencia.",
     },
   ]);
-
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState(null);
+  const [apiPlants, setApiPlants] = useState([]); // Plantas cargadas desde la API
+
+  // Fetch de plantas desde la API
+  useEffect(() => {
+    const fetchApiPlants = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        setApiPlants(data); // Cargar las plantas desde la API
+      } catch (error) {
+        console.error("Error al cargar las plantas desde la API:", error);
+      }
+    };
+
+    fetchApiPlants();
+  }, []);
+
+  // Agregar una planta seleccionada a la lista
+  const handleAddPlant = (plant) => {
+    setPlantsData((prevData) => [
+      ...prevData,
+      {
+        id: plantsData.length + 1, // Generar un nuevo ID
+        name: plant.nombre_comun,
+        imageUri: plant.imagen || "https://example.com/defaultImage.jpg", // Imagen por defecto si no está disponible
+        description: plant.descripcion || "Descripción no disponible.",
+      },
+    ]);
+    setModalVisible(false); // Cerrar el modal después de agregar
+  };
 
   const handleDeletePlant = (plantId) => {
     setPlantsData((prevData) => prevData.filter((plant) => plant.id !== plantId));
@@ -54,7 +94,9 @@ const MyPlantsScreen = () => {
                 uri: plant.imageUri || "https://example.com/defaultImage.jpg",
               }}
             />
-            <Text style={styles.description}>{plant.description || "Descripción por defecto"}</Text>
+            <Text style={styles.description}>
+              {plant.description || "Descripción por defecto"}
+            </Text>
           </View>
         </Card>
       ))}
@@ -76,8 +118,24 @@ const MyPlantsScreen = () => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Selecciona una Planta</Text>
-            {/* Opciones de plantas */}
-            <Text>Aquí puedes agregar opciones...</Text>
+            <FlatList
+              data={apiPlants}
+              keyExtractor={(item) => item._id}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  style={styles.modalItem}
+                  onPress={() => handleAddPlant(item)}
+                >
+                  <Text style={styles.modalItemText}>{item.nombre_comun}</Text>
+                </TouchableOpacity>
+              )}
+            />
+            <TouchableOpacity
+              onPress={() => setModalVisible(false)}
+              style={styles.closeButton}
+            >
+              <Text style={styles.closeButtonText}>Cerrar</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Modal>
@@ -147,6 +205,25 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 20,
+  },
+  modalItem: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+  },
+  modalItemText: {
+    fontSize: 16,
+  },
+  closeButton: {
+    backgroundColor: "#FF0000",
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 5,
+  },
+  closeButtonText: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 
