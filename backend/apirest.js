@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-mongoose.set("strictQuery", true); // Elimina el warning
+mongoose.set("strictQuery", true);
 // Usar el puerto configurado en las variables de entorno o el predeterminado
 const PORT = process.env.PORT || 3000;
 
@@ -26,6 +26,36 @@ mongoose
 // Ruta principal para probar el backend
 app.get("/", (req, res) => {
   res.send("¡Servidor backend funcionando correctamente!");
+});
+
+// Esquema y Modelo de Mongoose (si aún no lo tienes, defínelo)
+const plantaSchema = new mongoose.Schema({
+  nombre_cientifico: String,
+  imagen: String,
+  descripcion: String,
+});
+const Planta = mongoose.model("Planta", plantaSchema);
+
+// Ruta para /plantasagregar
+app.get("/plantasagregar", async (req, res) => {
+  try {
+    const plantas = await Planta.find({}, { nombre_cientifico: 1, imagen: 1, descripcion: 1 }).limit(10);
+    res.status(200).json(plantas);
+  } catch (err) {
+    console.error("Error al obtener las plantas:", err);
+    res.status(500).json({ error: "Error al obtener las plantas" });
+  }
+});
+
+// Ruta para /plantashome
+app.get("/plantashome", async (req, res) => {
+  try {
+    const plantasHome = await Planta.find({}, { nombre_cientifico: 1, imagen: 1 }).limit(5);
+    res.status(200).json(plantasHome);
+  } catch (err) {
+    console.error("Error al obtener las plantas para el home:", err);
+    res.status(500).json({ error: "Error al obtener las plantas para el home" });
+  }
 });
 
 // Escuchar en el puerto configurado
