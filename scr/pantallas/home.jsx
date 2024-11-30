@@ -38,7 +38,7 @@ const HomeScreen = ({ navigation }) => {
 
   // Filtrar plantas basadas en la consulta de búsqueda
   const filteredPlants = plants.filter((plant) =>
-    plant.nombre_comun.toLowerCase().includes(searchQuery.toLowerCase())
+    plant.nombre_cientifico.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   // Función para abrir el popup de planta
@@ -112,7 +112,7 @@ const HomeScreen = ({ navigation }) => {
               source={{ uri: plant.imagen || "https://via.placeholder.com/150" }} // Imagen de la planta
               style={styles.plantImage}
             />
-            <Text style={styles.plantTitle}>{plant.nombre_comun}</Text>
+            <Text style={styles.plantTitle}>{plant.nombre_cientifico}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -171,7 +171,12 @@ const styles = StyleSheet.create({
   plantsContainer: { paddingHorizontal: 15 },
   plantCard: { width: 120, marginRight: 10 },
   plantImage: { width: "100%", height: 100, borderRadius: 8 },
-  plantTitle: { marginTop: 5, textAlign: "center" },
+  plantTitle: {
+    marginTop: 5,
+    textAlign: "center",
+    fontSize: 14,
+    fontStyle: "italic",
+  },
 });
 
 export default HomeScreen;

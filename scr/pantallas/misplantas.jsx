@@ -11,31 +11,31 @@ import {
 } from "react-native";
 import { Card, Icon } from "react-native-elements";
 
-const API_URL = "http://localhost:3000/plantasagregar"; 
+const API_URL = "http://localhost:3000/plantasagregar"; // Cambia esta URL según tu configuración
 
 const MyPlantsScreen = () => {
   const [plantsData, setPlantsData] = useState([
     {
       id: 1,
       name: "Suculenta",
-      imageUri: "https://example.com/suculenta.jpg",
+      imageUri: "https://www.hogarmania.com/archivos/202401/suculentas-caracteristicas-cuidados-1280x720x80xX.jpg",
       description: "Una planta suculenta que almacena agua en sus hojas.",
     },
     {
       id: 2,
       name: "Cactus",
-      imageUri: "https://example.com/cactus.jpg",
+      imageUri: "https://i0.wp.com/plantzone.in/wp-content/uploads/2024/08/Cactus-Plant.jpg?ssl=1",
       description: "Un cactus que es fácil de cuidar y resistente.",
     },
     {
       id: 3,
       name: "Orquídea",
-      imageUri: "https://example.com/orquidea.jpg",
+      imageUri: "https://m.media-amazon.com/images/I/81vGQ9OxctL._AC_UF894,1000_QL80_.jpg",
       description: "Una orquídea tropical que florece con frecuencia.",
     },
   ]);
+
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedPlant, setSelectedPlant] = useState(null);
   const [apiPlants, setApiPlants] = useState([]); // Plantas cargadas desde la API
 
   // Fetch de plantas desde la API
@@ -59,9 +59,9 @@ const MyPlantsScreen = () => {
       ...prevData,
       {
         id: plantsData.length + 1, // Generar un nuevo ID
-        name: plant.nombre_comun,
+        name: plant.nombre_cientifico, // Usar el nombre científico
         imageUri: plant.imagen || "https://example.com/defaultImage.jpg", // Imagen por defecto si no está disponible
-        description: plant.descripcion || "Descripción no disponible.",
+        description: plant.descripcion || "Descripción no disponible.", // Descripción por defecto
       },
     ]);
     setModalVisible(false); // Cerrar el modal después de agregar
@@ -124,9 +124,9 @@ const MyPlantsScreen = () => {
               renderItem={({ item }) => (
                 <TouchableOpacity
                   style={styles.modalItem}
-                  onPress={() => handleAddPlant(item)}
+                  onPress={() => handleAddPlant(item)} // Pasa todos los datos de la planta al agregar
                 >
-                  <Text style={styles.modalItemText}>{item.nombre_comun}</Text>
+                  <Text style={styles.modalItemText}>{item.nombre_cientifico}</Text>
                 </TouchableOpacity>
               )}
             />
