@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { Card, Icon } from "react-native-elements";
 
-const API_URL = "http://localhost:3000/plantasagregar"; // Cambia esta URL según tu configuración
+const API_URL = "https://findervision2-0-git-be102b-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantasagregar"; // Cambia esta URL según tu configuración
 
 const MyPlantsScreen = () => {
   const [plantsData, setPlantsData] = useState([
