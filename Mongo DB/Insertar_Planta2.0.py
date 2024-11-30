@@ -1,16 +1,37 @@
+# Importamos las clases y funciones necesarias para trabajar con MongoDB y datos relacionados.
+# MongoClient: Permite conectarse al servidor de MongoDB.
+# errors: Permite manejar errores relacionados con MongoDB.
+# ObjectId: Clase para trabajar con identificadores únicos de MongoDB.
+# datetime: Proporciona funciones para trabajar con fechas y horas.
 from pymongo import MongoClient, errors
 from bson.objectid import ObjectId
 from datetime import datetime
 
-# Conexión a la base de datos
+# Definimos una función para establecer la conexión con MongoDB.
 def conectar_mongodb():
-    """Conecta a MongoDB y retorna la base de datos."""
+    """
+    Conecta a MongoDB y retorna la base de datos.
+
+    Returns:
+        db (Database): Objeto de la base de datos si la conexión es exitosa.
+        None: Si ocurre un error en la conexión.
+    """
     try:
-        cliente = MongoClient("mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
-        db = cliente["FinderVision"]  # Conectar o crear la base de datos
+        # Crea un cliente MongoDB usando la URI del servidor proporcionada.
+        # Esta URI contiene las credenciales y configuraciones para conectarse al clúster de MongoDB.
+        cliente = MongoClient(
+            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority"
+        )
+        # Selecciona la base de datos llamada "FinderVision".
+        # Si no existe, MongoDB la creará automáticamente al usarla.
+        db = cliente["FinderVision"]
+        # Devuelve el objeto de la base de datos para usarlo en operaciones posteriores.
         return db
     except errors.ConnectionFailure as e:
+        # Maneja errores relacionados con fallas en la conexión.
+        # Si la conexión falla, imprime un mensaje de error indicando el problema.
         print(f"Error de conexión a MongoDB: {e}")
+        # Retorna None para indicar que la conexión no fue exitosa.
         return None
 
 # Datos de las plantas
@@ -317,23 +338,41 @@ plantas = [
     },
 ]
 
-# Función para insertar múltiples plantas
+# Función para insertar múltiples plantas en la base de datos.
 def insertar_plantas(db, lista_plantas):
-    """Inserta múltiples plantas en la colección 'plantas'."""
+    """
+    Inserta múltiples plantas en la colección 'plantas'.
+
+    Args:
+        db (Database): Objeto de la base de datos donde se realizará la inserción.
+        lista_plantas (list): Lista de plantas a insertar. Cada planta debe ser un diccionario con los datos necesarios.
+
+    Returns:
+        None
+    """
     try:
+        # Iteramos sobre cada planta en la lista proporcionada.
         for planta in lista_plantas:
-            # Agregar la fecha de registro a cada planta
+            # Agrega una clave 'fecha_registro' con la fecha y hora actual al diccionario de cada planta.
             planta["fecha_registro"] = datetime.now()
-            
-            # Insertar la planta en la colección
+
+            # Inserta la planta en la colección 'plantas' y obtiene el _id generado automáticamente.
             planta_id = db.plantas.insert_one(planta).inserted_id
+
+            # Imprime un mensaje indicando que la planta fue insertada correctamente.
             print(f"Planta '{planta['nombre_comun']}' insertada exitosamente con _id: {planta_id}")
 
     except Exception as e:
+        # Captura cualquier excepción que ocurra durante la inserción.
+        # Muestra un mensaje de error con detalles sobre lo que ocurrió.
         print(f"Ocurrió un error al insertar las plantas: {e}")
 
-# Llamar a las funciones
+# Punto de entrada principal del programa.
 if __name__ == "__main__":
+    # Llama a la función para conectarse a la base de datos.
     db = conectar_mongodb()
+
+    # Si la conexión a la base de datos es exitosa, procede a insertar las plantas.
     if db is not None:
+        # Asegúrate de que la variable 'plantas' esté definida previamente.
         insertar_plantas(db, plantas)

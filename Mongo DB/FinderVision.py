@@ -1,26 +1,33 @@
-# Importar el cliente de MongoDB y los errores comunes
-from pymongo import MongoClient, errors
-from bson.objectid import ObjectId
-from datetime import datetime
-import bcrypt  # Para encriptar las contraseñas
+# Importamos las librerías necesarias para interactuar con MongoDB, manejar contraseñas y fechas.
+from pymongo import MongoClient, errors  # MongoClient: para conectar a MongoDB; errors: para manejar errores específicos de MongoDB.
+from bson.objectid import ObjectId  # ObjectId: permite trabajar con identificadores únicos de MongoDB.
+from datetime import datetime  # datetime: para registrar fechas y horas.
+import bcrypt  # bcrypt: librería para encriptar contraseñas de forma segura.
 
-# Definición de la función para conectar y gestionar MongoDB
+# Función principal para conectar y gestionar MongoDB.
 def conectar_mongodb():
+    """
+    Establece conexión con MongoDB, inicializa la base de datos y colecciones con datos de ejemplo,
+    encripta contraseñas y maneja errores comunes.
+    """
     try:
-        # Intentar establecer una conexión al servidor de MongoDB
-        cliente = MongoClient("mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")  # Dirección local y puerto predeterminado de MongoDB
-        
-        # Proporcionar la contraseña como entrada del usuario
+        # Crear un cliente para conectarse a MongoDB usando una URI.
+        cliente = MongoClient(
+            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
+
+        # Solicitar una contraseña al usuario.
         password_porpocionada = input("Por favor, ingrese su contraseña: ")
-        
-        # Crear y encriptar la contraseña proporcionada
-        salt = bcrypt.gensalt()  # Genera un salt único
+
+        # Generar un salt único para encriptar la contraseña.
+        salt = bcrypt.gensalt()
+
+        # Crear un hash seguro para la contraseña.
         password_encriptada = bcrypt.hashpw(password_porpocionada.encode('utf-8'), salt)
 
-        # Crear la base de datos "FinderVision" si no existe
+        # Seleccionar o crear la base de datos 'FinderVision'.
         db = cliente["FinderVision"]
 
-        # Insertar un usuario y obtener su _id
+        # Insertar un documento en la colección 'usuarios' y obtener el _id generado automáticamente.
         usuario_id = db.usuarios.insert_one({
             "nombre": "Nombre de Ejemplo",
             "email": "ejemplo@correo.com",
@@ -35,16 +42,16 @@ def conectar_mongodb():
             "github_id": "github_unique_id"
         }).inserted_id
 
-        # Insertar la contraseña asociada al usuario
+        # Insertar la contraseña en la colección 'passwords' asociada al usuario.
         db.passwords.insert_one({
-            "usuario_id": usuario_id,  # Relación con el usuario
-            "password_hash": password_encriptada.decode('utf-8'),  # Contraseña encriptada
+            "usuario_id": usuario_id,  # Relación con el usuario.
+            "password_hash": password_encriptada.decode('utf-8'),  # Hash de la contraseña.
             "fecha_creacion": datetime.now()
         })
 
         print("Usuario y contraseña creados exitosamente.")
 
-        # Insertar una planta y obtener su _id
+        # Insertar un documento de ejemplo en la colección 'plantas'.
         planta_id = db.plantas.insert_one({
             "nombre_comun": "Ejemplo Comun",
             "nombre_cientifico": "Ejemplo Cientifico",
@@ -56,7 +63,7 @@ def conectar_mongodb():
             "categoria": "Categoría de la planta"
         }).inserted_id
 
-        # Insertar documentos relacionados usando los _id generados
+        # Insertar documentos relacionados en diferentes colecciones.
         db.favoritos.insert_one({
             "usuario_id": usuario_id,
             "planta_id": planta_id,
@@ -94,19 +101,21 @@ def conectar_mongodb():
         db.calificaciones.insert_one({
             "usuario_id": usuario_id,
             "planta_id": planta_id,
-            "calificacion": 4,
+            "calificacion": 4,  # Calificación de ejemplo.
             "fecha_calificacion": datetime.now()
         })
 
         print("Base de datos y colecciones inicializadas correctamente.")
 
     except errors.ConnectionFailure as e:
-        print(f"Error de conexión a MongoDB: {e}")  # Error de conexión
+        # Manejo de errores de conexión con MongoDB.
+        print(f"Error de conexión a MongoDB: {e}")
     except errors.DuplicateKeyError as e:
-        print(f"Error: Ya existe un documento con la misma clave única. Detalles: {e}")  # Documento duplicado
+        # Manejo de errores por duplicidad de claves únicas.
+        print(f"Error: Ya existe un documento con la misma clave única. Detalles: {e}")
     except Exception as e:
-        print(f"Ocurrió un error inesperado: {e}")  # Otros errores
+        # Manejo de otros errores inesperados.
+        print(f"Ocurrió un error inesperado: {e}")
 
-
-# Llamar a la función para ejecutar el código
+# Llamar a la función principal para ejecutar el código.
 conectar_mongodb()

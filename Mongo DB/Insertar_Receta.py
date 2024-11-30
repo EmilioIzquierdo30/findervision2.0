@@ -1,21 +1,50 @@
+# Importamos las clases necesarias desde pymongo y bson.
+# MongoClient: Se utiliza para conectarse al servidor de MongoDB.
+# errors: Maneja errores relacionados con MongoDB.
+# ObjectId: Permite trabajar con identificadores únicos en MongoDB.
 from pymongo import MongoClient, errors
 from bson.objectid import ObjectId
 
-# Conexión a la base de datos
+# Definimos una función para conectarnos a MongoDB.
 def conectar_mongodb():
-    """Conecta a MongoDB y retorna la base de datos."""
+    """
+    Conecta a MongoDB y retorna la base de datos.
+
+    Returns:
+        db (Database): Objeto de la base de datos si la conexión es exitosa.
+        None: Si ocurre un error en la conexión.
+    """
     try:
-        cliente = MongoClient("mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
+        # Crea una conexión al servidor MongoDB utilizando la URI proporcionada.
+        cliente = MongoClient(
+            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority"
+        )
+        # Selecciona la base de datos "FinderVision" dentro del servidor.
         db = cliente["FinderVision"]
+        # Retorna el objeto de la base de datos.
         return db
     except errors.ConnectionFailure as e:
+        # Captura y muestra un error si la conexión falla.
         print(f"Error de conexión a MongoDB: {e}")
+        # Retorna None si no se puede establecer la conexión.
         return None
 
-# Función para verificar si un planta_id existe
+# Definimos una función para verificar si un planta_id existe en la base de datos.
 def verificar_planta(db, planta_id):
-    """Verifica si un planta_id existe en la colección 'plantas'."""
+    """
+    Verifica si un planta_id existe en la colección 'plantas'.
+
+    Args:
+        db (Database): Objeto de la base de datos donde se hará la consulta.
+        planta_id (ObjectId): Identificador único de la planta a buscar.
+
+    Returns:
+        bool: True si el planta_id existe en la colección, False en caso contrario.
+    """
+    # Consulta la colección 'plantas' para contar documentos con el _id especificado.
+    # Si encuentra al menos uno, retorna True; de lo contrario, False.
     return db.plantas.count_documents({"_id": planta_id}) > 0
+
 
 # Datos de las recetas
 recetas = [
@@ -231,26 +260,46 @@ recetas = [
     }
 ]
 
-# Función para insertar recetas
+# Función para insertar múltiples recetas en la base de datos
 def insertar_recetas(db, lista_recetas):
-    """Inserta múltiples recetas en la colección 'recetas'."""
+    """
+    Inserta múltiples recetas en la colección 'recetas'.
+
+    Args:
+        db (Database): Objeto de la base de datos donde se hará la inserción.
+        lista_recetas (list): Lista de recetas a insertar. Cada receta debe ser un diccionario con al menos el campo 'planta_id' y 'titulo'.
+
+    Returns:
+        None
+    """
     try:
+        # Inicializa un contador para las recetas insertadas correctamente.
         recetas_insertadas = 0
+        # Itera sobre cada receta en la lista proporcionada.
         for receta in lista_recetas:
-            # Verificar si el planta_id existe antes de insertar
+            # Verifica si el 'planta_id' especificado existe en la colección 'plantas'.
             if verificar_planta(db, receta["planta_id"]):
+                # Inserta la receta en la colección 'recetas' y obtiene su _id generado.
                 receta_id = db.recetas.insert_one(receta).inserted_id
+                # Muestra un mensaje indicando que la receta se insertó correctamente.
                 print(f"Receta '{receta['titulo']}' insertada exitosamente con _id: {receta_id}")
+                # Incrementa el contador de recetas insertadas.
                 recetas_insertadas += 1
             else:
+                # Muestra un mensaje de error si el 'planta_id' no existe.
                 print(f"Error: planta_id '{receta['planta_id']}' no existe. Receta '{receta['titulo']}' no insertada.")
         
+        # Imprime la cantidad total de recetas insertadas correctamente.
         print(f"Se insertaron correctamente {recetas_insertadas} recetas.")
     except errors.PyMongoError as e:
+        # Captura cualquier error relacionado con MongoDB y lo muestra.
         print(f"Ocurrió un error al insertar las recetas: {e}")
 
-# Llamar a las funciones
+# Punto de entrada principal del programa.
 if __name__ == "__main__":
+    # Conecta a la base de datos MongoDB.
     db = conectar_mongodb()
+    # Si la conexión es exitosa, llama a la función 'insertar_recetas'.
     if db is not None:
+        # Asegúrate de que 'recetas' esté definido previamente como una lista de recetas a insertar.
         insertar_recetas(db, recetas)
