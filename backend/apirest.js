@@ -1,8 +1,4 @@
-//require("dotenv").config({ path: "../node_modules/.env" }); // Ruta personalizada al archivo .env
-
-
-// Usar el puerto configurado en las variables de entorno o el predeterminado
-require("dotenv").config(); // Esto no es necesario si no usas .env, pero no afecta si lo dejas
+require("dotenv").config(); // Cargar variables de entorno desde el archivo .env en la raíz
 
 const express = require("express");
 const mongoose = require("mongoose");
