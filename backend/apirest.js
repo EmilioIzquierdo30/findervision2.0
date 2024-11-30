@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 
 const app = express();
 
+
+mongoose.set("strictQuery", true); // Elimina el warning
 // Usar el puerto configurado en las variables de entorno o el predeterminado
 const PORT = process.env.PORT || 3000;
 
@@ -11,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Conexión a MongoDB utilizando la variable de entorno
-const MONGO_URI = process.env.MONGO_URI; // Obtiene la URL desde .env
+const MONGO_URI = process.env.MONGO_URl; // Obtiene la URL desde .env
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("Conectado a MongoDB Atlas"))
@@ -48,3 +50,5 @@ app.get("/plantashome", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
+
+console.log("MONGO_URI:", process.env.MONGO_URI);
