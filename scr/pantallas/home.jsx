@@ -12,7 +12,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import PlantPopup from "../componentes/popupplanta.jsx"; // Popup de planta
 import PremiumPopup from "./premuim.jsx"; // Importa el modal Premium
 
-const API_URL = "https://findervision2-0-git-be102b-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome"; // Cambia esta URL con la de tu API
+const API_URL = "https://findervision2-0-9ar3c9yun-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome"; 
 
 const HomeScreen = ({ navigation }) => {
   const [isPremiumVisible, setPremiumVisible] = useState(false); // Control del modal Premium

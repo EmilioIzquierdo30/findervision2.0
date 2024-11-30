@@ -2,6 +2,7 @@ require("dotenv").config(); // Cargar variables de entorno desde el archivo .env
 const Planta = require("./planta");
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors"); // Importar el paquete cors
 
 const app = express();
 
@@ -12,6 +13,9 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
+
+// Middleware CORS para permitir solicitudes desde cualquier origen
+app.use(cors());
 
 // Conexión a MongoDB utilizando la variable de entorno proporcionada por Vercel
 const MONGO_URI = process.env.MONGO_URI; // Obtiene la URL desde las variables de entorno en Vercel
