@@ -11,7 +11,7 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import PlantPopup from "../componentes/popupplanta.jsx"; // Popup de planta
 import PremiumPopup from "./premuim.jsx"; // Importa el modal Premium
-require("dotenv").config();
+
 
 const API_URL = "https://findervision2-0-2nxckh2g2-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome"; 
 

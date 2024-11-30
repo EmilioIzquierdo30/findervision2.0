@@ -18,14 +18,28 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.emilioizquierdomont.findervisionmovil",
+      "buildProperties": {
+        "compileSdkVersion": 33,
+        "targetSdkVersion": 33,
+        "minSdkVersion": 21
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "sdkVersion": "50.0.0",  
+    "sdkVersion": "50.0.0",
     "updates": {
-      "enabled": false  
-    }
+      "enabled": false
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b294eeb2-d421-4e69-be8e-f52eb3f7e0fc"
+      }
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
   }
 }
