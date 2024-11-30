@@ -65,4 +65,8 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
 
+<<<<<<< HEAD
+=======
+console.log("MONGO_URI:", process.env.MONGO_URI); // Depuración
+>>>>>>> c508da902e21e7211acba04ce27e2f970150ae5d
 module.exports = app;
