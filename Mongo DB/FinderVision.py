@@ -14,7 +14,6 @@ def conectar_mongodb():
         # Crear un cliente para conectarse a MongoDB usando una URI.
         cliente = MongoClient(
             "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
-
         # Solicitar una contraseña al usuario.
         password_porpocionada = input("Por favor, ingrese su contraseña: ")
 
