@@ -1,45 +1,36 @@
 {
   "expo": {
-    "name": "findervisionmovil",
-    "slug": "findervisionmovil",
+    "name": "loginapp",
+    "slug": "loginapp",
+    "scheme": "loginapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sxchzz.loginapp"
     },
     "android": {
+      "package": "com.sxchzzfv.loginapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.emilioizquierdomont.findervisionmovil",
-      "buildProperties": {
-        "compileSdkVersion": 33,
-        "targetSdkVersion": 33,
-        "minSdkVersion": 21
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "sdkVersion": "50.0.0",
-    "updates": {
-      "enabled": false
-    },
     "extra": {
       "eas": {
-        "projectId": "b294eeb2-d421-4e69-be8e-f52eb3f7e0fc"
+        "projectId": "9401f929-9597-41f8-b52c-4b6f5cdd9149"
       }
-    },
-    "plugins": [
-      "expo-build-properties"
-    ]
+    }
   }
 }
