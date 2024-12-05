@@ -2,38 +2,38 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const MoreScreen = () => {
-  // Datos de ejemplo para las opciones
+const MoreScreen = ({ navigation }) => {
+  // Opciones del menú con navegación
   const options = [
     {
       id: 1,
       title: 'Perfil',
       icon: 'person-outline',
-      onPress: () => alert('Navegar a Perfil'),
+      onPress: () => navigation.navigate('PerfilScreen'),
     },
     {
       id: 2,
       title: 'Configuraciones',
       icon: 'settings-outline',
-      onPress: () => alert('Navegar a Configuraciones'),
+      onPress: () => navigation.navigate('ConfiguracionesScreen'),
     },
     {
       id: 3,
       title: 'Favoritos',
       icon: 'heart-outline',
-      onPress: () => alert('Navegar a Favoritos'),
+      onPress: () => navigation.navigate('FavoritosScreen'),
     },
     {
       id: 4,
       title: 'Notificaciones',
       icon: 'notifications-outline',
-      onPress: () => alert('Navegar a Notificaciones'),
+      onPress: () => navigation.navigate('NotificacionesScreen'),
     },
     {
       id: 5,
       title: 'Ayuda y Soporte',
       icon: 'help-circle-outline',
-      onPress: () => alert('Navegar a Ayuda y Soporte'),
+      onPress: () => navigation.navigate('AyudaScreen'),
     },
     {
       id: 6,
