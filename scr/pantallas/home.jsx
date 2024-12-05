@@ -12,8 +12,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import PlantPopup from "../componentes/popupplanta.jsx"; // Popup de planta
 import PremiumPopup from "./premuim.jsx"; // Importa el modal Premium
 
-
-const API_URL = "https://findervision2-0-2nxckh2g2-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome"; 
+const API_URL = "https://findervision2-0-2nxckh2g2-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome";
 
 const HomeScreen = ({ navigation }) => {
   const [isPremiumVisible, setPremiumVisible] = useState(false); // Control del modal Premium
@@ -79,15 +78,24 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Botones principales */}
       <View style={styles.mainButtons}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Diagnóstico")}
+        >
           <Icon name="medkit-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Diagnostique</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("CameraScreen")}
+        >
           <Icon name="camera-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Identificar</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("ChatBotScreen")}
+        >
           <Icon name="chatbubbles-outline" size={30} color="#4CAF50" />
           <Text style={styles.buttonText}>Asesor de Plantas</Text>
         </TouchableOpacity>
