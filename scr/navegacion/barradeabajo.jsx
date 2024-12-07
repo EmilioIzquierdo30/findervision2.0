@@ -3,9 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'; 
 import DiagnoseScreen from '../pantallas/diagnostico.jsx';
 import MyPlantsScreen from '../pantallas/misplantas.jsx';
-import MoreScreen from '../pantallas/more.jsx';
 import HomeScreen from '../pantallas/home.jsx';
-
+import MoreStackNavigator from './morenavigation.jsx';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -44,7 +43,7 @@ const BottomTabNavigator = () => {
       <Tab.Screen name="Inicio" component={HomeScreen} options={{ headerShown: false }} />      
       <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />
       <Tab.Screen name="Mis plantas" component={MyPlantsScreen} />
-      <Tab.Screen name="Ver más" component={MoreScreen} />
+      <Tab.Screen name="Ver más" component={MoreStackNavigator} />
     </Tab.Navigator>
   );
 };

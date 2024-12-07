@@ -1,68 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
+  Image,
   TouchableOpacity,
-  Linking,
   Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
-const AyudaScreen = () => {
-  // Lista de preguntas frecuentes
-  const faqs = [
-    {
-      question: "¿Cómo puedo identificar una planta?",
-      answer:
-        "Para identificar una planta, usa la funcionalidad 'Identificar' desde la pantalla principal y toma una foto o selecciona una imagen.",
-    },
-    {
-      question: "¿Cómo reclamo mi prueba Premium?",
-      answer:
-        "En la pantalla principal, haz clic en la notificación de prueba Premium y sigue las instrucciones para activarla.",
-    },
-    {
-      question: "¿Qué hacer si no puedo acceder a mi cuenta?",
-      answer:
-        "Por favor, verifica tu conexión a internet o restablece tu contraseña desde la pantalla de inicio de sesión.",
-    },
-  ];
+const CameraScreen = () => {
+  const [selectedImage, setSelectedImage] = useState(null); // Almacena la imagen seleccionada
 
-  // Abrir un enlace para contacto
-  const handleContact = () => {
-    const email = "soporte@appplants.com";
-    const subject = "Soporte Técnico - App de Plantas";
-    const body = "Hola, necesito ayuda con...";
-    const mailto = `mailto:${email}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+  // Función para tomar una foto con la cámara
+  const takePhoto = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert("Permiso denegado", "Se necesita acceso a la cámara para usar esta función.");
+      return;
+    }
 
-    Linking.openURL(mailto).catch(() =>
-      Alert.alert("Error", "No se pudo abrir el cliente de correo.")
-    );
+    const result = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }
+  };
+
+  // Función para seleccionar una imagen desde la galería
+  const pickImageFromGallery = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert("Permiso denegado", "Se necesita acceso a la galería para usar esta función.");
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setSelectedImage(result.assets[0].uri);
+    }
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Ayuda y Soporte</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Identificar Planta</Text>
 
-      {/* Sección de Preguntas Frecuentes */}
-      <Text style={styles.subtitle}>Preguntas Frecuentes</Text>
-      {faqs.map((faq, index) => (
-        <View key={index} style={styles.faqContainer}>
-          <Text style={styles.faqQuestion}>{faq.question}</Text>
-          <Text style={styles.faqAnswer}>{faq.answer}</Text>
+      {/* Imagen seleccionada */}
+      {selectedImage ? (
+        <Image source={{ uri: selectedImage }} style={styles.image} />
+      ) : (
+        <View style={styles.placeholder}>
+          <Text style={styles.placeholderText}>No hay imagen seleccionada</Text>
         </View>
-      ))}
+      )}
 
-      {/* Botón de Contacto */}
-      <TouchableOpacity style={styles.contactButton} onPress={handleContact}>
-        <Ionicons name="mail-outline" size={20} color="#fff" />
-        <Text style={styles.contactButtonText}>Contactar Soporte</Text>
-      </TouchableOpacity>
-    </ScrollView>
+      {/* Botones */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={takePhoto}>
+          <Ionicons name="camera-outline" size={24} color="#fff" />
+          <Text style={styles.buttonText}>Tomar Foto</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={pickImageFromGallery}>
+          <Ionicons name="images-outline" size={24} color="#fff" />
+          <Text style={styles.buttonText}>Seleccionar de Galería</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
@@ -70,56 +83,55 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f0f4f7",
-    padding: 15,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#4CAF50",
-    marginBottom: 15,
-  },
-  faqContainer: {
-    marginBottom: 15,
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 15,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  faqQuestion: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 5,
-  },
-  faqAnswer: {
-    fontSize: 14,
-    color: "#555",
-    lineHeight: 20,
-  },
-  contactButton: {
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    padding: 20,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  image: {
+    width: 300,
+    height: 300,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  placeholder: {
+    width: 300,
+    height: 300,
+    backgroundColor: "#ddd",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  placeholderText: {
+    color: "#888",
+    fontSize: 16,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  button: {
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: "#4CAF50",
     padding: 15,
-    borderRadius: 8,
-    marginTop: 20,
+    borderRadius: 10,
+    marginHorizontal: 10,
   },
-  contactButtonText: {
+  buttonText: {
     color: "#fff",
-    fontSize: 16,
     marginLeft: 10,
+    fontSize: 16,
   },
 });
 
-export default AyudaScreen;
+export default CameraScreen;
+
+
+
