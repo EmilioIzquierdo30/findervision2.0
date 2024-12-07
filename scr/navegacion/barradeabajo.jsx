@@ -4,7 +4,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import DiagnoseScreen from '../pantallas/diagnostico.jsx';
 import MyPlantsScreen from '../pantallas/misplantas.jsx';
 import HomeScreen from '../pantallas/home.jsx';
-import MoreStackNavigator from './morenavigation.jsx';
+import MoreStackNavigator from '../navegacion/morenavigation'; // Importa el Stack Navigator para "Ver más"
+
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -29,7 +30,6 @@ const BottomTabNavigator = () => {
           }
           return <Icon name={iconName} size={size} color={color} />;
         },
-        // Configuraciones de tab bar (antes en tabBarOptions)
         tabBarActiveTintColor: '#6bbd72',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
@@ -43,7 +43,7 @@ const BottomTabNavigator = () => {
       <Tab.Screen name="Inicio" component={HomeScreen} options={{ headerShown: false }} />      
       <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />
       <Tab.Screen name="Mis plantas" component={MyPlantsScreen} />
-      <Tab.Screen name="Ver más" component={MoreStackNavigator} />
+      <Tab.Screen name="Ver más" component={MoreStackNavigator} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 };

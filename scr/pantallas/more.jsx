@@ -3,37 +3,36 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import { Ionicons } from '@expo/vector-icons';
 
 const MoreScreen = ({ navigation }) => {
-  // Opciones del menú con navegación
   const options = [
     {
       id: 1,
       title: 'Perfil',
       icon: 'person-outline',
-      onPress: () => navigation.navigate('PerfilScreen'),
+      onPress: () => navigation.navigate('Perfil'),
     },
     {
       id: 2,
       title: 'Configuraciones',
       icon: 'settings-outline',
-      onPress: () => navigation.navigate('ConfiguracionesScreen'),
+      onPress: () => navigation.navigate('Configuraciones'),
     },
     {
       id: 3,
       title: 'Favoritos',
       icon: 'heart-outline',
-      onPress: () => navigation.navigate('FavoritosScreen'),
+      onPress: () => navigation.navigate('Favoritos'),
     },
     {
       id: 4,
       title: 'Notificaciones',
       icon: 'notifications-outline',
-      onPress: () => navigation.navigate('NotificacionesScreen'),
+      onPress: () => navigation.navigate('Notificaciones'),
     },
     {
       id: 5,
       title: 'Ayuda y Soporte',
       icon: 'help-circle-outline',
-      onPress: () => navigation.navigate('AyudaScreen'),
+      onPress: () => navigation.navigate('Ayuda'),
     },
     {
       id: 6,
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 2, // Sombra para Android
+    elevation: 2,
   },
   icon: {
     marginRight: 15,
