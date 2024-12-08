@@ -1,31 +1,36 @@
-# Importamos las clases necesarias para trabajar con MongoDB.
-# MongoClient: Permite conectarse al servidor de MongoDB.
-# errors: Maneja errores relacionados con MongoDB.
-# ObjectId: Clase para trabajar con los identificadores únicos (_id) de MongoDB.
 from pymongo import MongoClient, errors
 from bson.objectid import ObjectId
+from dotenv import load_dotenv
+import os
 
-# Función para establecer la conexión con la base de datos MongoDB.
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
+
 def conectar_mongodb():
     """
-    Conecta a MongoDB y retorna la base de datos.
+    Conecta a MongoDB usando una URI obtenida de variables de entorno.
 
     Returns:
         db (Database): Objeto de la base de datos si la conexión es exitosa.
         None: Si ocurre un error en la conexión.
     """
     try:
-        # Conecta al clúster de MongoDB usando la URI proporcionada.
-        cliente = MongoClient(
-            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
-        # Selecciona la base de datos llamada "FinderVision".
+        # Obtiene la URI desde las variables de entorno
+        mongo_uri = os.getenv("MONGO_URI")
+        if not mongo_uri:
+            raise ValueError("MONGO_URI no está definido en el archivo .env")
+        
+        # Conecta al clúster de MongoDB usando la URI
+        cliente = MongoClient(mongo_uri)
         db = cliente["FinderVision"]
-        # Devuelve el objeto de la base de datos.
         return db
     except errors.ConnectionFailure as e:
-        # Si ocurre un error de conexión, muestra un mensaje con los detalles.
         print(f"Error de conexión a MongoDB: {e}")
         return None
+    except Exception as e:
+        print(f"Error general: {e}")
+        return None
+
 
 # Función para actualizar la imagen de múltiples plantas en la base de datos.
 def actualizar_imagenes(db, updates):

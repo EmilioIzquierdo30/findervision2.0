@@ -6,6 +6,11 @@
 from pymongo import MongoClient, errors
 from bson.objectid import ObjectId
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 # Definimos una función para establecer la conexión con MongoDB.
 def conectar_mongodb():
@@ -17,21 +22,30 @@ def conectar_mongodb():
         None: Si ocurre un error en la conexión.
     """
     try:
-        # Crea un cliente MongoDB usando la URI del servidor proporcionada.
-        # Esta URI contiene las credenciales y configuraciones para conectarse al clúster de MongoDB.
-        cliente = MongoClient(
-            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority"
-        )
+        # Obtiene la URI desde las variables de entorno
+        mongo_uri = os.getenv("MONGO_URI")
+        if not mongo_uri:
+            raise ValueError("MONGO_URI no está definido en el archivo .env")
+        
+        # Crea un cliente MongoDB usando la URI del archivo .env
+        cliente = MongoClient(mongo_uri)
+        
         # Selecciona la base de datos llamada "FinderVision".
-        # Si no existe, MongoDB la creará automáticamente al usarla.
         db = cliente["FinderVision"]
+        
         # Devuelve el objeto de la base de datos para usarlo en operaciones posteriores.
         return db
     except errors.ConnectionFailure as e:
         # Maneja errores relacionados con fallas en la conexión.
-        # Si la conexión falla, imprime un mensaje de error indicando el problema.
         print(f"Error de conexión a MongoDB: {e}")
-        # Retorna None para indicar que la conexión no fue exitosa.
+        return None
+    except ValueError as e:
+        # Maneja el caso en que la variable de entorno no esté definida.
+        print(f"Error en la configuración de variables de entorno: {e}")
+        return None
+    except Exception as e:
+        # Maneja otros errores generales.
+        print(f"Ocurrió un error inesperado: {e}")
         return None
 
 # Datos de las plantas
@@ -376,3 +390,5 @@ if __name__ == "__main__":
     if db is not None:
         # Asegúrate de que la variable 'plantas' esté definida previamente.
         insertar_plantas(db, plantas)
+        
+        #implementar .env

@@ -4,6 +4,11 @@
 # ObjectId: Permite trabajar con identificadores únicos en MongoDB.
 from pymongo import MongoClient, errors
 from bson.objectid import ObjectId
+from dotenv import load_dotenv  # Para cargar variables de entorno desde .env
+import os  # Para acceder a las variables de entorno
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 # Definimos una función para conectarnos a MongoDB.
 def conectar_mongodb():
@@ -15,18 +20,30 @@ def conectar_mongodb():
         None: Si ocurre un error en la conexión.
     """
     try:
-        # Crea una conexión al servidor MongoDB utilizando la URI proporcionada.
-        cliente = MongoClient(
-            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority"
-        )
+        # Obtén la URI desde las variables de entorno
+        mongo_uri = os.getenv("MONGO_URI")
+        if not mongo_uri:
+            raise ValueError("MONGO_URI no está definido en el archivo .env")
+        
+        # Crea una conexión al servidor MongoDB utilizando la URI del archivo .env
+        cliente = MongoClient(mongo_uri)
+        
         # Selecciona la base de datos "FinderVision" dentro del servidor.
         db = cliente["FinderVision"]
+        
         # Retorna el objeto de la base de datos.
         return db
     except errors.ConnectionFailure as e:
         # Captura y muestra un error si la conexión falla.
         print(f"Error de conexión a MongoDB: {e}")
-        # Retorna None si no se puede establecer la conexión.
+        return None
+    except ValueError as e:
+        # Maneja el caso en que la variable de entorno no esté definida.
+        print(f"Error en la configuración de variables de entorno: {e}")
+        return None
+    except Exception as e:
+        # Maneja otros errores generales.
+        print(f"Ocurrió un error inesperado: {e}")
         return None
 
 # Definimos una función para verificar si un planta_id existe en la base de datos.
@@ -44,7 +61,6 @@ def verificar_planta(db, planta_id):
     # Consulta la colección 'plantas' para contar documentos con el _id especificado.
     # Si encuentra al menos uno, retorna True; de lo contrario, False.
     return db.plantas.count_documents({"_id": planta_id}) > 0
-
 
 # Datos de las recetas
 recetas = [
@@ -301,5 +317,4 @@ if __name__ == "__main__":
     db = conectar_mongodb()
     # Si la conexión es exitosa, llama a la función 'insertar_recetas'.
     if db is not None:
-        # Asegúrate de que 'recetas' esté definido previamente como una lista de recetas a insertar.
         insertar_recetas(db, recetas)

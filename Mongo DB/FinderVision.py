@@ -3,6 +3,11 @@ from pymongo import MongoClient, errors  # MongoClient: para conectar a MongoDB;
 from bson.objectid import ObjectId  # ObjectId: permite trabajar con identificadores únicos de MongoDB.
 from datetime import datetime  # datetime: para registrar fechas y horas.
 import bcrypt  # bcrypt: librería para encriptar contraseñas de forma segura.
+from dotenv import load_dotenv  # dotenv: para cargar variables de entorno desde un archivo .env
+import os  # os: para acceder a las variables de entorno
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 # Función principal para conectar y gestionar MongoDB.
 def conectar_mongodb():
@@ -11,9 +16,14 @@ def conectar_mongodb():
     encripta contraseñas y maneja errores comunes.
     """
     try:
-        # Crear un cliente para conectarse a MongoDB usando una URI.
-        cliente = MongoClient(
-            "mongodb+srv://BrianSG230:KmAq8alNdVqEbCJ9@cluster-findervision.7kpdf.mongodb.net/FinderVision?retryWrites=true&w=majority")
+        # Obtener la URI desde las variables de entorno
+        mongo_uri = os.getenv("MONGO_URI")
+        if not mongo_uri:
+            raise ValueError("MONGO_URI no está definido en el archivo .env")
+
+        # Crear un cliente para conectarse a MongoDB usando la URI desde el archivo .env
+        cliente = MongoClient(mongo_uri)
+
         # Solicitar una contraseña al usuario.
         password_porpocionada = input("Por favor, ingrese su contraseña: ")
 
@@ -112,9 +122,13 @@ def conectar_mongodb():
     except errors.DuplicateKeyError as e:
         # Manejo de errores por duplicidad de claves únicas.
         print(f"Error: Ya existe un documento con la misma clave única. Detalles: {e}")
+    except ValueError as e:
+        # Manejo de errores cuando la URI no está definida.
+        print(f"Error en la configuración de variables de entorno: {e}")
     except Exception as e:
         # Manejo de otros errores inesperados.
         print(f"Ocurrió un error inesperado: {e}")
 
 # Llamar a la función principal para ejecutar el código.
-conectar_mongodb()
+if __name__ == "__main__":
+    conectar_mongodb()
