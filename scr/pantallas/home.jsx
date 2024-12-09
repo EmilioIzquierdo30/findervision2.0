@@ -87,20 +87,6 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("CameraScreen")}
-        >
-          <Icon name="camera-outline" size={30} color="#4CAF50" />
-          <Text style={styles.buttonText}>Identificar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("ChatBotScreen")}
-        >
-          <Icon name="chatbubbles-outline" size={30} color="#4CAF50" />
-          <Text style={styles.buttonText}>Asesor de Plantas</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
           onPress={() => setPremiumVisible(true)} // Abrir modal Premium
         >
           <Icon name="star-outline" size={30} color="#4CAF50" />
@@ -127,7 +113,10 @@ const HomeScreen = ({ navigation }) => {
       </ScrollView>
 
       {/* Modal Premium */}
-      <PremiumPopup isVisible={isPremiumVisible} onClose={() => setPremiumVisible(false)} />
+      <PremiumPopup
+        isVisible={isPremiumVisible}
+        onClose={() => setPremiumVisible(false)}
+      />
 
       {/* Popup para Planta */}
       {selectedPlant && (
