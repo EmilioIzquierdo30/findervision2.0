@@ -1,0 +1,271 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram id="MkgTcLbmQZA7Ex0CsIko" name="Página-2">
+    <mxGraphModel dx="3000" dy="2943" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-55" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#fa6800;fontColor=#000000;strokeColor=#C73500;" vertex="1" parent="1">
+          <mxGeometry x="1893" y="23" width="541" height="541" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-38" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="1">
+          <mxGeometry x="990" y="-48" width="820" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-14" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="279" y="16" width="597" height="597" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-2" value="1&lt;div&gt;Login De Usuario&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="354" y="128" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-3" value="1.1&lt;div&gt;Datos de autenticación del usuario&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="498" y="187" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-2" target="Zm9xg3yVM9zmIRxHuhLO-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="395" y="334" as="sourcePoint" />
+            <mxPoint x="445" y="284" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-6" value="Entrada" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="451" y="169" width="60" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-7" value="1.2&lt;div&gt;Acceso De Autenticación&amp;nbsp;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="617" y="300" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-8" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-3" target="Zm9xg3yVM9zmIRxHuhLO-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="477" y="369" as="sourcePoint" />
+            <mxPoint x="527" y="319" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-9" value="Salida" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="582" y="259" width="51" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-10" value="1.2.1&lt;div&gt;Acceso Denegado&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="553" y="419" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-11" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-7" target="Zm9xg3yVM9zmIRxHuhLO-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="737" y="466" as="sourcePoint" />
+            <mxPoint x="787" y="416" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-12" value="1.2.2&lt;div&gt;Acceso&amp;nbsp;&lt;/div&gt;&lt;div&gt;Autorizado&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="1">
+          <mxGeometry x="731" y="407" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-13" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-7" target="Zm9xg3yVM9zmIRxHuhLO-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="738" y="379" as="sourcePoint" />
+            <mxPoint x="788" y="329" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-15" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.506;exitY=1.065;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-16" target="Zm9xg3yVM9zmIRxHuhLO-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="74" as="sourcePoint" />
+            <mxPoint x="340" y="24" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-16" value="Login" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="266" y="52" width="47" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="917" y="586" as="sourcePoint" />
+            <mxPoint x="889" y="518" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-19" value="2&lt;div&gt;Solicitud&amp;nbsp; De Escaneo&amp;nbsp; Del Usuario&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="1109.77" y="83.92" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-20" value="Escaneo De Plantas" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="972" y="33" width="127" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-21" value="Acceso A La Aplicación" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="846" y="521" width="141" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-22" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.356;exitY=0.967;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-20" target="Zm9xg3yVM9zmIRxHuhLO-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1027.0009999999997" y="61.99999999999993" as="sourcePoint" />
+            <mxPoint x="1088.77" y="123.92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-23" value="2.1&lt;div&gt;Recibe La Imagen De La Planta&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="1243.77" y="206.92" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-24" value="Escanear Planta" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1210.77" y="153.92" width="106" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-19" target="Zm9xg3yVM9zmIRxHuhLO-23">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1190.77" y="318.92" as="sourcePoint" />
+            <mxPoint x="1240.77" y="268.92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-26" value="2.2&lt;div&gt;Procesa La Imagen Y Devuelve Una Identificación&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="1363.77" y="319.92" width="111" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-27" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-23" target="Zm9xg3yVM9zmIRxHuhLO-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1304.77" y="432.92" as="sourcePoint" />
+            <mxPoint x="1354.77" y="382.92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-28" value="Identificar Planta" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1336.77" y="277.92" width="107" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-29" value="2.3&lt;div&gt;Resultado Del Conocimiento De La Planta&amp;nbsp;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="1512.77" y="473.92" width="92" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-30" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-26" target="Zm9xg3yVM9zmIRxHuhLO-29">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1421.77" y="539.92" as="sourcePoint" />
+            <mxPoint x="1471.77" y="489.92" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-31" value="Salida" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1491.77" y="422.92" width="51" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-32" value="2.3.1&lt;div&gt;Resultado De La Planta Medicinal&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="1456.77" y="610.92" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-33" value="2.3.2&lt;div&gt;Resultado De La Planta Peligrosa&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e51400;fontColor=#ffffff;strokeColor=#B20000;" vertex="1" parent="1">
+          <mxGeometry x="1632" y="542" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-34" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-29" target="Zm9xg3yVM9zmIRxHuhLO-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1571" y="746" as="sourcePoint" />
+            <mxPoint x="1621" y="696" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-35" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-29" target="Zm9xg3yVM9zmIRxHuhLO-32">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1610" y="755" as="sourcePoint" />
+            <mxPoint x="1660" y="705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-36" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.546;entryY=0.115;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-32" target="Zm9xg3yVM9zmIRxHuhLO-56">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1589" y="796" as="sourcePoint" />
+            <mxPoint x="1545" y="776" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-37" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.51;entryY=0.013;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-33" target="Zm9xg3yVM9zmIRxHuhLO-57">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1668" y="768" as="sourcePoint" />
+            <mxPoint x="1716" y="719" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-39" value="3&lt;div&gt;Solicitud De Consulta Del Catálogo&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+          <mxGeometry x="2019" y="79.92" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-40" value="Catálogo De Plantas&amp;nbsp;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1897" y="7" width="131" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-41" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.453;exitY=1.064;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-40" target="Zm9xg3yVM9zmIRxHuhLO-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1931" y="173" as="sourcePoint" />
+            <mxPoint x="1981" y="123" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-42" value="3.1&lt;div&gt;Mustra Información De La Planta&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+          <mxGeometry x="2130" y="224.5" width="111" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-43" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-39" target="Zm9xg3yVM9zmIRxHuhLO-42">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1971" y="454" as="sourcePoint" />
+            <mxPoint x="2021" y="404" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-44" value="Consulta De La Planta" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2114" y="167" width="138" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-45" value="3..1.2&lt;div&gt;Información De La Planta Medicinal&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+          <mxGeometry x="2031" y="367" width="99" height="99" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-46" value="3.1.3&lt;div&gt;Información De La Planta Peligrosa&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" vertex="1" parent="1">
+          <mxGeometry x="2257" y="378" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-49" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.519;entryY=0.038;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-45" target="Zm9xg3yVM9zmIRxHuhLO-53">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2045" y="652" as="sourcePoint" />
+            <mxPoint x="2067" y="611" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-50" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-42" target="Zm9xg3yVM9zmIRxHuhLO-45">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2127" y="468" as="sourcePoint" />
+            <mxPoint x="2177" y="418" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-51" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-42" target="Zm9xg3yVM9zmIRxHuhLO-46">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2147" y="541" as="sourcePoint" />
+            <mxPoint x="2197" y="491" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-52" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.496;entryY=0.038;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-46" target="Zm9xg3yVM9zmIRxHuhLO-54">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2289" y="629" as="sourcePoint" />
+            <mxPoint x="2332" y="572" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-53" value="Información Detallada De La Planta Medicinal" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1881" y="627" width="261" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-54" value="Información Detallada De La Planta Peligrosa" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="2183" y="627" width="261" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-56" value="Información De La Planta Medicinal" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1377" y="805" width="207" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-57" value="Información De La Planta Peligrosa" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1627" y="737" width="207" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-60" value="&lt;b&gt;&lt;font style=&quot;font-size: 48px;&quot;&gt;Diagrama De Flujos De Datos&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1001" y="-717" width="688" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-61" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;b style=&quot;&quot;&gt;Reconocimiento De Plantas Medicinales Y Peligrosas&lt;/b&gt;&lt;/font&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;align=center;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" vertex="1" parent="1">
+          <mxGeometry x="1241" y="-450" width="284" height="284" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-62" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;&lt;b&gt;Diagrama De Contexto&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1143" y="-596" width="404" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-63" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.487;exitY=1.103;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-65" target="Zm9xg3yVM9zmIRxHuhLO-61">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1184" y="-436" as="sourcePoint" />
+            <mxPoint x="1039" y="-550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-64" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;Ingresa Fotogrfia De La Planta&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1424.5" y="-503" width="220" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-65" value="&lt;b&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Ingresa Los Datos De Usuario Y Con Contraseña&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="967" y="-503" width="342" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-66" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.487;exitY=1.084;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-64" target="Zm9xg3yVM9zmIRxHuhLO-61">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1521" y="-454" as="sourcePoint" />
+            <mxPoint x="1819" y="-364" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-67" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.526;entryY=0.054;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-61" target="Zm9xg3yVM9zmIRxHuhLO-70">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1153" y="-44" as="sourcePoint" />
+            <mxPoint x="1232" y="-137" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-68" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.466;entryY=-0.123;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Zm9xg3yVM9zmIRxHuhLO-61" target="Zm9xg3yVM9zmIRxHuhLO-69">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1561" y="-31" as="sourcePoint" />
+            <mxPoint x="1514" y="-142" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-69" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Devuelve La Información De La Planta&amp;nbsp;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1398" y="-123" width="262" height="29" as="geometry" />
+        </mxCell>
+        <mxCell id="Zm9xg3yVM9zmIRxHuhLO-70" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Inicio De Sesión Exitosa&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1130.77" y="-123" width="169" height="29" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

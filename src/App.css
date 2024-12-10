@@ -1,9 +1,8 @@
-/* Estilos globales */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5; /* Cambia el color de fondo para mayor contraste */
+  background-color: #f5f5f5; /* Fondo neutro */
 }
 
 a {
@@ -14,56 +13,89 @@ a {
 /* Encabezado */
 .header {
   display: flex;
-  align-items: center; /* Alinear verticalmente los elementos en el centro */
-  justify-content: space-between; /* Distribuir el espacio entre los elementos del encabezado */
-  padding: 5px 15px; /* Reducir el padding para compactar la barra */
-  background-color: #e8f5e9; /* Mantener el color verde claro de fondo */
-  min-height: 40px; /* Reducir la altura mínima para ocupar menos espacio */
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Fondo verde */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
 }
 
 .header img {
-  max-height: 30px; /* Limitar la altura de las imágenes (logo) para que no ocupen demasiado espacio */
-  margin-right: 10px; /* Añadir un pequeño margen derecho para separación entre logos */
-}
-
-
-.nav-links {
-  display: flex;
-  gap: 15px; /* Ajustar la separación entre enlaces */
-  font-size: 14px; /* Reducir ligeramente el tamaño de fuente para optimizar espacio */
+  max-height: 40px; /* Limitar altura del logo */
+  margin-right: 15px; /* Separación del logo */
 }
 
 .nav-links a {
   font-weight: bold;
-  color: #2e7d32;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #1b5e20; /* Efecto hover para los enlaces */
+  color: #dcedc8; /* Verde claro al pasar el mouse */
 }
 
-/* Barra de búsqueda */
+/* Estilo para los botones del header */
+.nav-links button,
+.icons button {
+  background: none;
+  border: none;
+  color: #ffffff; /* Blanco */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 20px; /* Bordes redondeados */
+}
+
+.nav-links button:hover,
+.icons button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo blanco translúcido */
+  color: #f0f0f0; /* Un tono de blanco más suave */
+}
+
+/* Para que mantengan el mismo espaciado */
+.nav-links,
+.icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
 .search {
-  margin: 0 10px; /* Reducir el margen alrededor de la barra de búsqueda */
+  display: flex;
+  align-items: center;
+  background-color: white; /* Fondo blanco para barra de búsqueda */
+  border-radius: 20px;
+  padding: 5px 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 .search input {
-  padding: 7px 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px; /* Mejora la estética con bordes más redondeados */
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333; /* Texto oscuro */
   width: 200px;
-  transition: width 0.3s ease;
+  background: transparent;
+}
+
+.search input::placeholder {
+  color: #aaa; /* Color gris para placeholder */
 }
 
 .search input:focus {
   outline: none;
-  width: 250px; /* Ancho dinámico cuando se enfoca */
+  width: 250px; /* Expandir el campo de búsqueda */
 }
 
 .search i {
-  color: #2e7d32;
+  color: #4CAF50; /* Icono verde */
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -71,282 +103,593 @@ a {
 .icons {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 15px;
 }
 
 .icons i {
-  font-size: 20px; /* Aumenta el tamaño de los iconos */
-  color: #2e7d32;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
 .icons i:hover {
-  color: #1b5e20; /* Efecto hover para iconos */
+  color: #dcedc8; /* Verde claro al pasar el mouse */
 }
 
 .icons a {
   font-weight: bold;
-  color: #2e7d32;
-  font-size: 15px;
-  transition: color 0.3s ease;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #388e3c; /* Verde más oscuro */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .icons a:hover {
-  color: #1b5e20; /* Efecto hover para enlaces */
+  background-color: #2e7d32; /* Verde más oscuro al pasar el mouse */
+  color: #fff;
+}
+
+/* Contenedor para la barra lateral */
+.sidebar {
+  display: flex;
+  flex-direction: column; /* Disposición en columna */
+  align-items: flex-start; /* Alinear botones a la izquierda */
+  gap: 1px; /* Espacio entre los botones */
+  padding: 10px;
+  background-color: #e8f5e9; /* Fondo verde claro */
+  border-right: 2px solid #c8e6c9; /* Línea separadora */
+  height: 100%;
+}
+
+/* Botones de la lista */
+.sidebar a {
+  display: block;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  padding: 8px 15px; /* Espaciado interno */
+  background-color: #4caf50; /* Verde */
+  color: #fff; /* Texto blanco */
+  text-align: center; /* Centrar texto */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none; /* Quitar subrayado */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover en los botones */
+.sidebar a:hover {
+  background-color: #388e3c; /* Verde más oscuro */
+  transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Opcional: para un scroll si la lista es muy grande */
+.sidebar {
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.sidebar button {
+  background-color: #4CAF50; /* Verde oscuro */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: left;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar button:hover {
+  background-color: #45a049; /* Verde más brillante */
+  transform: scale(1.03); /* Ligeramente más grande al pasar el mouse */
 }
 
 /* Sección principal */
 .main {
   display: flex;
-  padding: 25px;
+  flex-direction: row;
   background-color: #fff;
-  min-height: 80vh; /* Garantiza que la sección ocupe toda la ventana visible */
+  padding: 20px;
+  min-height: 100vh;
 }
 
-.sidebar {
-  width: 220px;
-  padding-right: 20px;
-  border-right: 1px solid #ddd;
-}
-
-.sidebar a {
-  display: block;
-  padding: 12px 0;
-  font-size: 15px;
-  color: #2e7d32;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.sidebar a:hover {
-  background-color: #e8f5e9; /* Agrega un fondo suave al hover */
-  color: #1b5e20;
-}
-
-/* Sección de contenido */
 .content {
   flex: 1;
-  padding-left: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Suaviza los bordes */
 }
 
 .content h1 {
-  font-size: 28px; /* Agranda el título */
-  margin-bottom: 25px;
-  color: #2e7d32;
+  font-size: 28px;
+  color: #388e3c;
+  margin-bottom: 20px;
   font-weight: bold;
 }
 
-/* Lista de Plantas */
+/* Botón Mostrar Todas */
+.sidebar button:first-child {
+  background-color: #2e7d32;
+}
+
+.sidebar button:first-child:hover {
+  background-color: #1b5e20;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .sidebar {
+      width: 100%;
+      height: auto;
+  }
+
+  .main {
+      flex-direction: column;
+  }
+}
+
+/* Contenedor principal */
 .lista-plantas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Diseño de cuadrícula adaptable */
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas adaptativas */
+  gap: 20px; /* Espaciado entre contenedores */
+  padding: 20px;
+  justify-items: center; /* Centrar los contenedores */
 }
 
-/* Contenedor de cada planta */
+/* Contenedor de plantas medicinales */
 .planta {
+  background-color: #fff9c4; /* Fondo amarillo claro */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 20px;
+  text-align: center; /* Centrado de texto */
+  max-width: 300px; /* Ancho máximo para un diseño uniforme */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación suave */
+}
+
+/* Contenedor de plantas medicinales */
+.planta.medicinal {
   background-color: #fff9c4; /* Color amarillo claro */
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  text-align: center;
-  margin: 10px;
+  text-align: center; /* Centrado de texto */
+  margin: 10px; /* Espacio entre contenedores */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición suave */
 }
 
-.planta h2 {
-  font-size: 1.2em;
-  color: #388e3c;
-}
-
-.planta p {
-  color: #757575;
-  font-size: 0.9em;
-}
-
-.planta:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo para la imagen dentro del contenedor de la planta */
-.planta-imagen {
-  width: 100px; /* Ajusta el ancho de la imagen */
-  height: 100px; /* Ajusta la altura de la imagen */
-  object-fit: cover; /* Asegura que la imagen se recorte para encajar */
-  border-radius: 50%; /* Hace la imagen circular */
-  margin-bottom: 10px; /* Espacio debajo de la imagen */
+/* Hover para plantas medicinales */
+.planta.medicinal:hover {
+  transform: translateY(-5px); /* Elevar contenedor */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
 }
 
 
-.planta-info {
-  text-align: center;
-}
-
-.planta-nombre {
-  font-weight: bold;
-  color: #2e7d32;
-  margin-bottom: 5px;
-}
-
-.planta-categoria {
-  font-size: 14px;
-  color: #757575;
-}
-
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.5s;
-}
-
-/* Modal */
-.modal-content {
-  background: white;
+/* Contenedor de plantas peligrosas */
+.planta.peligrosa {
+  background-color: #ffebee; /* Fondo rojo claro */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
   padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 500px;
-  animation: slideIn 0.3s;
+  text-align: center; /* Centrado de texto */
+  max-width: 300px; /* Ancho máximo para un diseño uniforme */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición suave */
+  border: 2px solid #d32f2f; /* Borde rojo */
 }
 
+.planta.peligrosa:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+
+/* Imagen circular */
+.planta img {
+  width: 120px; /* Tamaño uniforme para imágenes */
+  height: 120px;
+  object-fit: cover; /* Ajustar imagen al contenedor */
+  border-radius: 50%; /* Hacer la imagen circular */
+  margin-bottom: 15px; /* Espacio debajo de la imagen */
+}
+
+
+/* Título de la planta */
+.planta h2 {
+  font-size: 20px; /* Tamaño del título */
+  color: #388e3c; /* Verde oscuro */
+  margin-bottom: 10px;
+}
+
+/* Estilo para el título de las plantas peligrosas */
+.planta.peligrosa h2 {
+  font-size: 20px;
+  color: #b71c1c; /* Rojo oscuro */
+  margin-bottom: 10px;
+}
+
+
+/* Descripción de la planta */
+.planta p {
+  font-size: 14px;
+  color: #757575; /* Gris oscuro */
+  margin-bottom: 15px;
+}
+
+/* Botón de acción */
+.planta button {
+  background-color: #4CAF50; /* Fondo verde */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.planta button:hover {
+  background-color: #388e3c; /* Verde más oscuro al pasar el mouse */
+}
+
+.planta.medicinal button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.planta.medicinal button:hover {
+    background-color: #388e3c;
+}
+
+/* Estilo para el botón de advertencia */
+.planta.peligrosa button {
+  background-color: #d32f2f; /* Rojo */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.planta.peligrosa button:hover {
+  background-color: #b71c1c; /* Rojo más oscuro */
+}
+
+/* Animación de elevación y sombra al pasar el mouse */
+.planta:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+/* Animación de aparición del modal */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
+/* Animación de deslizamiento del modal */
 @keyframes slideIn {
   from { transform: translateY(-50px); }
   to { transform: translateY(0); }
 }
 
-/* Imagen de la planta en el modal */
-.modal img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  cursor: pointer; /* Mostrar que la imagen es clickeable */
-}
-
-/* Animación de imagen ampliada */
-.modal-image.ampliada {
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  border-radius: 0;
-  transition: width 0.3s ease;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Encabezado de la planta */
-.modal h2 {
+.modal {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal.peligrosa {
+  border: 2px solid #d9534f; /* Rojo para plantas peligrosas */
+}
+
+.modal-title {
+  color: #2a7d2a; /* Verde oscuro */
   font-size: 24px;
-  color: #2e7d32;
-  margin-bottom: 15px;
-  text-align: center; /* Centrar el título */
-}
-
-/* Texto general del modal */
-.modal p {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 15px; /* Añadir espacio entre párrafos */
-}
-
-/* Títulos de las secciones en el modal */
-.modal-content .section-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #2e7d32;
-  margin-top: 20px;
   margin-bottom: 10px;
 }
 
-/* Botón de cierre del modal */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #999;
-  cursor: pointer;
+.modal-description {
+  color: #555;
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 1.5;
 }
 
-.close:hover {
-  color: #2e7d32;
+.modal-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px 0;
 }
 
-.sidebar {
-  max-height: 400px; /* Establece una altura máxima que necesite scrollbar */
-  overflow-y: auto;  /* Habilita el scroll vertical */
+.section-title {
+  color: #2a7d2a;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
-.sidebar a {
-  display: block;
-  padding: 10px;
-  color: green;
-  text-decoration: none;
-}
-
-.sidebar a:hover {
-  background-color: #f0f0f0;
-}
-
-.logo {
-  max-height: 50px; /* Ajusta la altura máxima del logo */
-  margin-right: 15px; /* Espacio a la derecha del logo si hay otros elementos */
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Plantas Peligrosas */
-.planta.peligrosa {
-  border: 2px solid #d32f2f; /* Borde rojo intenso */
-  background-color: #ffebee; /* Fondo rojo claro */
-  color: #c62828; /* Texto rojo oscuro */
-}
-
-.planta.peligrosa h2 {
-  color: #b71c1c; /* Título en un rojo más oscuro */
-}
-
-/* Botón de advertencia */
 .button-advertencia {
-  background-color: #ff1744; /* Rojo fuerte */
-  color: white;
-  padding: 10px 15px;
-  font-weight: bold;
+  background-color: #2a7d2a;
+  color: #fff;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  font-size: 14px;
   cursor: pointer;
+  margin-top: 20px;
   transition: background-color 0.3s ease;
 }
 
 .button-advertencia:hover {
-  background-color: #d50000; /* Rojo más oscuro al pasar el mouse */
+  background-color: #1e5c1e;
 }
 
-/* Estilo de advertencia en el modal */
-.modal.peligrosa .modal-content {
-  background-color: #ffebee; /* Fondo del modal en rojo claro */
-  color: #c62828; /* Texto en rojo de advertencia */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
 }
 
-.modal.peligrosa .modal-content h2 {
-  color: #b71c1c; /* Título en rojo oscuro */
+/* Contenido del Modal */
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90%;
+  overflow-y: auto; /* Scroll vertical si el contenido es extenso */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  position: relative; /* Necesario para el botón de cierre */
+  animation: fadeIn 0.3s ease;
 }
 
-.modal.peligrosa .section-title {
-  color: #d32f2f; /* Color de los subtítulos en rojo */
+/* Imagen con animación */
+.modal img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: all 0.3s ease; /* Transición suave */
+  cursor: pointer;
+}
+
+.modal img.ampliada {
+  width: 100%; /* Ancho completo cuando está ampliada */
+  height: auto; /* Ajustar altura automáticamente */
+  border-radius: 12px; /* Bordes redondeados para armonizar con el modal */
+}
+
+/* Texto dentro del modal */
+.modal-content h2 {
+  font-size: 24px;
+  color: #388e3c; /* Verde oscuro */
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.modal-content .section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #388e3c; /* Verde oscuro */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Botón de cierre */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #388e3c;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo img {
+  max-height: 50px; /* Ajusta la altura máxima */
+  max-width: auto; /* Mantén las proporciones de ancho automáticamente */
+  object-fit: contain; /* Asegura que no se deforme */
+  margin: 5px 0; /* Espaciado superior e inferior */
+}
+
+.logo {
+  display: flex;
+  align-items: center; /* Centra verticalmente el logo */
+  justify-content: center; /* Centra horizontalmente */
+  padding: 0; /* Quita relleno si es necesario */
+  margin: 0; /* Elimina márgenes extras */
+}
+
+/* General */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea */
+  justify-content: space-between; /* Espacia los elementos en pantallas grandes */
+  align-items: center;
+  padding: 10px;
+  background-color: #4caf50;
+}
+
+/* Logo */
+.logo img {
+  max-height: 50px;
+  width: auto;
+}
+
+/* Navegación */
+.nav-links {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav-links button:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #e8f5e9;
+  width: 220px;
+  max-height: calc(100vh - 80px); /* Resta el espacio ocupado por el header */
+  overflow-y: auto;
+}
+
+.sidebar a {
+  text-align: center;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.sidebar a:hover {
+  background-color: #388e3c;
+}
+
+/* Main Content */
+.main {
+  display: flex;
+  flex: 1;
+}
+
+/* Content Section */
+.content {
+  flex: 1;
+  padding: 10px;
+}
+
+/* Responsive: Pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    width: 100%; /* La barra lateral ocupa todo el ancho */
+    max-height: auto; /* Permite que crezca según el contenido */
+    margin-bottom: 10px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+}
+
+/* Responsive: Pantallas muy pequeñas */
+@media screen and (max-width: 480px) {
+  .search input {
+    width: 100%; /* Ajusta la barra de búsqueda */
+    margin-bottom: 10px;
+  }
+
+  .nav-links button {
+    font-size: 14px;
+  }
+
+  .sidebar a {
+    font-size: 14px; /* Reduce el tamaño del texto */
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    max-width: 150px; /* Reduce el tamaño máximo en pantallas medianas */
+  }
+  .logo img {
+    max-height: 40px; /* Ajusta la altura de la imagen */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    max-width: 120px; /* Más pequeño para pantallas pequeñas */
+  }
+  .logo img {
+    max-height: 30px; /* Reduce aún más la altura de la imagen */
+  }
 }
