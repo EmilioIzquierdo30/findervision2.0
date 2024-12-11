@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const CameraScreenWeb = () => (
-  <View style={styles.container}>
-    <Text style={styles.text}>¡Esto es para la web!</Text>
-  </View>
-);
+const CameraScreenAndroid = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>¡Esto es para la web!</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "#000",
   },
   text: {
     fontSize: 20,
-    color: "#333",
+    color: "#fff",
   },
 });
 
-export default CameraScreenWeb;
+export default CameraScreenAndroid;

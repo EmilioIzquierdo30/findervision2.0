@@ -1,7 +1,7 @@
-import CameraScreenWeb from "./CameraScreenWeb.jsx";
-import CameraScreenAndroid from "./CameraScreenAndroid.jsx";
 import { Platform } from "react-native";
+import CameraScreenWeb from "./CamaraScreenWeb"; 
+import CameraScreenAndroid from "./CamaraScreenAndroid"; 
 
 const CameraScreen = Platform.OS === "web" ? CameraScreenWeb : CameraScreenAndroid;
 
-export default CameraScreen;  
+export default CameraScreen;
