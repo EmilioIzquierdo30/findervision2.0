@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import DiagnoseScreen from "../pantallas/diagnostico.jsx";
 import MyPlantsScreen from "../pantallas/misplantas.jsx";
 import HomeScreen from "../pantallas/home.jsx";
-import CameraScreen from "../pantallas/camara.jsx"; // Pantalla de Identificar
+import CameraScreen from "../main/camara.jsx"; // Pantalla de Identificar
 import ChatBotScreen from "../pantallas/chatbot.jsx"; // Pantalla de Asesor de Plantas
 import MoreStackNavigator from "../navegacion/morenavigation.jsx"; // Stack para "Ver más"
 
