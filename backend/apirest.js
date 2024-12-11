@@ -52,7 +52,7 @@ app.get("/api/plantasagregar", async (req, res) => {
 
 app.get("/api/plantashome", async (req, res) => {
   try {
-    const plantasHome = await Planta.find({}, { nombre_cientifico: 1, imagen: 1 }).limit(5);
+    const plantasHome = await Planta.find({}, { nombre_cientifico: 1, imagen: 1 });
     res.status(200).json(plantasHome);
   } catch (err) {
     console.error("Error al obtener las plantas para el home:", err);

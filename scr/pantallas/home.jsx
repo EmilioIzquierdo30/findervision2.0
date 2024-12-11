@@ -3,16 +3,17 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   TextInput,
   TouchableOpacity,
   Image,
+  FlatList,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import PlantPopup from "../componentes/popupplanta.jsx"; // Popup de planta
 import PremiumPopup from "./premuim.jsx"; // Importa el modal Premium
 
-const API_URL = "https://findervision2-0-2nxckh2g2-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome";
+const API_URL =
+  "https://findervision2-0-2nxckh2g2-emilio-izquierdos-projects-b6e08b79.vercel.app/api/plantashome";
 
 const HomeScreen = ({ navigation }) => {
   const [isPremiumVisible, setPremiumVisible] = useState(false); // Control del modal Premium
@@ -20,6 +21,7 @@ const HomeScreen = ({ navigation }) => {
   const [selectedPlant, setSelectedPlant] = useState(null); // Planta seleccionada para mostrar en el popup
   const [plants, setPlants] = useState([]); // Lista de plantas cargadas desde la API
   const [searchQuery, setSearchQuery] = useState(""); // Consulta de búsqueda
+  const [isListCollapsed, setIsListCollapsed] = useState(true); // Estado para la lista colapsable
 
   // Fetch dinámico de las plantas desde la API
   useEffect(() => {
@@ -48,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {/* Buscador */}
       <View style={styles.searchContainer}>
         <TextInput
@@ -94,23 +96,42 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Plantas populares */}
-      <Text style={styles.sectionTitle}>Plantas populares</Text>
-      <ScrollView horizontal style={styles.plantsContainer}>
-        {filteredPlants.map((plant) => (
-          <TouchableOpacity
-            key={plant._id} // Usa _id como clave única
-            style={styles.plantCard}
-            onPress={() => openPlantPopup(plant)}
-          >
-            <Image
-              source={{ uri: plant.imagen || "https://via.placeholder.com/150" }} // Imagen de la planta
-              style={styles.plantImage}
-            />
-            <Text style={styles.plantTitle}>{plant.nombre_cientifico}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      {/* Lista colapsable */}
+      <TouchableOpacity
+        style={styles.collapseButton}
+        onPress={() => setIsListCollapsed(!isListCollapsed)}
+      >
+        <Text style={styles.collapseButtonText}>
+          {isListCollapsed ? "Mostrar todas las plantas" : "Ocultar lista"}
+        </Text>
+        <Icon
+          name={isListCollapsed ? "chevron-down-outline" : "chevron-up-outline"}
+          size={20}
+          color="#4CAF50"
+        />
+      </TouchableOpacity>
+
+      {!isListCollapsed && (
+        <FlatList
+          data={filteredPlants}
+          keyExtractor={(item) => item._id}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.plantCard}
+              onPress={() => openPlantPopup(item)}
+            >
+              <Image
+                source={{
+                  uri: item.imagen || "https://via.placeholder.com/150",
+                }} // Imagen de la planta
+                style={styles.plantImage}
+              />
+              <Text style={styles.plantTitle}>{item.nombre_cientifico}</Text>
+            </TouchableOpacity>
+          )}
+          contentContainerStyle={styles.plantList}
+        />
+      )}
 
       {/* Modal Premium */}
       <PremiumPopup
@@ -126,7 +147,7 @@ const HomeScreen = ({ navigation }) => {
           plant={selectedPlant}
         />
       )}
-    </ScrollView>
+    </View>
   );
 };
 
@@ -160,21 +181,27 @@ const styles = StyleSheet.create({
   },
   button: { alignItems: "center", marginBottom: 15 },
   buttonText: { marginTop: 5, textAlign: "center" },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginHorizontal: 15,
+  collapseButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginVertical: 10,
   },
-  plantsContainer: { paddingHorizontal: 15 },
-  plantCard: { width: 120, marginRight: 10 },
-  plantImage: { width: "100%", height: 100, borderRadius: 8 },
-  plantTitle: {
-    marginTop: 5,
-    textAlign: "center",
-    fontSize: 14,
-    fontStyle: "italic",
+  collapseButtonText: {
+    fontSize: 16,
+    color: "#4CAF50",
+    marginRight: 5,
   },
+  plantList: { padding: 10 },
+  plantCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+  },
+  plantImage: { width: 50, height: 50, borderRadius: 5, marginRight: 10 },
+  plantTitle: { fontSize: 16 },
 });
 
 export default HomeScreen;

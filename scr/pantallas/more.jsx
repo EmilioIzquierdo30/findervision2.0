@@ -17,12 +17,6 @@ const MoreScreen = ({ navigation }) => {
       onPress: () => navigation.navigate('Configuraciones'),
     },
     {
-      id: 3,
-      title: 'Favoritos',
-      icon: 'heart-outline',
-      onPress: () => navigation.navigate('Favoritos'),
-    },
-    {
       id: 4,
       title: 'Notificaciones',
       icon: 'notifications-outline',
