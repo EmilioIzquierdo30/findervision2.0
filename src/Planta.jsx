@@ -1,62 +1,72 @@
-import React from 'react';
-// Importa React para definir el componente funcional.
+import React, { useState } from "react";
 
-const Planta = ({ planta, toggleFavorito, isFavorito }) => {
-    // Define el componente `Planta` que recibe las props:
-    // - `planta`: objeto con la información de la planta.
-    // - `toggleFavorito`: función para alternar el estado de favorito.
-    // - `isFavorito`: booleano que indica si la planta está en favoritos.
+const Planta = ({ planta }) => {
+  const [mostrarDetalles, setMostrarDetalles] = useState(false);
+  const [imagenAmpliada, setImagenAmpliada] = useState(false);
 
-    const plantaClase = planta.esPeligrosa ? 'planta peligrosa' : 'planta';
-    // Define una clase CSS dinámica según si la planta es peligrosa o no.
+  const toggleDetalles = () => setMostrarDetalles(!mostrarDetalles);
+  const toggleImagen = () => setImagenAmpliada(!imagenAmpliada);
 
-    return (
-        // Renderiza la interfaz de usuario para mostrar una planta.
-        <div className={`${plantaClase} contenedor-planta`}>
-            {/* Contenedor principal de la planta con clase CSS dinámica. */}
-            <h2 className="titulo-planta">{planta.nombre}</h2>
-            {/* Muestra el nombre de la planta con estilo. */}
+  return (
+    <>
+      {/* Tarjeta inicial */}
+      <div className="planta">
+        <h2>{planta.nombre}</h2>
+        <img
+          src={planta.imagen}
+          alt={planta.nombre}
+          onClick={toggleDetalles}
+          style={{ cursor: "pointer" }}
+        />
+        <p>{planta.descripcion}</p>
+        <button className="favorito-boton">Agregar a Favoritos</button>
+      </div>
 
-            {planta.imagen && (
-                // Verifica si la planta tiene una imagen antes de renderizarla.
-                <img src={planta.imagen} alt={planta.nombre} className="planta-imagen" />
-                // Muestra la imagen de la planta con una clase CSS para su estilo.
-            )}
-
-            <div className="informacion">
-                <h3 className="subtitulo">Descripción:</h3>
-                <p className="descripcion">{planta.descripcion}</p>
-                {/* Muestra la descripción de la planta. */}
-
-                <h3 className="subtitulo">Beneficios:</h3>
-                <p className="beneficios">{planta.beneficios}</p>
-                {/* Muestra los beneficios de la planta si están disponibles. */}
-
-                {planta.recetas && planta.recetas.length > 0 && (
-                    <>
-                        <h3 className="subtitulo">Recetario:</h3>
-                        <ul className="recetario">
-                            {planta.recetas.map((receta, index) => (
-                                <li key={index}>
-                                    <h4>{receta.titulo}</h4>
-                                    <p><strong>Descripción:</strong> {receta.descripcion}</p>
-                                    <p><strong>Ingredientes:</strong> {receta.ingredientes}</p>
-                                    <p><strong>Instrucciones:</strong> {receta.instrucciones}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    </>
-                )}
+      {/* Modal con detalles */}
+      {mostrarDetalles && (
+        <div className="modal-overlay" onClick={toggleDetalles}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={toggleDetalles}>
+              &times;
+            </span>
+            <h2>{planta.nombre}</h2>
+            {/* Imagen con opción de ampliación */}
+            <img
+              src={planta.imagen}
+              alt={planta.nombre}
+              className={imagenAmpliada ? "modal-img ampliada" : "modal-img"}
+              onClick={toggleImagen}
+            />
+            <div className="modal-content">
+              <div className="modal-section">
+                <h3>Categoría:</h3>
+                <p>{planta.categoria}</p>
+              </div>
+              <div className="modal-section">
+                <h3>Descripción:</h3>
+                <p>{planta.descripcion}</p>
+              </div>
+              <div className="modal-section">
+                <h3>Beneficios:</h3>
+                <p>{planta.beneficios}</p>
+              </div>
+              <div className="modal-section">
+                <h3>Receta:</h3>
+                {planta.recetas.map((receta, index) => (
+                  <div key={index} className="receta">
+                    <h4>{receta.titulo}</h4>
+                    <p><strong>Descripción:</strong> {receta.descripcion}</p>
+                    <p><strong>Ingredientes:</strong> {receta.ingredientes}</p>
+                    <p><strong>Instrucciones:</strong> {receta.instrucciones}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <div className="acciones">
-                <button onClick={() => toggleFavorito(planta.id)}>
-                    {isFavorito ? 'Quitar de Favoritos' : 'Agregar a Favoritos'}
-                </button>
-            </div>
+          </div>
         </div>
-    );
+      )}
+    </>
+  );
 };
 
 export default Planta;
-// Exporta el componente para ser utilizado en otros archivos.

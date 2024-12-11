@@ -1,5 +1,8 @@
 .catalogo {
-  padding: 20px; /* Añade un relleno de 20px alrededor del catálogo para espaciar el contenido. */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; /* Espaciado entre tarjetas */
+  padding: 20px;
 }
 
 .catalogo h1 {

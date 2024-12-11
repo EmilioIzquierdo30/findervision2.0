@@ -1,21 +1,53 @@
 /* Planta.css */
 
-/* Clase principal para la tarjeta de la planta */
 .planta {
-  width: 200px; /* Establece el ancho de la tarjeta de la planta */
-  text-align: center; /* Centra el contenido de la tarjeta */
-  border: 1px solid #ddd; /* Borde gris claro alrededor de la tarjeta */
-  padding: 10px; /* Espaciado interior alrededor del contenido */
-  border-radius: 5px; /* Bordes redondeados */
-  background-color: #f1f8e9; /* Fondo de color verde claro */
-  transition: transform 0.3s, box-shadow 0.3s; /* Transición suave en la transformación y la sombra */
+  background-color: #fff9c4; /* Fondo amarillo claro */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 20px; /* Espaciado interno */
+  text-align: center; /* Centrado de texto */
+  max-width: 300px; /* Ancho máximo para uniformidad */
+  margin: auto; /* Centrar la tarjeta */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición suave */
 }
 
-/* Efecto al pasar el cursor sobre la tarjeta de la planta */
 .planta:hover {
-  transform: translateY(-5px); /* Mueve la tarjeta hacia arriba ligeramente */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra alrededor de la tarjeta */
+  transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más profunda */
 }
+
+.planta h2 {
+  font-size: 18px; /* Tamaño del título */
+  color: #388e3c; /* Verde oscuro */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.planta img {
+  width: 120px; /* Tamaño de la imagen */
+  height: 120px;
+  object-fit: cover; /* Ajusta la imagen al contenedor */
+  border-radius: 50%; /* Imagen circular */
+  margin-bottom: 15px; /* Espaciado inferior */
+}
+
+.planta p {
+  font-size: 14px;
+  color: #757575; /* Gris oscuro */
+  line-height: 1.5; /* Altura de línea */
+}
+
+.planta .descripcion {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.planta .texto-descripcion {
+  font-size: 14px;
+  color: #555;
+  text-align: justify;
+  margin-top: 10px;
+}
+
 
 /* Clase para la imagen de la planta */
 .planta-imagen {
