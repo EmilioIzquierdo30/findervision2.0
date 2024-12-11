@@ -1,0 +1,32 @@
+/* PlantDetail.css - Estilos para PlantDetail */
+.plant-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.plant-detail img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+.plant-detail h1 {
+    color: #2d6a4f;
+    margin-bottom: 1rem;
+}
+
+.plant-detail p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.plant-detail .label {
+    font-weight: bold;
+    color: #2d6a4f;
+}

@@ -1,0 +1,32 @@
+/* PlantCard.css - Estilos para PlantCard */
+.plant-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.plant-card:hover {
+    transform: scale(1.05);
+}
+
+.plant-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.plant-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: #2d6a4f;
+}
+
+.plant-card p {
+    font-size: 0.9rem;
+    color: #555;
+}

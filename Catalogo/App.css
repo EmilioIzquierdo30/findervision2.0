@@ -1,0 +1,36 @@
+.app {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .lista-plantas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .planta {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .planta img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .planta h2 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .planta p {
+    font-size: 14px;
+    color: #555;
+  }
+  
