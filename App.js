@@ -1,16 +1,13 @@
+// src/App.js
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './scr/navegacion/barradeabajo.jsx';
-import { ThemeProvider } from './themecontext.jsx';
+import AdminPage from './components/AdminPage';
 
 const App = () => {
-  return (
-    <ThemeProvider>
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
-    </ThemeProvider>
-  );
+    return (
+        <div>
+            <AdminPage />
+        </div>
+    );
 };
- 
+
 export default App;
