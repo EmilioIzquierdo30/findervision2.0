@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/EmilioIzquierdo30/findervision2.0/static/css/main.c3e42f85.css",
-    "main.js": "/EmilioIzquierdo30/findervision2.0/static/js/main.4e17717a.js",
+    "main.css": "/EmilioIzquierdo30/findervision2.0/static/css/main.ff8ce815.css",
+    "main.js": "/EmilioIzquierdo30/findervision2.0/static/js/main.de5adec1.js",
+    "static/media/logo-findervision.jpg": "/EmilioIzquierdo30/findervision2.0/static/media/logo-findervision.8aae338236c839905888.jpg",
     "index.html": "/EmilioIzquierdo30/findervision2.0/index.html",
-    "main.c3e42f85.css.map": "/EmilioIzquierdo30/findervision2.0/static/css/main.c3e42f85.css.map",
-    "main.4e17717a.js.map": "/EmilioIzquierdo30/findervision2.0/static/js/main.4e17717a.js.map"
+    "main.ff8ce815.css.map": "/EmilioIzquierdo30/findervision2.0/static/css/main.ff8ce815.css.map",
+    "main.de5adec1.js.map": "/EmilioIzquierdo30/findervision2.0/static/js/main.de5adec1.js.map"
   },
   "entrypoints": [
-    "static/css/main.c3e42f85.css",
-    "static/js/main.4e17717a.js"
+    "static/css/main.ff8ce815.css",
+    "static/js/main.de5adec1.js"
   ]
 }
