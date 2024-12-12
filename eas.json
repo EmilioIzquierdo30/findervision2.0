@@ -6,19 +6,34 @@
   "build": {
     "development": {
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "APIURL": "@APIURL",
+        "APIKEY": "@APIKEY",
+        "API_URLHOME": "@API_URLHOME"
+      }
     },
     "preview": {
       "distribution": "internal",
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "APIURL": "@APIURL",
+        "APIKEY": "@APIKEY",
+        "API_URLHOME": "@API_URLHOME"
       }
     },
     "production": {
       "android": {
         "buildType": "app-bundle"
       },
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "APIURL": "@APIURL",
+        "APIKEY": "@APIKEY",
+        "API_URLHOME": "@API_URLHOME"
+      }
     }
   },
   "submit": {
