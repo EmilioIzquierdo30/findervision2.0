@@ -18,7 +18,7 @@ const App = () => {
   const plantas = [
       {
         nombre: 'Espinaca de Malabar, Basale, Espinaca trepadora',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antioxidantes',
         imagen: 'https://th.bing.com/th/id/R.5d6cd571d4aab5a84859535c4f0cc746?rik=bdGRQV8UL6FLlg&riu=http%3a%2f%2fwww.thedailygarden.us%2fuploads%2f4%2f5%2f4%2f9%2f45493619%2fmalabar-spinach-leaves-joydeep-cc-by-sa-3-0_orig.jpg&ehk=CJCm%2bqdkguXCHWIGUt0Ze%2bbSCnzbhInIJBzwOE08o%2fI%3d&risl=&pid=ImgRaw&r=0',
         descripcion: 'Planta trepadora perenne que se cultiva principalmente por sus hojas comestibles, que son carnosas y se utilizan como sustituto de la espinaca.',
         beneficios: 'Antioxidante, mejora la digestión, fortalece el sistema inmunológico, promueve la salud ocular y ayuda en la cicatrización de heridas.',
@@ -33,7 +33,7 @@ const App = () => {
       },
       {
         nombre: 'Menta, Hierbabuena, Mint',
-        categoria: 'Medicinal y culinaria',
+        categoria: 'Antiespasmódicas',
         imagen: 'https://3.bp.blogspot.com/-EVKkz4Ol_vo/U1l88cpNzeI/AAAAAAAABHM/Hi5AjuSr-mU/s1600/menta+012.JPG',
         descripcion: 'Planta herbácea perenne con un aroma fresco y distintivo.',
         beneficios: 'Alivia indigestión, náuseas y cólicos, actúa como descongestionante natural.',
@@ -48,7 +48,7 @@ const App = () => {
       },
       {
         nombre: 'Quelite Verde, Arrive-Dantu, Hierba del pollo, Amaranto verde',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Digestivas',
         imagen: 'https://cdn.shopify.com/s/files/1/0157/0808/products/II01-005_CC_18_P2_small_grande.jpg?v=1524085927',
         descripcion: 'Planta herbácea anual de rápido crecimiento, comúnmente utilizada como verdura de hoja.',
         beneficios: 'Ayuda en problemas digestivos, propiedades antiinflamatorias, purificación de la sangre y prevención de la anemia.',
@@ -63,7 +63,7 @@ const App = () => {
       },
       {
         nombre: 'Moringa, Drumstick, Árbol de la vida, Árbol milagroso',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Hepatoprotectoras',
         imagen: 'https://i5.walmartimages.com/asr/504f5817-b9d2-41eb-b300-d8ef32e772e3.e4bac2ce6098ca967dbbb344553b606f.jpeg',
         descripcion: 'Árbol originario de las regiones subtropicales y tropicales, conocido por su alta densidad nutricional.',
         beneficios: 'Antiinflamatorio, antioxidante, controla el azúcar en sangre.',
@@ -78,7 +78,7 @@ const App = () => {
       },
       {
         nombre: 'Karanda, Caranda, Ciruela de Natal',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antioxidantes',
         imagen: 'https://apotekhidup.com/wp-content/uploads/2021/09/karanda-768x512.jpg',
         descripcion: 'Arbusto frutal originario de Asia tropical y subtropical, conocido por sus frutos ácidos y ricos en vitamina C.',
         beneficios: 'Mejora la digestión, protege contra radicales libres, tiene propiedades antifúngicas y antibacterianas, regula el azúcar en sangre y combate la anemia.',
@@ -93,7 +93,7 @@ const App = () => {
       },
       {
         nombre: 'Árbol Peepal, Árbol Bodhi, Árbol Sagrado',
-        categoria: 'Medicinal y espiritual',
+        categoria: 'Antiinflamatorias',
         imagen: 'https://m.media-amazon.com/images/I/71L9zQ2xhhL._AC_SL1500_.jpg',
         descripcion: 'Árbol caducifolio originario del subcontinente indio, venerado en varias tradiciones religiosas.',
         beneficios: 'Propiedades antiinflamatorias, ayuda a controlar la diabetes, alivia problemas respiratorios, desintoxica el cuerpo.',
@@ -108,7 +108,7 @@ const App = () => {
       },
       {
         nombre: 'Granada, Pomegranate',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antioxidantes',
         imagen: 'https://th.bing.com/th/id/R.18de255b89a3582dec5b38131a1b68bd?rik=oBJjTvqG%2bDo1YQ&pid=ImgRaw&r=0',
         descripcion: 'Árbol o arbusto de tamaño mediano, conocido por sus frutos ricos en antioxidantes.',
         beneficios: 'Propiedades antioxidantes, mejora la salud cardiovascular, alivia problemas gastrointestinales, combate infecciones.',
@@ -123,7 +123,7 @@ const App = () => {
       },
       {
         nombre: 'Jazmín, Jasmine',
-        categoria: 'Medicinal y ornamental',
+        categoria: 'Sedante O Relajante',
         imagen: 'https://th.bing.com/th/id/R.08604578e32fc3d51faf513cc71b2891?rik=f1IYzpLmDXxJww&pid=ImgRaw&r=0',
         descripcion: 'Planta trepadora o arbustiva conocida por sus flores fragantes y ornamentales.',
         beneficios: 'Calmante para el estrés, propiedades antisépticas, mejora la salud de la piel, alivia problemas digestivos.',
@@ -138,7 +138,7 @@ const App = () => {
       },
       {
         nombre: 'Guayaba, Guava',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Digestivas',
         imagen: 'https://th.bing.com/th/id/R.0beb5f2658be4d18c51c11955e1c5510?rik=jwbN3IF9HIG7Mw&riu=http%3a%2f%2fhidroponia.mx%2fwp-content%2fuploads%2f2017%2f11%2fcultivo-de-guayaba-en-M%c3%a9xico.jpg&ehk=SqIhNoGH41usZEgQ8RSZM6tmUHUaUdl3mXWaA2TWVqc%3d&risl=&pid=ImgRaw&r=0',
         descripcion: 'Árbol tropical perenne conocido por sus frutos dulces y aromáticos.',
         beneficios: 'Ayuda en problemas digestivos, fortalece el sistema inmunológico, regula el azúcar en sangre, mejora la salud de la piel.',
@@ -153,7 +153,7 @@ const App = () => {
       },
       {
         nombre: 'Neem, Margosa',
-        categoria: 'Medicinal y agrícola',
+        categoria: 'Antimicrobianas',
         imagen: 'https://th.bing.com/th/id/R.45e07feb52bba86f6defa04c96cffcdb?rik=OyogIE6m28sRNA&pid=ImgRaw&r=0',
         descripcion: 'Árbol perenne originario del subcontinente indio y otras regiones tropicales, conocido por su valor medicinal, agrícola y ecológico.',
         beneficios: 'Propiedades antisépticas, desintoxicantes, controla la diabetes, mejora la salud dental y actúa como repelente natural.',
@@ -168,7 +168,7 @@ const App = () => {
       },
       {
         nombre: 'Mango',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antioxidantes',
         imagen: 'https://th.bing.com/th/id/OIP.G5E2h2jvfrgncuCUQhM0WQHaFj?rs=1&pid=ImgDetMain',
         descripcion: 'Árbol tropical perenne conocido por sus frutos dulces y nutritivos.',
         beneficios: 'Rico en antioxidantes, mejora la digestión, refuerza el sistema inmunológico, cuida la piel y combate infecciones.',
@@ -183,7 +183,7 @@ const App = () => {
       },
       {
         nombre: 'Rasna, Galanga, Jengibre tailandés',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antiinflamatorias',
         imagen: 'https://www.planetayurveda.com/pa-wp-images/alpinia-galanga.jpg',
         descripcion: 'Planta perenne rizomatosa originaria del sudeste asiático.',
         beneficios: 'Alivia la indigestión, tiene propiedades antiinflamatorias, mejora la respiración, refuerza el sistema inmunológico y combate infecciones.',
@@ -198,7 +198,7 @@ const App = () => {
       },
       {
         nombre: 'Betel, Hoja de Betel',
-        categoria: 'Medicinal y cultural',
+        categoria: 'Digestivas',
         imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Piper_betle_plant.jpg',
         descripcion: 'Planta trepadora perenne originaria del sudeste asiático, conocida por sus hojas aromáticas y su uso tradicional en la medicina.',
         beneficios: 'Estimula la digestión, previene infecciones, trata resfriados, alivia dolores musculares y protege contra el daño celular.',
@@ -213,7 +213,7 @@ const App = () => {
       },
       {
         nombre: 'Yaca, Jackfruit',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Digestivas',
         imagen: 'https://www.gtush.com/wp-content/uploads/2018/05/Yaca.jpg',
         descripcion: 'Árbol tropical perenne que produce uno de los frutos más grandes del mundo.',
         beneficios: 'Mejora la digestión, fortalece el sistema inmunológico, regula el azúcar en sangre, cuida la piel y combate infecciones.',
@@ -228,7 +228,7 @@ const App = () => {
       },
       {
         nombre: 'Mostaza India, Indian Mustard',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antiinflamatorias',
         imagen: 'https://th.bing.com/th/id/R.ec65490ee46b8bc917b6dd22be5ef23b?rik=hkI%2f6UTofEun%2fg&riu=http%3a%2f%2fwww.eattheplanet.org%2fwp-content%2fuploads%2f2020%2f04%2fBrassicaceae_-_Sinapis_arvensis_3.jpg&ehk=Gn33zTz7d5UFWvyOX2d52xAxhT6DYl250y7gyoN5k%2bc%3d&risl=&pid=ImgRaw&r=0',
         descripcion: 'Planta anual originaria del sur de Asia, ampliamente cultivada por sus semillas, hojas y tallos.',
         beneficios: 'Estimula la digestión, reduce la inflamación, ayuda a desintoxicar el cuerpo, mejora la salud cardiovascular y combate infecciones.',
@@ -243,7 +243,7 @@ const App = () => {
       },
       {
         nombre: 'Crape Jasmine, Jazmín Pernoctante, Moonbeam',
-        categoria: 'Medicinal y ornamental',
+        categoria: 'Sedante O Relajante',
         imagen: 'https://www.richardlyonsnursery.com/wp-content/uploads/2022/05/Tabernaemontana-divaricata-Flore-Pleno-Crepe-Jasmine-scaled.jpg',
         descripcion: 'Arbusto perenne tropical con flores blancas en forma de molino de viento.',
         beneficios: 'Reduce la inflamación, cuida la piel, alivia problemas respiratorios, actúa como sedante y protege contra infecciones.',
@@ -258,7 +258,7 @@ const App = () => {
       },
       {
         nombre: 'Limón, Lemon',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Digestivas',
         imagen: 'https://cdn.pixabay.com/photo/2016/01/04/21/23/lemon-1121636_1280.jpg',
         descripcion: 'Árbol frutal de tamaño pequeño a mediano, conocido por su fruto ácido y altamente aromático.',
         beneficios: 'Refuerza el sistema inmunológico, mejora la digestión, desintoxica el cuerpo, cuida la piel y protege contra infecciones.',
@@ -273,7 +273,7 @@ const App = () => {
       },
       {
         nombre: 'Manzana Rosa, Rose Apple',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antioxidantes',
         imagen: 'https://th.bing.com/th/id/OIP.JwmRBgbI2AdGm46xMYGcAAHaFj?w=1600&h=1200&rs=1&pid=ImgDetMain',
         descripcion: 'Árbol tropical perenne que produce frutos pequeños de forma ovalada con un aroma dulce.',
         beneficios: 'Mejora la digestión, combate infecciones, reduce la fiebre, protege contra el daño celular y alivia inflamaciones.',
@@ -288,7 +288,7 @@ const App = () => {
       },
       {
         nombre: 'Higuera Roxburgh, Roxburgh Fig, Higuerón',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Hepatoprotectoras',
         imagen: 'https://www.gtush.com/wp-content/uploads/2018/05/como-podar-una-higuera-1-768x463.jpg',
         descripcion: 'Árbol o arbusto tropical de tamaño mediano, conocido por sus frutos grandes y redondos.',
         beneficios: 'Mejora la digestión, protege el hígado, regula el azúcar en sangre, combate la inflamación y protege contra el daño oxidativo.',
@@ -303,7 +303,7 @@ const App = () => {
       },
       {
         nombre: 'Árbol de Curry, Curry',
-        categoria: 'Medicinal y culinaria',
+        categoria: 'Digestivas',
         imagen: 'https://cdn.pixabay.com/photo/2022/10/24/13/01/chutney-7543355_1280.jpg',
         descripcion: 'Arbusto o árbol pequeño perenne originario del sur de Asia. Es conocido por sus hojas aromáticas.',
         beneficios: 'Controla la diabetes, mejora la digestión, protege contra el daño oxidativo, reduce la inflamación y fortalece el cabello.',
@@ -318,7 +318,7 @@ const App = () => {
       },
       {
         nombre: 'Rosa de China, Hibisco, Cayena',
-        categoria: 'Medicinal y ornamental',
+        categoria: 'Antioxidantes',
         imagen: 'https://okinawa-coffee.up.seesaa.net/image/07050220BCABC2F0C4EDA4CEA5CFA5A4A5D3A5B9A5ABA5B9.JPG',
         descripcion: 'Arbusto tropical con flores grandes y coloridas. Tiene aplicaciones en la medicina tradicional.',
         beneficios: 'Promueve el crecimiento del cabello, protege contra el envejecimiento celular, mejora la salud cardíaca.',
@@ -333,7 +333,7 @@ const App = () => {
       },
       {
         nombre: 'Parijata, Árbol de Coral, Night Jasmine',
-        categoria: 'Medicinal y ornamental',
+        categoria: 'Antiinflamatorias',
         imagen: 'https://th.bing.com/th/id/OIP.fhKYqST7iL8HiQEu43YzrgAAAA?rs=1&pid=ImgDetMain',
         descripcion: 'Pequeño árbol conocido por sus flores fragantes que florecen por la noche.',
         beneficios: 'Reduce la inflamación, mejora la digestión, baja la fiebre, fortalece el sistema inmunológico.',
@@ -348,7 +348,7 @@ const App = () => {
       },
       {
         nombre: 'Jamaica Cherry, Gasagase, Capulín de Jamaica',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antioxidantes',
         imagen: 'https://th.bing.com/th/id/R.4dd6df3472120d717c7327137cff6ccf?rik=rGqe57SvKxOh4Q&pid=ImgRaw&r=0',
         descripcion: 'Árbol de rápido crecimiento originario de América tropical, cultivado por sus frutos dulces y jugosos.',
         beneficios: 'Combate el daño celular, alivia el dolor, mejora la salud cardiovascular.',
@@ -363,7 +363,7 @@ const App = () => {
       },
       {
         nombre: 'Tulsi, Albahaca Sagrada, Holy Basil',
-        categoria: 'Medicinal y espiritual',
+        categoria: 'Inmunoestimulantes',
         imagen: 'https://th.bing.com/th/id/OIP.-pQLOMMxAKX4DWk3zUhA4gHaEK?rs=1&pid=ImgDetMain',
         descripcion: 'Planta herbácea aromática perenne, conocida como planta sagrada en la cultura india.',
         beneficios: 'Fortalece el sistema inmunológico, combate el estrés, mejora la salud digestiva.',
@@ -378,7 +378,7 @@ const App = () => {
       },
       {
         nombre: 'Sándalo, Sandalwood',
-        categoria: 'Medicinal y espiritual',
+        categoria: 'Sedante O Relajante',
         imagen: 'https://th.bing.com/th/id/R.e4ca42e9730de3915561eb9cf5495557?rik=Gmz%2fk2LIFfh1mQ&riu=http%3a%2f%2fmuyenforma.com%2fwp-content%2fuploads%2f2017%2f10%2fsandalo-planta-medicinal-propiedades.jpg&ehk=QNLkTAcvFigK4piVIrkqBDIWuqwMgFkOlmheawSjNgQ%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
         descripcion: 'Árbol tropical perenne conocido por su madera aromática y propiedades relajantes.',
         beneficios: 'Alivia el estrés, mejora la calidad del sueño, protege la piel, combate infecciones.',
@@ -393,7 +393,7 @@ const App = () => {
       },
       {
         nombre: 'Fenogreco, Fenugreek, Alholva',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Digestivas',
         imagen: 'https://farmaciaribera.es/blog/wp-content/uploads/2020/02/beneficios-del-fenogreco-1024x680.jpg',
         descripcion: 'Planta herbácea anual utilizada en la cocina y la medicina tradicional por sus beneficios para la salud.',
         beneficios: 'Regula el azúcar en sangre, mejora la digestión, fortalece el cabello.',
@@ -408,7 +408,7 @@ const App = () => {
       },
       {
         nombre: 'Menta Mexicana, Orégano Cubano, Orégano Indio, Hiedra Sueca',
-        categoria: 'Medicinal y culinaria',
+        categoria: 'Digestivas',
         imagen: 'https://th.bing.com/th/id/OIP.RlnuYTcy4GOZGWV9vjzaqgHaIP?rs=1&pid=ImgDetMain',
         descripcion: 'Planta herbácea perenne con hojas gruesas y aromáticas, utilizada como hierba culinaria y en la medicina tradicional.',
         beneficios: 'Alivia problemas digestivos, trata afecciones respiratorias, combate infecciones, mejora la salud de la piel y reduce el estrés.',
@@ -423,7 +423,7 @@ const App = () => {
     },
     {
         nombre: 'Adelfa, Laurel de Flor, Oleander',
-        categoria: 'Ornamental y medicinal (bajo estricto control)',
+        categoria: 'Altamente Tóxica',
         imagen: 'https://th.bing.com/th/id/OIP.uGilJDPajH-ZT6BI_NtaHwHaHa?rs=1&pid=ImgDetMain',
         descripcion: 'Arbusto perenne ornamental con flores vistosas y fragantes. Aunque es tóxico, tiene usos controlados en la medicina tradicional.',
         beneficios: 'Propiedades antimicrobianas y antiinflamatorias, tratamiento de problemas cardíacos (bajo supervisión médica).',
@@ -438,7 +438,7 @@ const App = () => {
     },
     {
         nombre: 'Jamun, Jambul, Ciruela Negra, Java Plum',
-        categoria: 'Medicinal y alimenticia',
+        categoria: 'Antidiabéticas',
         imagen: 'https://th.bing.com/th/id/R.97bb0cadedd4b6da76d4ee845942db46?rik=D%2fkfhhJRR9whVw&pid=ImgRaw&r=0',
         descripcion: 'Árbol tropical perenne conocido por sus frutos comestibles de color púrpura oscuro. Es valorado por sus propiedades medicinales.',
         beneficios: 'Ayuda a controlar la diabetes, mejora la digestión, fortalece el sistema inmunológico, cuida la salud bucal y reduce la inflamación.',
@@ -453,7 +453,7 @@ const App = () => {
     },
     {
         nombre: 'Indian Beech, Pongamia, Karanja',
-        categoria: 'Medicinal y sostenible (biocombustible)',
+        categoria: 'Antiinflamatorias',
         imagen: 'https://th.bing.com/th/id/R.436e51cf4a3b9aa23ac67ee7d46ceef8?rik=J%2bw3nwZaFLPZnQ&pid=ImgRaw&r=0',
         descripcion: 'Árbol perenne nativo del sur de Asia. Es conocido por sus aplicaciones medicinales y el aceite extraído de sus semillas, usado en biocombustibles.',
         beneficios: 'Propiedades antisépticas, antiinflamatorias, analgésicas, mejora la digestión y protege el hígado.',
@@ -471,10 +471,18 @@ const App = () => {
   // Define una lista de plantas con sus datos, como nombre, categoría, imagen y detalles adicionales.
 
   // Filtrado de plantas por categoría y búsqueda
-  const plantasFiltradas = plantas.filter((planta) =>
-    (categoriaSeleccionada ? planta.categoria === categoriaSeleccionada : true) &&
-    (searchTerm ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase()) : true)
-  );
+  // Filtrado de plantas por categoría y búsqueda
+  const plantasFiltradas = plantas.filter((planta) => {
+    const coincideCategoria = categoriaSeleccionada
+        ? planta.categoria === categoriaSeleccionada
+        : true;
+
+    const coincideNombre = searchTerm
+        ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+        : true;
+
+    return coincideCategoria && coincideNombre;
+  });
 
   const seleccionarPlanta = (planta) => {
     setPlantaSeleccionada(planta);
