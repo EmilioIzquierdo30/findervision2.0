@@ -1,84 +1,89 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from "react-native";
-import { Camera } from "expo-camera";
+import React, { useState, useRef, useEffect } from "react";
+import { SafeAreaView, View, Text, Alert, StyleSheet, TouchableOpacity, ActivityIndicator } from "react-native";
+import { Camera, useCameraPermissions, CameraType } from "expo-camera";
+import { Ionicons } from "@expo/vector-icons";
 
-const CameraScreenAndroid = () => {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [cameraRef, setCameraRef] = useState(null);
-  const [cameraType, setCameraType] = useState(Camera?.Constants?.Type?.back || null);
+export default function App() {
+  const cameraRef = useRef(null);
+  const [permission, requestPermission] = useCameraPermissions();
+  const [facing, setFacing] = useState(CameraType.back);
+  const [isCameraReady, setIsCameraReady] = useState(false);
+  const [isTakingPicture, setIsTakingPicture] = useState(false);
 
   useEffect(() => {
-    (async () => {
+    if (!permission) {
+      requestPermission();
+    }
+  }, [permission]);
+
+  const handleTakePicture = async () => {
+    if (cameraRef.current && !isTakingPicture) {
+      setIsTakingPicture(true);
       try {
-        const { status } = await Camera.requestCameraPermissionsAsync();
-        setHasPermission(status === "granted");
+        const photo = await cameraRef.current.takePictureAsync();
+        if (photo) {
+          Alert.alert("Foto tomada", `Guardada en: ${photo.uri}`);
+        }
       } catch (error) {
-        console.error("Error solicitando permisos de cámara:", error);
-        setHasPermission(false);
-      }
-    })();
-  }, []);
-
-  if (hasPermission === null) {
-    return (
-      <View style={styles.permissionContainer}>
-        <Text style={styles.message}>Solicitando permisos...</Text>
-      </View>
-    );
-  }
-
-  if (hasPermission === false) {
-    return (
-      <View style={styles.permissionContainer}>
-        <Text style={styles.message}>Acceso denegado a la cámara</Text>
-      </View>
-    );
-  }
-
-  const handleCapturePhoto = async () => {
-    if (cameraRef) {
-      try {
-        const photo = await cameraRef.takePictureAsync();
-        Alert.alert("Foto tomada", `Guardada en: ${photo.uri}`);
-      } catch (error) {
-        console.error("Error tomando foto:", error);
-        Alert.alert("Error", "No se pudo tomar la foto.");
+        console.error("Error al tomar la foto:", error);
+        Alert.alert("Error", "Hubo un problema al tomar la foto.");
+      } finally {
+        setIsTakingPicture(false);
       }
     }
   };
 
+  const toggleCameraFacing = () => {
+    setFacing((current) => (current === CameraType.back ? CameraType.front : CameraType.back));
+  };
+
+  if (!permission || permission.status !== "granted") {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.permissionMessage}>No tienes permisos para usar la cámara</Text>
+        <TouchableOpacity style={styles.permissionButton} onPress={requestPermission}>
+          <Text style={styles.permissionButtonText}>Solicitar Permiso</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
+
   return (
-    <View style={styles.container}>
-      {Camera && cameraType ? (
-        <Camera
-          style={styles.camera}
-          type={cameraType}
-          ref={(ref) => setCameraRef(ref)}
-        />
-      ) : (
-        <Text style={styles.message}>Error cargando la cámara</Text>
-      )}
-      <View style={styles.controls}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() =>
-            cameraType &&
-            setCameraType((prevType) =>
-              prevType === Camera.Constants.Type.back
-                ? Camera.Constants.Type.front
-                : Camera.Constants.Type.back
-            )
-          }
-        >
-          <Text style={styles.buttonText}>Cambiar Cámara</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={handleCapturePhoto}>
-          <Text style={styles.buttonText}>Tomar Foto</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Camera
+        ref={cameraRef}
+        style={styles.camera}
+        type={facing}
+        ratio="16:9"
+        onCameraReady={() => setIsCameraReady(true)}
+      >
+        {!isCameraReady && (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#6bbd72" />
+            <Text style={styles.loadingText}>Cargando cámara...</Text>
+          </View>
+        )}
+
+        {/* Marco de enfoque */}
+        <View style={styles.focusFrame} />
+
+        {/* Controles */}
+        <View style={styles.controls}>
+          <TouchableOpacity style={styles.controlButton} onPress={toggleCameraFacing}>
+            <Ionicons name="camera-reverse-outline" size={30} color="#fff" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.controlButton, styles.captureButton]}
+            onPress={handleTakePicture}
+            disabled={!isCameraReady || isTakingPicture}
+          >
+            <Ionicons name="camera-outline" size={40} color="#fff" />
+          </TouchableOpacity>
+        </View>
+      </Camera>
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -87,35 +92,65 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 1,
+    width: "100%",
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  loadingText: {
+    marginTop: 10,
+    color: "#fff",
+    fontSize: 16,
+  },
+  focusFrame: {
+    position: "absolute",
+    top: "30%",
+    left: "15%",
+    width: "70%",
+    height: "40%",
+    borderWidth: 3,
+    borderColor: "#6bbd72",
+    borderRadius: 10,
   },
   controls: {
     position: "absolute",
     bottom: 20,
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     width: "100%",
     paddingHorizontal: 20,
   },
-  button: {
-    backgroundColor: "blue",
-    padding: 10,
-    borderRadius: 5,
+  controlButton: {
+    backgroundColor: "#6bbd72",
+    padding: 15,
+    borderRadius: 50,
     alignItems: "center",
   },
-  buttonText: {
+  captureButton: {
+    backgroundColor: "#f50057",
+    padding: 20,
+  },
+  permissionMessage: {
+    fontSize: 18,
+    color: "#555",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  permissionButton: {
+    backgroundColor: "#6bbd72",
+    padding: 15,
+    borderRadius: 10,
+  },
+  permissionButtonText: {
     color: "#fff",
     fontSize: 16,
-  },
-  permissionContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#000",
-  },
-  message: {
-    fontSize: 16,
-    color: "#fff",
+    textAlign: "center",
   },
 });
-
-export default CameraScreenAndroid;

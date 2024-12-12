@@ -4,7 +4,6 @@ import Icon from "react-native-vector-icons/Ionicons";
 import DiagnoseScreen from "../pantallas/diagnostico.jsx";
 import MyPlantsScreen from "../pantallas/misplantas.jsx";
 import HomeScreen from "../pantallas/home.jsx";
-import CameraScreen from "../main/camara.jsx"; // Pantalla de Identificar
 import ChatBotScreen from "../pantallas/chatbot.jsx"; // Pantalla de Asesor de Plantas
 import MoreStackNavigator from "../navegacion/morenavigation.jsx"; // Stack para "Ver más"
 
@@ -25,9 +24,6 @@ const BottomTabNavigator = () => {
               break;
             case "Mis plantas":
               iconName = "leaf-outline";
-              break;
-            case "Identificar":
-              iconName = "camera-outline";
               break;
             case "Asesor de Plantas":
               iconName = "chatbubbles-outline";
@@ -54,7 +50,6 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen name="Diagnóstico" component={DiagnoseScreen} />
       <Tab.Screen name="Mis plantas" component={MyPlantsScreen} />
-      <Tab.Screen name="Identificar" component={CameraScreen} />
       <Tab.Screen name="Asesor de Plantas" component={ChatBotScreen} />
       <Tab.Screen
         name="Ver más"
