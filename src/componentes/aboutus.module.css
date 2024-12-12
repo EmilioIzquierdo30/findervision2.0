@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.aboutContainer {
+    position: relative;
+    width: 100%;
+    height: 450px; /* Ajuste de altura según tus necesidades */
+    background-image: url('https://www.essalud.gob.pe/wp-content/uploads/2014/02/La-Manzanilla-como-y-cuando-utilizarla-1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Capa semitransparente  */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .title {
+    font-family: 'Pacifico', static; 
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }

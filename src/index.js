@@ -2,9 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+<<<<<<< HEAD
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
+=======
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <App /> 
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+//reportWebVitals();
+>>>>>>> 4b9bb69f83e6aa215e04b2a2c559b1dd9d62f151
