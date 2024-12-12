@@ -10,16 +10,13 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ConfiguracionesScreen = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false); // Estado para el modo oscuro
   const [notificationsEnabled, setNotificationsEnabled] = useState(true); // Estado para notificaciones
 
   // Cargar configuraciones al inicio
   useEffect(() => {
     const loadSettings = async () => {
       try {
-        const darkMode = await AsyncStorage.getItem("isDarkMode");
         const notifications = await AsyncStorage.getItem("notificationsEnabled");
-        if (darkMode !== null) setIsDarkMode(JSON.parse(darkMode));
         if (notifications !== null) setNotificationsEnabled(JSON.parse(notifications));
       } catch (error) {
         console.error("Error al cargar configuraciones:", error);
@@ -38,13 +35,6 @@ const ConfiguracionesScreen = () => {
     }
   };
 
-  // Cambiar estado del modo oscuro
-  const toggleDarkMode = () => {
-    const newValue = !isDarkMode;
-    setIsDarkMode(newValue);
-    saveSetting("isDarkMode", newValue);
-  };
-
   // Cambiar estado de notificaciones
   const toggleNotifications = () => {
     const newValue = !notificationsEnabled;
@@ -56,7 +46,6 @@ const ConfiguracionesScreen = () => {
   const resetSettings = async () => {
     try {
       await AsyncStorage.clear();
-      setIsDarkMode(false);
       setNotificationsEnabled(true);
       Alert.alert("Restablecido", "Se han restablecido las configuraciones.");
     } catch (error) {
@@ -67,17 +56,6 @@ const ConfiguracionesScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Configuraciones</Text>
-
-      {/* Configuración de Modo Oscuro */}
-      <View style={styles.setting}>
-        <Text style={styles.settingText}>Modo Oscuro</Text>
-        <Switch
-          value={isDarkMode}
-          onValueChange={toggleDarkMode}
-          trackColor={{ false: "#ccc", true: "#4CAF50" }}
-          thumbColor={isDarkMode ? "#4CAF50" : "#f4f3f4"}
-        />
-      </View>
 
       {/* Configuración de Notificaciones */}
       <View style={styles.setting}>
