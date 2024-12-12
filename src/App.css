@@ -1,0 +1,401 @@
+/* General */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; /* Fondo neutro */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espaciado entre los elementos */
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Fondo verde */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.header img {
+  max-height: 50px; /* Ajustar altura del logo */
+  margin-right: 10px; /* Espaciado del logo */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre logo y texto */
+}
+
+.nav-links a,
+.nav-links button {
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links button:hover {
+  color: #dcedc8;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Search Bar */
+.search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 10px; /* Espacio entre el input y el ícono */
+}
+
+.search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  width: 200px;
+  background: transparent;
+  transition: width 0.3s ease;
+}
+
+.search input::placeholder {
+  color: #aaa;
+}
+
+.search input:focus {
+  width: 250px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre botones */
+}
+
+.search i {
+  font-size: 18px;
+  color: #4CAF50;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: #e8f5e9;
+  width: 220px;
+  max-height: calc(100vh - 80px); /* Resta el espacio ocupado por el header */
+  overflow-y: auto;
+  gap: 10px; /* Espacio entre botones */
+}
+
+.sidebar a,
+.sidebar button {
+  text-align: center;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+}
+
+/* Main Content */
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 20px;
+  min-height: 100vh;
+  gap: 20px; /* Espacio entre elementos principales */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+  font-size: 28px;
+  color: #388e3c;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Lista de Plantas */
+.lista-plantas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas adaptativas */
+  gap: 20px; /* Espaciado entre tarjetas */
+  padding: 20px;
+  justify-items: center; /* Centrar cada tarjeta */
+}
+
+/* Tarjetas de Plantas */
+.planta {
+  background-color: #fff9c4; /* Fondo amarillo claro */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  padding: 20px;
+  text-align: center; /* Centrado del contenido */
+  max-width: 300px; /* Ancho máximo para un diseño uniforme */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición suave */
+}
+
+.planta:hover {
+  transform: translateY(-5px); /* Elevar tarjeta al pasar el mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
+}
+
+.planta img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%; /* Imagen circular */
+  margin-bottom: 15px;
+}
+
+.planta h2 {
+  font-size: 18px; /* Tamaño del título */
+  color: #388e3c; /* Verde oscuro */
+  margin-bottom: 10px;
+}
+
+.planta p {
+  font-size: 14px; /* Tamaño del texto */
+  color: #555; /* Color gris oscuro */
+  margin-bottom: 15px;
+  line-height: 1.5; /* Espaciado entre líneas */
+}
+
+/* Botón de Agregar a Favoritos */
+.favorito-boton {
+  background-color: #4CAF50; /* Verde */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favorito-boton:hover {
+  background-color: #388e3c; /* Verde más oscuro */
+}
+
+/* Fondo transparente del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro para mejor contraste */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenedor principal del modal */
+.modal {
+  background-color: #ffffff;
+  border-radius: 16px; /* Bordes más redondeados para un diseño moderno */
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+  animation: fadeIn 0.4s ease-in-out;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Imagen centrada */
+.modal img {
+  display: block;
+  margin: 20px auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.modal img.ampliada {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: zoom-out;
+}
+
+/* Título */
+.modal h2 {
+  color: #2e7d32; /* Verde más profesional */
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+/* Contenido */
+.modal-content {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Secciones */
+.modal-section {
+  margin-bottom: 25px;
+}
+
+.modal-section h3 {
+  color: #1b5e20; /* Verde oscuro */
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #c8e6c9; /* Línea decorativa */
+  padding-bottom: 5px;
+}
+
+.modal-section p {
+  font-size: 14px;
+  color: #424242;
+}
+
+/* Estilo de recetas */
+.receta {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f1f8e9; /* Fondo suave para separar recetas */
+  border-left: 4px solid #66bb6a; /* Línea decorativa */
+  border-radius: 8px;
+}
+
+/* Ajustes responsive */
+@media screen and (max-width: 768px) {
+  .modal {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  .modal h2 {
+    font-size: 22px;
+  }
+
+  .modal img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Botón Mi Cuenta */
+.mi-cuenta {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4CAF50;
+  text-transform: uppercase;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mi-cuenta:hover {
+  background-color: #dcedc8;
+  transform: translateY(-2px);
+}
+
+/* Botón de cerrar */
+.modal .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2e7d32;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.modal .close:hover {
+  transform: scale(1.2);
+  color: #1b5e20;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-height: auto;
+    margin-bottom: 10px;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: 15px;
+  }
+
+  .nav-links button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .sidebar a {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
