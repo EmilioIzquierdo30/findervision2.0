@@ -32,7 +32,7 @@ const AyudaScreen = () => {
 
   // Abrir un enlace para contacto
   const handleContact = () => {
-    const email = "soporte@appplants.com";
+    const email = "cucusneitor@hotmail.com";
     const subject = "Soporte Técnico - App de Plantas";
     const body = "Hola, necesito ayuda con...";
     const mailto = `mailto:${email}?subject=${encodeURIComponent(

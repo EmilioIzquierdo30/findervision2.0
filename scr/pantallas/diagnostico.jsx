@@ -1,66 +1,75 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import axios from 'axios'; // Para hacer las solicitudes HTTP
+
+const apiUrl = "";
+const apiKey = ""; 
 
 const DiagnoseScreen = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [diagnosis, setDiagnosis] = useState(null);
 
-  // Función para elegir una imagen desde la galería
   const pickImage = async () => {
-    // Pedir permisos para acceder a la galería
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
     if (!permissionResult.granted) {
       alert('Se necesitan permisos para acceder a las fotos');
       return;
     }
 
-    // Seleccionar la imagen
+    // Pedimos la imagen con base64
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
+      base64: true // necesario para obtener base64 en Android/iOS
     });
 
-    if (!result.cancelled) {
-      setSelectedImage(result.uri);
-      // Enviar la imagen seleccionada al servidor
-      diagnosePlant(result.uri);
+    if (!result.canceled && result.assets?.length > 0) {
+      const { uri, base64 } = result.assets[0];
+      setSelectedImage(uri);
+
+      if (base64) {
+        sendToPlantId(base64);
+      } else {
+        console.log('No se pudo obtener la imagen en base64.');
+        setDiagnosis('No se pudo obtener la imagen en base64');
+      }
+    } else {
+      console.log('Selección de imagen cancelada.');
     }
   };
 
-  // Función para diagnosticar la planta
-  const diagnosePlant = async (imageUri) => {
+  const sendToPlantId = async (base64Image) => {
     try {
-      // Convertir la URI de la imagen a un formato compatible con FormData
-      const formData = new FormData();
-      const image = {
-        uri: imageUri,
-        type: 'image/jpeg',  // Cambiar dependiendo del tipo de imagen
-        name: 'plant.jpg',   // Puedes cambiar el nombre de la imagen
+      // Construimos el body tal cual el ejemplo HTML encontrado
+      const body = {
+        api_key: apiKey,
+        images: [ `data:image/jpeg;base64,${base64Image}` ], 
+        modifiers: ["crops_fast", "similar_images"],
+        plant_language: "en",
+        plant_details: ["common_names", "url", "name_authority", "wiki_description", "taxonomy", "synonyms"]
       };
-      formData.append('imageUri', image); // La imagen será enviada como un archivo
 
-      // Realizar la solicitud POST al servidor local
-      const response = await axios.post('http://localhost:3000/identificarplanta', formData, {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(body),
       });
 
-      // Procesar la respuesta del servidor
-      const plantInfo = response.data;
-      
-      if (plantInfo.suggestions && plantInfo.suggestions.length > 0) {
-        const plantName = plantInfo.suggestions[0].plant_name; // Nombre de la planta
-        const plantConfidence = plantInfo.suggestions[0].probability * 100; // Confianza en el diagnóstico
-        setDiagnosis(`Esta es una planta: ${plantName}. Confianza: ${plantConfidence.toFixed(2)}%`);
+      const data = await response.json();
+      console.log('Respuesta de la API:', data);
+
+      if (data.suggestions && data.suggestions.length > 0) {
+        const plantName = data.suggestions[0].plant_name;
+        const plantConfidence = data.suggestions[0].probability * 100;
+        setDiagnosis(`Esta planta podría ser: ${plantName}. Confianza: ${plantConfidence.toFixed(2)}%`);
       } else {
         setDiagnosis('No se pudo identificar la planta.');
       }
+
     } catch (error) {
       console.error('Error al hacer la solicitud:', error);
       setDiagnosis('Hubo un error al procesar la imagen');
