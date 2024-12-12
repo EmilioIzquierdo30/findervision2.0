@@ -1,34 +1,22 @@
 {
-<<<<<<< HEAD
   "name": "catalogo-web",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "cra-template": "1.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1"
-  },
-  "scripts": {
-=======
-  "name": "findervision",
   "homepage": "https://github.io/EmilioIzquierdo30/findervision2.0",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cra-template": "1.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
-    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
->>>>>>> 4b9bb69f83e6aa215e04b2a2c559b1dd9d62f151
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -51,11 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-=======
   },
   "devDependencies": {
     "gh-pages": "^6.2.0"
->>>>>>> 4b9bb69f83e6aa215e04b2a2c559b1dd9d62f151
   }
 }
