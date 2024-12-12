@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-
-const apiUrl = "";
-const apiKey = ""; 
-
+import { APIURL, APIKEY } from '@env';
 const DiagnoseScreen = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [diagnosis, setDiagnosis] = useState(null);
@@ -16,13 +13,12 @@ const DiagnoseScreen = () => {
       return;
     }
 
-    // Pedimos la imagen con base64
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-      base64: true // necesario para obtener base64 en Android/iOS
+      base64: true, // necesario para obtener base64 en Android/iOS
     });
 
     if (!result.canceled && result.assets?.length > 0) {
@@ -42,16 +38,22 @@ const DiagnoseScreen = () => {
 
   const sendToPlantId = async (base64Image) => {
     try {
-      // Construimos el body tal cual el ejemplo HTML encontrado
       const body = {
-        api_key: apiKey,
-        images: [ `data:image/jpeg;base64,${base64Image}` ], 
-        modifiers: ["crops_fast", "similar_images"],
-        plant_language: "en",
-        plant_details: ["common_names", "url", "name_authority", "wiki_description", "taxonomy", "synonyms"]
+        api_key: APIKEY, // Utiliza la clave de la API desde el .env
+        images: [`data:image/jpeg;base64,${base64Image}`],
+        modifiers: ['crops_fast', 'similar_images'],
+        plant_language: 'en',
+        plant_details: [
+          'common_names',
+          'url',
+          'name_authority',
+          'wiki_description',
+          'taxonomy',
+          'synonyms',
+        ],
       };
 
-      const response = await fetch(apiUrl, {
+      const response = await fetch(APIURL, { // Utiliza la URL de la API desde el .env
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,11 +67,12 @@ const DiagnoseScreen = () => {
       if (data.suggestions && data.suggestions.length > 0) {
         const plantName = data.suggestions[0].plant_name;
         const plantConfidence = data.suggestions[0].probability * 100;
-        setDiagnosis(`Esta planta podría ser: ${plantName}. Confianza: ${plantConfidence.toFixed(2)}%`);
+        setDiagnosis(
+          `Esta planta podría ser: ${plantName}. Confianza: ${plantConfidence.toFixed(2)}%`
+        );
       } else {
         setDiagnosis('No se pudo identificar la planta.');
       }
-
     } catch (error) {
       console.error('Error al hacer la solicitud:', error);
       setDiagnosis('Hubo un error al procesar la imagen');
