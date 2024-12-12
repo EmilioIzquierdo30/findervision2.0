@@ -1,70 +1,76 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity, Linking } from "react-native";
-import Modal from "react-native-modal";
+import { Modal, View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 
 const PlantPopup = ({ isVisible, onClose, plant }) => {
-  const { imageUrl, names, medicinalUses, link } = plant;
+  if (!plant) return null;
 
   return (
-    <Modal isVisible={isVisible} onBackdropPress={onClose} animationIn="zoomIn" animationOut="zoomOut">
-      <View style={styles.container}>
-        {/* Imagen de la planta */}
-        <View style={styles.imageContainer}>
-          <Image source={{ uri: imageUrl }} style={styles.image} />
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={isVisible}
+      onRequestClose={onClose}
+    >
+      <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+          <Image
+            source={{ uri: plant.imagen || "https://via.placeholder.com/150" }}
+            style={styles.plantImage}
+          />
+          <Text style={styles.plantName}>{plant.nombre_cientifico}</Text>
+          <Text style={styles.plantDescription}>
+            {plant.descripcion || "No hay descripción disponible."}
+          </Text>
+          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+            <Text style={styles.closeButtonText}>Cerrar</Text>
+          </TouchableOpacity>
         </View>
-
-        {/* Información de la planta */}
-        <Text style={styles.names}>{names}</Text>
-        <Text style={styles.medicinalUses}>{medicinalUses}</Text>
-
-        {/* Botón para ir al enlace */}
-        <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(link)}>
-          <Text style={styles.buttonText}>Ver Más</Text>
-        </TouchableOpacity>
       </View>
     </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
+  modalOverlay: {
+    flex: 1,
     justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-  imageContainer: {
-    borderRadius: 50,
-    overflow: "hidden",
-    marginBottom: 15,
+  modalContent: {
+    width: "80%",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    padding: 20,
+    alignItems: "center",
   },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-  names: {
-    fontSize: 18,
-    fontWeight: "bold",
+  plantImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 10,
     marginBottom: 10,
+  },
+  plantName: {
+    fontSize: 20,
+    fontWeight: "bold",
     textAlign: "center",
+    marginBottom: 10,
   },
-  medicinalUses: {
-    fontSize: 14,
-    color: "#555",
-    marginBottom: 20,
-    textAlign: "center",
-  },
-  button: {
-    backgroundColor: "#4CAF50",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: "white",
+  plantDescription: {
     fontSize: 16,
+    color: "#666",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  closeButton: {
+    backgroundColor: "#4CAF50",
+    padding: 10,
+    borderRadius: 5,
+    width: "80%",
+    alignItems: "center",
+  },
+  closeButtonText: {
+    color: "#fff",
     fontWeight: "bold",
   },
 });

@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
   const [selectedPlant, setSelectedPlant] = useState(null); // Planta seleccionada para mostrar en el popup
   const [plants, setPlants] = useState([]); // Lista de plantas cargadas desde la API
   const [searchQuery, setSearchQuery] = useState(""); // Consulta de búsqueda
-  const [isListCollapsed, setIsListCollapsed] = useState(true); // Estado para la lista colapsable
+  const [isListExpanded, setIsListExpanded] = useState(false); // Estado para la lista expandida
 
   // Fetch dinámico de las plantas desde la API
   useEffect(() => {
@@ -42,6 +42,11 @@ const HomeScreen = ({ navigation }) => {
   const filteredPlants = plants.filter((plant) =>
     plant.nombre_cientifico.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Determinar cuántas plantas mostrar
+  const plantsToShow = isListExpanded
+    ? filteredPlants
+    : filteredPlants.slice(0, 5); // Mostrar las primeras 5 plantas por defecto
 
   // Función para abrir el popup de planta
   const openPlantPopup = (plant) => {
@@ -96,42 +101,41 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Lista colapsable */}
+      {/* Lista de plantas */}
+      <FlatList
+        data={plantsToShow}
+        keyExtractor={(item) => item._id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.plantCard}
+            onPress={() => openPlantPopup(item)}
+          >
+            <Image
+              source={{
+                uri: item.imagen || "https://via.placeholder.com/150",
+              }} // Imagen de la planta
+              style={styles.plantImage}
+            />
+            <Text style={styles.plantTitle}>{item.nombre_cientifico}</Text>
+          </TouchableOpacity>
+        )}
+        contentContainerStyle={styles.plantList}
+      />
+
+      {/* Botón para expandir/colapsar lista */}
       <TouchableOpacity
-        style={styles.collapseButton}
-        onPress={() => setIsListCollapsed(!isListCollapsed)}
+        style={styles.expandButton}
+        onPress={() => setIsListExpanded(!isListExpanded)}
       >
-        <Text style={styles.collapseButtonText}>
-          {isListCollapsed ? "Mostrar todas las plantas" : "Ocultar lista"}
+        <Text style={styles.expandButtonText}>
+          {isListExpanded ? "Ver menos" : "Ver más"}
         </Text>
         <Icon
-          name={isListCollapsed ? "chevron-down-outline" : "chevron-up-outline"}
+          name={isListExpanded ? "chevron-up-outline" : "chevron-down-outline"}
           size={20}
           color="#4CAF50"
         />
       </TouchableOpacity>
-
-      {!isListCollapsed && (
-        <FlatList
-          data={filteredPlants}
-          keyExtractor={(item) => item._id}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.plantCard}
-              onPress={() => openPlantPopup(item)}
-            >
-              <Image
-                source={{
-                  uri: item.imagen || "https://via.placeholder.com/150",
-                }} // Imagen de la planta
-                style={styles.plantImage}
-              />
-              <Text style={styles.plantTitle}>{item.nombre_cientifico}</Text>
-            </TouchableOpacity>
-          )}
-          contentContainerStyle={styles.plantList}
-        />
-      )}
 
       {/* Modal Premium */}
       <PremiumPopup
@@ -181,17 +185,6 @@ const styles = StyleSheet.create({
   },
   button: { alignItems: "center", marginBottom: 15 },
   buttonText: { marginTop: 5, textAlign: "center" },
-  collapseButton: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  collapseButtonText: {
-    fontSize: 16,
-    color: "#4CAF50",
-    marginRight: 5,
-  },
   plantList: { padding: 10 },
   plantCard: {
     flexDirection: "row",
@@ -202,6 +195,17 @@ const styles = StyleSheet.create({
   },
   plantImage: { width: 50, height: 50, borderRadius: 5, marginRight: 10 },
   plantTitle: { fontSize: 16 },
+  expandButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  expandButtonText: {
+    fontSize: 16,
+    color: "#4CAF50",
+    marginRight: 5,
+  },
 });
 
 export default HomeScreen;
