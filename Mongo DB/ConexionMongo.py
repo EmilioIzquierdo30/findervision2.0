@@ -29,7 +29,7 @@ if __name__ == "__main__":
     db = conectar_mongo()
     if db is not None:
         # Ejemplo de acceso a una colección
-        coleccion = db["plantas"]  # Reemplaza "nombre_coleccion" con el nombre de tu colección
+        coleccion = db["usuarios"]  # Reemplaza "nombre_coleccion" con el nombre de tu colección
         documentos = coleccion.find()
         for documento in documentos:
             print(documento)

@@ -471,7 +471,6 @@ const App = () => {
   // Define una lista de plantas con sus datos, como nombre, categoría, imagen y detalles adicionales.
 
   // Filtrado de plantas por categoría y búsqueda
-  // Filtrado de plantas por categoría y búsqueda
   const plantasFiltradas = plantas.filter((planta) => {
     const coincideCategoria = categoriaSeleccionada
         ? planta.categoria === categoriaSeleccionada
@@ -500,9 +499,6 @@ const App = () => {
         <div className="logo">
           <img src={logo} alt="Logo de Findervision" />
         </div>
-        <nav className="nav-links">
-          <button onClick={(e) => e.preventDefault()}>Inicio</button>
-        </nav>
         <div className="search">
           <input
             type="text"
@@ -512,9 +508,6 @@ const App = () => {
             aria-label="Campo de búsqueda"
           />
           <i className="fas fa-search" role="img" aria-label="Buscar"></i>
-        </div>
-        <div className="icons">
-          <button onClick={(e) => e.preventDefault()}>Mi Cuenta</button>
         </div>
       </header>
 
