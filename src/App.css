@@ -74,20 +74,26 @@ a {
   position: fixed;
   top: 0;
   left: -100%; /* Oculta el menú inicialmente */
-  width: 250px; /* Ancho del menú */
-  height: 100%; /* Altura completa de la pantalla */
-  max-height: 100vh; /* Altura máxima */
-  background-color: #2d3436; /* Fondo oscuro */
+  width: 250px;
+  height: 100%;
+  max-height: 100vh;
+  background-color: #2d3436;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 60px; /* Espacio para el header */
-  padding-bottom: 20px; /* Espacio adicional al final */
+  padding-top: 60px;
+  padding-bottom: 50px; /* Más espacio al final */
   transition: left 0.3s ease-in-out;
   z-index: 999;
   overflow-y: auto; /* Activa el scroll vertical */
+  scroll-behavior: smooth; /* Scroll suave */
+  scroll-padding-bottom: 40px; /* Espacio adicional para el scroll */
+}
+
+.sidebar button:last-child {
+  margin-bottom: 80px; /* Espaciado adicional para el último botón */
 }
 
 /* Personalización de la scrollbar */
@@ -113,12 +119,12 @@ a {
 }
 
 .sidebar button {
-  background-color: #00b894; /* Verde llamativo */
+  background-color: #00b894;
   color: white;
   border: none;
   padding: 10px 15px;
   margin: 8px 0;
-  width: 80%; /* Botones adaptables al ancho del sidebar */
+  width: 80%;
   text-align: center;
   border-radius: 5px;
   font-size: 16px;
@@ -138,15 +144,22 @@ a {
   }
 }
 
-/* Ajustes responsivos para móviles */
 @media screen and (max-width: 480px) {
   .sidebar {
-      width: 80%; /* Reduce el ancho para pantallas pequeñas */
+    width: 90%; /* Barra lateral ocupa el 90% de la pantalla */
+    padding-top: 20px;
+    padding-bottom: 30px;
   }
 
   .sidebar button {
-      font-size: 14px; /* Reduce el tamaño de texto en botones */
-      padding: 8px 12px; /* Ajusta el padding en botones */
+    width: 90%;
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 6px auto;
+  }
+
+  .sidebar button:last-child {
+    margin-bottom: 80px;
   }
 }
 
