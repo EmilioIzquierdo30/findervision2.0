@@ -57,11 +57,29 @@ a {
 .search {
   display: flex;
   align-items: center;
+  justify-content: center; /* Centra la barra de búsqueda horizontalmente */
   background-color: white;
   border-radius: 20px;
   padding: 5px 15px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   gap: 10px; /* Espacio entre el input y el ícono */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-width: 400px; /* Ancho máximo para dispositivos grandes */
+  margin: 20px auto; /* Centra con margen automático */
+}
+
+.search input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  width: 100%;
+  background: transparent;
+  transition: width 0.3s ease;
+}
+
+.search input::placeholder {
+  color: #aaa;
 }
 
 .search input {
@@ -96,51 +114,105 @@ a {
 
 /* Sidebar */
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Oculta el menú inicialmente */
+  width: 250px; /* Ancho del menú */
+  height: 100%; /* Altura completa de la pantalla */
+  max-height: 100vh; /* Altura máxima */
+  background-color: #2d3436; /* Fondo oscuro */
+  color: white;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  background-color: #e8f5e9;
-  width: 220px;
-  max-height: calc(100vh - 80px); /* Resta el espacio ocupado por el header */
-  overflow-y: auto;
-  gap: 10px; /* Espacio entre botones */
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px; /* Espacio para el header */
+  padding-bottom: 20px; /* Espacio adicional al final */
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+  overflow-y: auto; /* Activa el scroll vertical */
 }
 
-.sidebar a,
+.sidebar::after {
+  content: '';
+  display: block;
+  height: 50px; /* Espacio adicional al final */
+}
+
+/* Personalización de la scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #2d3436; /* Fondo de la barra */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #00b894; /* Color del thumb (parte desplazable) */
+  border-radius: 4px; /* Redondea los bordes */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #019874; /* Color más oscuro al pasar el mouse */
+}
+
+.sidebar.open {
+  left: 0; /* Muestra el menú al activarlo */
+}
+
+
 .sidebar button {
-  text-align: center;
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #4CAF50;
+  background-color: #00b894; /* Verde llamativo */
   color: white;
-  text-decoration: none;
+  border: none;
+  padding: 10px 15px;
+  margin: 8px 0;
+  width: 80%; /* Botones adaptables al ancho del menú */
+  text-align: center;
   border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.sidebar a:hover,
 .sidebar button:hover {
-  background-color: #388e3c;
-  transform: translateY(-2px);
+  background-color: #019874; /* Color más oscuro al pasar el mouse */
+  transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      overflow-y: auto;
+  }
 }
 
 /* Main Content */
 .main {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  background-color: #fff;
-  padding: 20px;
-  min-height: 100vh;
-  gap: 20px; /* Espacio entre elementos principales */
+  background-color: transparent; /* Asegúrate de que no tenga un fondo */
+  box-shadow: none;
+  border: none;
 }
 
 .content {
-  flex: 1;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: transparent; /* Elimina el color de fondo */
+  box-shadow: none; /* Elimina cualquier sombra */
+  border: none; /* Elimina bordes si existen */
 }
 
 .content h1 {
@@ -148,6 +220,8 @@ a {
   color: #388e3c;
   margin-bottom: 20px;
   font-weight: bold;
+  text-align: center; /* Centra el texto */
+  margin-top: 20px; /* Espaciado superior */
 }
 
 /* Lista de Plantas */
@@ -357,6 +431,14 @@ a {
   transition: transform 0.2s ease, color 0.3s ease;
 }
 
+.close {
+  display: none; /* Oculta la clase por defecto */
+}
+
+.modal .close, .sidebar .close {
+  display: block; /* Habilita el botón en el modal o el sidebar */
+}
+
 .modal .close:hover {
   transform: scale(1.2);
   color: #1b5e20;
@@ -375,13 +457,15 @@ a {
     margin-bottom: 10px;
   }
 
-  .main {
-    flex-direction: column;
-  }
-
   .content {
-    padding: 15px;
-  }
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+}
 
   .nav-links button {
     font-size: 14px;

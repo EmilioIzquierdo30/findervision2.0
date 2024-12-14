@@ -1,9 +1,8 @@
-import React from 'react';
-// Importa React para definir el componente.
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa'; // Íconos de hamburguesa y cierre
 
 const Sidebar = ({ setCategoriaSeleccionada }) => {
-    // Define el componente Sidebar que recibe una función `setCategoriaSeleccionada`
-    // como prop para actualizar la categoría seleccionada.
+    const [isOpen, setIsOpen] = useState(false); // Estado para abrir/cerrar el menú
 
     const categorias = [
         'Adaptogénicas', 'Analgésicas', 'Anticancerígenas', 'Antidiabéticas',
@@ -13,33 +12,37 @@ const Sidebar = ({ setCategoriaSeleccionada }) => {
         'Tónicas', 'Abortiva', 'Altamente Tóxica', 'Alucinógena', 'Antinutriente',
         'Cardiotóxica', 'Carcinogénica', 'Citotóxica', 'Convulsiva', 'Depresora Del Sistema Nervioso'
     ];
-    // Define una lista de categorías disponibles para filtrar plantas.
+
+    const toggleMenu = () => setIsOpen(!isOpen); // Alterna el estado del menú
+
+    const seleccionarCategoria = (categoria) => {
+        setCategoriaSeleccionada(categoria === 'Mostrar Todas' ? '' : categoria);
+        setIsOpen(false); // Cierra el menú después de seleccionar una categoría
+    };
 
     return (
-        // Devuelve el contenido del componente Sidebar.
-        <aside className="sidebar">
-            {/* Contenedor del Sidebar con una clase CSS para estilos. */}
-
-            <button onClick={() => setCategoriaSeleccionada('')}>
-                Mostrar Todas
+        <div className="sidebar-container">
+            {/* Botón de hamburguesa */}
+            <button className="hamburger" onClick={toggleMenu}>
+                {isOpen ? <FaTimes /> : <FaBars />}
             </button>
-            {/* Botón que limpia la categoría seleccionada y muestra todas las plantas. */}
 
-            {categorias.map((categoria) => (
-                // Itera sobre la lista de categorías para generar un botón por cada una.
-                <button
-                    key={categoria}
-                    // Usa el nombre de la categoría como clave única.
-                    onClick={() => setCategoriaSeleccionada(categoria)}
-                    // Llama a `setCategoriaSeleccionada` con la categoría actual al hacer clic.
-                >
-                    {categoria}
-                    {/* Muestra el nombre de la categoría en el botón. */}
+            {/* Menú lateral */}
+            <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+                <button onClick={() => seleccionarCategoria('')}>
+                    Mostrar Todas
                 </button>
-            ))}
-        </aside>
+                {categorias.map((categoria) => (
+                    <button
+                        key={categoria}
+                        onClick={() => seleccionarCategoria(categoria)}
+                    >
+                        {categoria}
+                    </button>
+                ))}
+            </aside>
+        </div>
     );
 };
 
 export default Sidebar;
-// Exporta el componente Sidebar para ser utilizado en otros archivos.

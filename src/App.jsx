@@ -6,7 +6,7 @@ import ListaPlantas from './ListaPlantas';
 // Importa el componente ListaPlantas para mostrar las plantas filtradas.
 import './App.css';
 // Importa los estilos CSS para la aplicación.
-import logo from './logo-findervision.jpg';
+//import logo from './logo-findervision.jpg';
 // Importa el logo que se usará en la cabecera.
 
 const App = () => {
@@ -496,9 +496,6 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
-        <div className="logo">
-          <img src={logo} alt="Logo de Findervision" />
-        </div>
         <div className="search">
           <input
             type="text"
