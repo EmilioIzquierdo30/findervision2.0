@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-// Importa React y el hook useState para manejar estados en el componente.
 import Sidebar from './Sidebar';
-// Importa el componente Sidebar para mostrar categorías de plantas.
 import ListaPlantas from './ListaPlantas';
-// Importa el componente ListaPlantas para mostrar las plantas filtradas.
 import './App.css';
-// Importa los estilos CSS para la aplicación.
-//import logo from './logo-findervision.jpg';
-// Importa el logo que se usará en la cabecera.
 
 const App = () => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
-  const [plantaSeleccionada, setPlantaSeleccionada] = useState(null); // Para seleccionar una planta
+  const [plantaSeleccionada, setPlantaSeleccionada] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   // Lista de plantas
   const plantas = [
@@ -473,15 +468,17 @@ const App = () => {
   // Filtrado de plantas por categoría y búsqueda
   const plantasFiltradas = plantas.filter((planta) => {
     const coincideCategoria = categoriaSeleccionada
-        ? planta.categoria === categoriaSeleccionada
-        : true;
-
+      ? planta.categoria === categoriaSeleccionada
+      : true;
     const coincideNombre = searchTerm
-        ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-        : true;
-
+      ? planta.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+      : true;
     return coincideCategoria && coincideNombre;
-  });
+  });  
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const seleccionarPlanta = (planta) => {
     setPlantaSeleccionada(planta);
@@ -496,13 +493,15 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
+        <button className="hamburger" onClick={toggleSidebar} aria-label="Abrir menú">
+          <i className="fas fa-bars"></i>
+        </button>
         <div className="search">
           <input
             type="text"
             placeholder="Buscar plantas..."
             value={searchTerm}
             onChange={handleSearchChange}
-            aria-label="Campo de búsqueda"
           />
           <i className="fas fa-search" role="img" aria-label="Buscar"></i>
         </div>

@@ -15,11 +15,15 @@ a {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Espaciado entre los elementos */
+  justify-content: space-between; /* Asegura espaciado entre elementos */
   padding: 10px 20px;
   background-color: #4CAF50; /* Fondo verde */
   color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.search {
+  margin-left: auto; /* Asegura que la barra de búsqueda no quede pegada al botón */
 }
 
 .header img {
@@ -51,53 +55,6 @@ a {
 .nav-links button:hover {
   color: #dcedc8;
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Search Bar */
-.search {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centra la barra de búsqueda horizontalmente */
-  background-color: white;
-  border-radius: 20px;
-  padding: 5px 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  gap: 10px; /* Espacio entre el input y el ícono */
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 400px; /* Ancho máximo para dispositivos grandes */
-  margin: 20px auto; /* Centra con margen automático */
-}
-
-.search input {
-  border: none;
-  outline: none;
-  font-size: 16px;
-  color: #333;
-  width: 100%;
-  background: transparent;
-  transition: width 0.3s ease;
-}
-
-.search input::placeholder {
-  color: #aaa;
-}
-
-.search input {
-  border: none;
-  outline: none;
-  font-size: 14px;
-  color: #333;
-  width: 200px;
-  background: transparent;
-  transition: width 0.3s ease;
-}
-
-.search input::placeholder {
-  color: #aaa;
-}
-
-.search input:focus {
-  width: 250px;
 }
 
 .icons {
@@ -133,12 +90,6 @@ a {
   overflow-y: auto; /* Activa el scroll vertical */
 }
 
-.sidebar::after {
-  content: '';
-  display: block;
-  height: 50px; /* Espacio adicional al final */
-}
-
 /* Personalización de la scrollbar */
 .sidebar::-webkit-scrollbar {
   width: 8px; /* Ancho de la barra */
@@ -161,14 +112,13 @@ a {
   left: 0; /* Muestra el menú al activarlo */
 }
 
-
 .sidebar button {
   background-color: #00b894; /* Verde llamativo */
   color: white;
   border: none;
   padding: 10px 15px;
   margin: 8px 0;
-  width: 80%; /* Botones adaptables al ancho del menú */
+  width: 80%; /* Botones adaptables al ancho del sidebar */
   text-align: center;
   border-radius: 5px;
   font-size: 16px;
@@ -181,38 +131,42 @@ a {
   transform: translateY(-2px); /* Efecto de elevación */
 }
 
+/* Ajustes para pantallas grandes */
+@media screen and (min-width: 768px) {
+  .sidebar {
+      width: 300px; /* Fija un ancho en pantallas grandes */
+  }
+}
+
+/* Ajustes responsivos para móviles */
+@media screen and (max-width: 480px) {
+  .sidebar {
+      width: 80%; /* Reduce el ancho para pantallas pequeñas */
+  }
+
+  .sidebar button {
+      font-size: 14px; /* Reduce el tamaño de texto en botones */
+      padding: 8px 12px; /* Ajusta el padding en botones */
+  }
+}
+
 .hamburger {
   background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
   color: white;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-}
-
-@media screen and (max-width: 768px) {
-  .sidebar {
-      width: 100%;
-      height: 100%;
-      max-height: 100vh;
-      overflow-y: auto;
-  }
+  position: absolute;
+  top: 15px; /* Margen superior */
+  left: 15px; /* Margen izquierdo */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 /* Main Content */
-.main {
-  background-color: transparent; /* Asegúrate de que no tenga un fondo */
+.main, .content {
+  background-color: transparent;
   box-shadow: none;
   border: none;
-}
-
-.content {
-  background-color: transparent; /* Elimina el color de fondo */
-  box-shadow: none; /* Elimina cualquier sombra */
-  border: none; /* Elimina bordes si existen */
 }
 
 .content h1 {
@@ -436,7 +390,17 @@ a {
 }
 
 .modal .close, .sidebar .close {
-  display: block; /* Habilita el botón en el modal o el sidebar */
+  display: block; /* Habilita el botón solo en estos contextos */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2e7d32;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
 }
 
 .modal .close:hover {
@@ -445,11 +409,281 @@ a {
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
+/* General */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; /* Fondo neutro */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Asegura espaciado entre elementos */
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Fondo verde */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+  position: relative; /* Asegura que los elementos se posicionen correctamente */
+}
+
+@media screen and (max-width: 480px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
+      flex-direction: column; /* Coloca los elementos en una columna */
+      align-items: flex-start; /* Alinea a la izquierda */
+      gap: 10px; /* Añade espacio entre el icono y la barra */
   }
+
+  .search {
+      width: 90%; /* Barra de búsqueda más ancha */
+      margin: 0 auto; /* Centrarla horizontalmente */
+  }
+
+  .hamburger {
+      align-self: flex-start; /* Mantén el ícono alineado a la izquierda */
+  }
+}
+
+.header img {
+  max-height: 50px; /* Ajustar altura del logo */
+  margin-right: 10px; /* Espaciado del logo */
+}
+
+.search {
+  margin: 10px auto; /* Centra la barra */
+  width: 90%; /* Ajusta el ancho para dispositivos móviles */
+  border-radius: 10px; /* Ajusta los bordes redondeados */
+  padding: 5px 10px; /* Añade algo de espacio interno */
+}
+
+.hamburger {
+  margin-right: 10px; /* Añade espacio entre el icono de menú y la barra */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaciado entre logo y texto */
+}
+
+/* Ajustes generales para la barra de búsqueda */
+.search {
+  display: flex; /* Asegura que el ícono y el input estén alineados horizontalmente */
+  align-items: center;
+  width: 100%;
+  max-width: 500px; /* Cambia este valor según el tamaño deseado */
+  padding: 8px 20px; /* Controla el tamaño general del buscador */
+  border-radius: 25px; /* Ajusta el nivel de redondez de los bordes */
+  background-color: white; /* Fondo blanco */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: 10px auto; /* Centrar el buscador */
+}
+
+.search input {
+  flex: 1; /* Ocupa todo el espacio disponible dentro del contenedor */
+  border: none;
+  outline: none;
+  font-size: 16px; /* Tamaño del texto */
+  color: #333;
+  background-color: transparent; /* Fondo transparente para heredar el de `.search` */
+}
+
+.search input::placeholder {
+  color: #aaa;
+}
+
+.search i {
+  font-size: 18px; /* Tamaño del ícono */
+  color: #4CAF50;
+  cursor: pointer;
+}
+
+.search input:focus {
+  width: 250px; /* Ancho expandido al enfocarse */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%; /* Oculta el menú inicialmente */
+  width: 80%; /* Porcentaje del ancho de la pantalla */
+  max-width: 300px; /* Ancho máximo para pantallas grandes */
+  height: 100%; /* Altura completa */
+  background-color: #2d3436; /* Fondo oscuro */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px; /* Espacio para el header */
+  padding-bottom: 20px; /* Espacio adicional */
+  transition: left 0.3s ease-in-out;
+  z-index: 999;
+  overflow-y: auto; /* Scroll vertical */
+}
+
+/* Scrollbar personalizada */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #2d3436;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #00b894;
+  border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #019874;
+}
+
+.sidebar.open {
+  left: 0; /* Muestra el menú */
+}
+
+.sidebar button:hover {
+  background-color: #019874;
+  transform: translateY(-2px); /* Efecto de elevación */
+}
+
+/* Ajustes para pantallas grandes */
+@media screen and (min-width: 768px) {
+  .sidebar {
+      width: 300px; /* Ajusta el ancho para pantallas grandes */
+  }
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+}
+
+/* Contenido principal */
+.main, .content {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+.content h1 {
+  font-size: 28px;
+  color: #388e3c;
+  margin: 20px 0; /* Espaciado superior e inferior */
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Tarjetas de plantas */
+.lista-plantas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; /* Espaciado entre tarjetas */
+  padding: 20px;
+  justify-items: center;
+}
+
+.planta {
+  background-color: #fff9c4;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.planta img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.planta h2 {
+  font-size: 18px;
+  color: #388e3c;
+  margin-bottom: 10px;
+}
+
+.planta p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Botón de favoritos */
+.favorito-boton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.favorito-boton:hover {
+  background-color: #388e3c;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .sidebar {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .hamburger {
+      top: 10px;
+      left: 10px;
+  }
+
+  .search {
+      width: 90%;
+      margin: 10px auto;
+      border-radius: 10px;
+      padding: 5px 10px;
+  }
+
+  .search input {
+      font-size: 14px;
+      width: 100%;
+  }
+}
 
   .sidebar {
     width: 100%;
@@ -470,16 +704,45 @@ a {
   .nav-links button {
     font-size: 14px;
   }
+
+/* Responsive para dispositivos móviles */
+@media screen and (max-width: 480px) {
+  .search {
+    width: 70%; /* Reduce el ancho al 70% de la pantalla */
+    max-width: 180px; /* Limita el ancho máximo aún más */
+    padding: 3px 5px; /* Menor espaciado interno */
+    border-radius: 6px; /* Bordes más pequeños */
+  }
+
+  .search input {
+    font-size: 8px; /* Texto más pequeño en el campo de entrada */
+    padding: 3px; /* Reduce el espaciado interno del input */
+  }
+
+  .search i {
+    font-size: 12px; /* Ícono más pequeño */
+  }
 }
 
 @media screen and (max-width: 480px) {
-  .search input {
-    width: 100%;
-    margin-bottom: 10px;
+  .header {
+      flex-direction: column; /* Coloca los elementos en una columna */
+      align-items: flex-start; /* Alinea los elementos a la izquierda */
+      gap: 10px; /* Añade espacio entre el ícono y la barra */
   }
 
-  .sidebar a {
-    font-size: 14px;
-    padding: 8px;
+  .search {
+      width: 90%; /* Barra de búsqueda más ancha */
+      margin: 10px auto; /* Centrarla horizontalmente */
+      border-radius: 10px; /* Bordes más redondeados para móviles */
+      padding: 5px 10px; /* Ajustar espacio interno */
+  }
+
+  .search input {
+      font-size: 14px; /* Reducir el tamaño de la fuente */
+  }
+
+  .hamburger {
+      align-self: flex-start; /* Mantén el ícono alineado a la izquierda */
   }
 }

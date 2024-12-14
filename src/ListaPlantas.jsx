@@ -1,31 +1,40 @@
 import React from 'react';
-// Importa React para definir el componente funcional.
-
-import Planta from './Planta';
-// Importa el componente `Planta` para renderizar cada planta individual.
+import PropTypes from 'prop-types'; // Importa PropTypes para la validación de props.
+import Planta from './Planta'; // Importa el componente `Planta`.
 
 const ListaPlantas = ({ plantas, seleccionarPlanta, toggleFavorito }) => {
-    // Define el componente `ListaPlantas` que recibe las props:
-    // - `plantas`: lista de objetos de plantas a mostrar.
-    // - `seleccionarPlanta`: función para manejar la selección de una planta.
-    // - `toggleFavorito`: función para alternar el estado de favorito de una planta.
-
     return (
-        // Renderiza la lista de plantas.
         <div className="lista-plantas">
-            {/* Contenedor principal para la lista de plantas. */}
-
-            {plantas.map((planta, index) => (
-                // Itera sobre la lista de plantas para renderizar cada una.
-                <div key={index} onClick={() => seleccionarPlanta(planta)}>
-                    {/* Cada planta se envuelve en un `div` que llama a `seleccionarPlanta` al hacer clic. */}
-                    <Planta planta={planta} onToggleFavorito={toggleFavorito} />
-                    {/* Renderiza el componente `Planta` pasando los datos de la planta y la función para alternar favoritos. */}
+            {/* Itera sobre la lista de plantas y renderiza cada una */}
+            {plantas.map((planta) => (
+                <div
+                    key={planta.id || planta.nombre} // Usa un identificador único como `key`.
+                    className="planta-container"
+                    onClick={() => seleccionarPlanta(planta)} // Llama a `seleccionarPlanta` al hacer clic.
+                >
+                    <Planta
+                        planta={planta} // Pasa los datos de la planta.
+                        onToggleFavorito={() => toggleFavorito(planta)} // Llama a `toggleFavorito` al hacer clic en favoritos.
+                    />
                 </div>
             ))}
         </div>
     );
 };
 
+// Validación de las props usando PropTypes
+ListaPlantas.propTypes = {
+    plantas: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+            nombre: PropTypes.string.isRequired,
+            categoria: PropTypes.string,
+            descripcion: PropTypes.string,
+            imagen: PropTypes.string,
+        })
+    ).isRequired,
+    seleccionarPlanta: PropTypes.func.isRequired,
+    toggleFavorito: PropTypes.func.isRequired,
+};
+
 export default ListaPlantas;
-// Exporta el componente para ser utilizado en otros archivos.
