@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/findervision2.0/static/css/main.8d9c7940.css",
+    "main.css": "/findervision2.0/static/css/main.b5287e06.css",
     "main.js": "/findervision2.0/static/js/main.dd3c95d3.js",
     "index.html": "/findervision2.0/index.html",
-    "main.8d9c7940.css.map": "/findervision2.0/static/css/main.8d9c7940.css.map",
+    "main.b5287e06.css.map": "/findervision2.0/static/css/main.b5287e06.css.map",
     "main.dd3c95d3.js.map": "/findervision2.0/static/js/main.dd3c95d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.8d9c7940.css",
+    "static/css/main.b5287e06.css",
     "static/js/main.dd3c95d3.js"
   ]
 }
